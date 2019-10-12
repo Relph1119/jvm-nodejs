@@ -4,7 +4,7 @@
  * @author: HuRuiFeng
  * @file: main.js
  * @time: 2019/10/10
- * @desc:
+ * @desc: 主函数
  */
 let program = require('commander');
 let Cmd = require('./cmd');
@@ -29,7 +29,7 @@ function start_JVM(cmd) {
     cmd.print_classpath();
 }
 
-let fake_args = ['node', 'main.js', '-h'];
+// let fake_args = ['node', 'main.js', '-h'];
 // let fake_args = ['node', 'main.js', '-V'];
-// let fake_args = ['node', 'main.js', '-c', 'foo/bar', 'MyApp', 'arg1', 'arg2'];
+let fake_args = ['node', 'main.js', '-c', 'foo/bar', 'MyApp', 'arg1', 'arg2'];
 main(fake_args);

@@ -4,7 +4,7 @@
  * @author: HuRuiFeng
  * @file: main.js
  * @time: 2019/10/10
- * @desc:
+ * @desc: 主函数
  */
 let program = require('commander');
 let Cmd = require('./cmd');
