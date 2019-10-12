@@ -1,0 +1,25 @@
+{
+  "name": "JVMByNodeJS",
+  "version": "1.0.0",
+  "description": "JVM的Node.js实现",
+  "main": "index.js",
+  "dependencies": {
+    "commander": "^3.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Relph1119/JVMByNodeJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Relph1119/JVMByNodeJS/issues"
+  },
+  "homepage": "https://github.com/Relph1119/JVMByNodeJS#readme",
+  "type":"module"
+}
