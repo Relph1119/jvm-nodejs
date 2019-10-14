@@ -17,11 +17,9 @@ function main(input_args){
         .option('-c, --classpath [value]', 'Class Path')
         .parse(process.argv);
 
-    if(input_args){
+    if(program.classpath){
         let cmd = new Cmd(program);
-        if (program.version != null) {
-            start_JVM(cmd);
-        }
+        start_JVM(cmd);
     }
 }
 
@@ -31,5 +29,5 @@ function start_JVM(cmd) {
 
 // let fake_args = ['node', 'main.js', '-h'];
 // let fake_args = ['node', 'main.js', '-V'];
-let fake_args = ['node', 'main.js', '-c', 'foo/bar', 'MyApp', 'arg1', 'arg2'];
+let fake_args = ['node', 'main.js', '--classpath', 'foo/bar', 'MyApp', 'arg1', 'arg2'];
 main(fake_args);

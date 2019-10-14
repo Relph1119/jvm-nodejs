@@ -31,3 +31,77 @@ src------------------------------------jvm代码
       +-----native---------------------本地方法目录
       +-----rtda-----------------------运行时数据区
 </pre>
+
+## 代码编写与运行结果
+项目的所有运行都是采用直接运行main.js的方式，请读者运行时注意。
+
+### 第1章-命令行工具
+完成一个简易的命令行工具，使用各种参数执行JVM命令  
+传入参数：
+> --cp foo/bar MyApp arg1 arg2
+
+![](images/ch01/命令行工具.png)
+
+### 第2章-搜索class文件
+完成搜索class文件功能，类路径的查找，按照搜索的先后顺序，类路径可以从以下3个部分查找：启动类路径、扩展类路径、用户类路径。
+传入参数：
+> --Xjre "D:\JavaTools\jdk1.8.0_151\jre" java.lang.Object
+
+![](images/ch02/搜索class文件.png)
+
+### 第3章-解析class文件
+完成解析class文件功能，将class文件加载之后，按照JVM规范，读取字节，存储class的版本号，类属性、方法、接口的对象。  
+传入参数：  
+> --Xjre "D:\JavaTools\jdk1.8.0_151\jre" java.lang.String
+
+![](images/ch03/解析class文件.png)
+
+### 第4章-运行时数据区
+&emsp;&emsp;实现运行时数据区（run-time data area），可分为两类：一类是多线程共享的，另一类是线程私有的。多线程共享的运行时数据区需要在Java虚拟机启动时创建好，在Java虚拟机退出时销毁。线程私有的运行时数据区则在创建线程时才创建，线程退出时销毁。  
+&emsp;&emsp;多现场共享的内存区域主要存放两类数据：类数据和类实例（也就是对象）。对象数据存放在堆中，类数据存放在方法区中。线程私有的运行时数据区用于辅助执行Java字节码。  
+![](images/ch04/运行时数据区.png)
+
+### 第5章-指令集和解释器
+&emsp;&emsp;在前两章的基础上编写了一个简单的解释器，并实现大约150条指令，可以执行100个整数求和的程序，能得到5050的正确答案。  
+![](images/ch05/解析GaussTest的class文件.png)
+
+### 第6章-类和对象
+&emsp;&emsp;实现线程共享的运行时数据区，包括方法区、运行时常量池、类和对象、一个简单的类加载器，以及ldc和部分引用类指令。  
+![](images/ch06/类加载器的实现.png)
+
+### 第7章-方法调用和返回
+&emsp;&emsp;基本完成了方法调用和返回，并实现了类初始化逻辑，已经可以运行Fibonacci程序（求第30个Fibonacci数）。  
+![](images/ch07/解析Fibonacci程序.png)
+
+### 第8章-数组和字符串
+实现了数组和字符串的加载，终于可以运行HelloWorld程序了。
+1. 解析并执行BubbleSortTest（冒泡排序）算法
+![](images/ch08/解析并执行BubbleSortTest（冒泡排序）算法.png)
+2. 解析并执行HelloWorld程序，打印出Hello world!
+![](images/ch08/解析并执行HelloWorld程序.png)
+3. 解析并执行PrintArgs程序，打印出传入的参数
+![](images/ch08/解析并执行PrintArgs程序.png)
+
+### 第9章-本地方法调用
+实现了本地方法调用的指令，以及Java类库中一些最基本的类和本地方法，有如下本地方法：java.lang.Object.getClass()、java.lang.Class.getPrimitiveClass()、java.lang.Class.getName0()、java.lang.Class.desiredAssertionStatues0、System.arrayCopy()、Float.floatToRawIntBits()、Double.doubleToRawLongBits()  
+1. 执行GetClassTest程序，得到基本数据类型的类getName()结果。
+![](images/ch09/执行GetClassTest程序.png)
+2. 执行StringTest程序，得到字符串判断的结果
+![](images/ch09/执行StringTest程序.png)
+3. 执行ObjectTest程序，得到对象的hashCode值，生成hashCode的代码是直接利用内置函数hash()生成的
+![](images/ch09/执行ObjectTest程序.png)
+4. 执行CloneTest程序，可以观察到克隆的对象与原始对象的pi值不一样
+![](images/ch09/执行CloneTest程序.png)
+5. 执行BoxTest程序，可以打印出数组的元素
+![](images/ch09/执行BoxTest程序.png)
+
+### 第10章-异常处理
+实现了异常抛出和处理、异常处理表、athrow指令。在Java语言中，异常可以分为两类：Checked异常和Unchecked异常。Unchecked异常包括java.lang.RuntimeException、java.lang.Error以及它们的子类，其他异常都是Checked异常。所有异常都最终继承自java.lang.Throwable。如果一个方法有可能导致Checked异常抛出，则该方法要么需要捕获该异常并妥善处理，要么必须把该异常列在自己的throws子句中，否则无法通过编译。Unchecked异常没有这个限制。
+1. 执行ParseIntTest程序，输出参数123
+![](images/ch10/执行ParseIntTest-输入参数123.png)
+2. 执行ParseIntTest程序，输出参数abc
+![](images/ch10/执行ParseIntTest-输入参数abc.png)
+3. 执行ParseIntTest程序，无输出参数，会抛出异常信息
+![](images/ch10/执行ParseIntTest-无参数.png)
+
+   
