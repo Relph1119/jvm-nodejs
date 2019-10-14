@@ -5,7 +5,7 @@
  * @desc: 命令行类
  */
 
-class Cmd{
+class CmdClass{
     constructor(program){
         this.cpOption = program.classpath;
         this.class_name = program.args[0];
@@ -22,4 +22,4 @@ class Cmd{
     }
 }
 
-module.exports = Cmd;
+module.exports = CmdClass;
