@@ -16,19 +16,7 @@ class WildcardEntry extends CompositeEntry {
         // 移除路径末尾的'*'符号
         let base_dir = path_parameter.substr(0, path_parameter.length - 1);
         readDirSync(base_dir, this.compositeEntryList);
-        // walker.on('file', function (roots, stat, next) {
-        //     if (stat.name.endsWith('.jar') || stat.name.endsWith('.JAR')) {
-        //         console.log(stat.name);
-        //         let jar_entry = new ZipEntry(path.join(roots, stat.name));
-        //         this.compositeEntryList.append(jar_entry);
-        //     }
-        //     next();
-        // });
-
     }
-
-
-
 }
 
 function readDirSync(root_path, compositeEntryList) {
@@ -39,8 +27,7 @@ function readDirSync(root_path, compositeEntryList) {
             readDirSync(root_path + "/" + ele, compositeEntryList);
         } else {
             if (ele.endsWith('.jar') || ele.endsWith('.JAR')) {
-                let jar_entry = new ZipEntry(path.join(root_path, ele));
-                compositeEntryList[compositeEntryList.length] = jar_entry;
+                compositeEntryList[compositeEntryList.length] = new ZipEntry(path.join(root_path, ele));
             }
         }
     })

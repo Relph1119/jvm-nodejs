@@ -42,8 +42,6 @@ function start_JVM(cmd) {
     console.log("class data: %j", result.data);
 }
 
-// let fake_args = ['node', 'main.js', '-h'];
-// let fake_args = ['node', 'main.js', '-V'];
 let Xjre_path = path.join(process.env.JAVA_HOME, 'jre');
 let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, 'java.lang.Object'];
 main(fake_args);

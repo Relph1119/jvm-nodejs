@@ -59,6 +59,15 @@ src------------------------------------jvm代码
 > --Xjre "D:\JavaTools\jdk1.8.0_151\jre" java.lang.String
 
 ![](images/ch03/解析class文件.png)
+1. 数组快速初始化：  
+    ```
+    Array(cp_count).fill(null).map(() => 0);
+    ```
+2.  将bytes数组转成long长整型，node.js中长整型是BigInt类型：
+    ```
+    const view = new DataView(bufferUtils.toArrayBuffer(byte_data));
+    this.val = view.getBigInt64(0);
+    ```
 
 ### 第4章-运行时数据区
 &emsp;&emsp;实现运行时数据区（run-time data area），可分为两类：一类是多线程共享的，另一类是线程私有的。多线程共享的运行时数据区需要在Java虚拟机启动时创建好，在Java虚拟机退出时销毁。线程私有的运行时数据区则在创建线程时才创建，线程退出时销毁。  
