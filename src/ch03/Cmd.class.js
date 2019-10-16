@@ -21,7 +21,7 @@ class Cmd {
 
     // 打印类信息
     print_classpath() {
-        console.log('classpath:%j class:%j args:%j\n', this.cpOption, this.class_name, this.args)
+        console.log('classpath:%s class:%s args:%s', this.cpOption, this.class_name, this.args)
     }
 
     // 打印传入参数
