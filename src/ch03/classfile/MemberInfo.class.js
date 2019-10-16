@@ -6,7 +6,7 @@
  */
 
 class MemberInfo {
-    constructor(constant_pool){
+    constructor(constant_pool) {
         this.cp = constant_pool;
         this.access_flags = "";
         this.name_index = "";
@@ -15,17 +15,17 @@ class MemberInfo {
     }
 
     // 读取字段表或方法表
-    static read_members(class_reader, constant_pool){
+    static read_members(class_reader, constant_pool) {
         let member_count = class_reader.read_unit16().readUInt16BE(0);
         let members = [];
-        for(let i = 0; i < member_count; i++){
+        for (let i = 0; i < member_count; i++) {
             members[i] = MemberInfo.read_member(class_reader, constant_pool)
         }
         return members
     }
 
     // 读取字段或方法数据
-    static read_member(class_reader, constant_pool){
+    static read_member(class_reader, constant_pool) {
         let AttributeInfo = require('./AttributeInfo.class');
 
         // 初始化MemberInfo对象
@@ -38,7 +38,7 @@ class MemberInfo {
     }
 
     // 从常量池查找字段或方法名
-    name(){
+    name() {
         return this.cp.get_utf8(this.name_index)
     }
 

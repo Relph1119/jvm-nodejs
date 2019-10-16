@@ -82,7 +82,7 @@ class Classpath {
         return this.user_classpath.read_class(class_name)
     }
 
-    toString(){
+    toString() {
         return this.user_classpath.toString();
     }
 

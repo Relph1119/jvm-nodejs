@@ -31,21 +31,21 @@ class ConstantMemberRefInfo extends ConstantInfo {
 
 // 字段符号引用类
 class ConstantFieldRefInfo extends ConstantMemberRefInfo {
-    constructor(constant_pool){
+    constructor(constant_pool) {
         super(constant_pool);
     }
 }
 
 // 普通（非接口）方法符号引用类
 class ConstantMethodRefInfo extends ConstantMemberRefInfo {
-    constructor(constant_pool){
+    constructor(constant_pool) {
         super(constant_pool);
     }
 }
 
 // 接口方法符号引用类
 class ConstantInterfaceMethodRefInfo extends ConstantMemberRefInfo {
-    constructor(constant_pool){
+    constructor(constant_pool) {
         super(constant_pool);
     }
 }

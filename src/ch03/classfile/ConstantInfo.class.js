@@ -6,8 +6,6 @@
  */
 
 
-
-
 class ConstantInfo {
     static CONSTANT_Class = 7;
     static CONSTANT_FieldRef = 9;

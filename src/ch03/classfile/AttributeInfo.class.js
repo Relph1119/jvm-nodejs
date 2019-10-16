@@ -6,7 +6,6 @@
  */
 
 
-
 class AttributeInfo {
     read_info(class_reader) {
     }

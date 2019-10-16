@@ -13,11 +13,11 @@ class ConstantUtf8Info extends ConstantInfo {
     }
 
     // 先读取出byte[]，然后调用decode_mutf8()函数把它解码成字符串
-    read_info(class_reader){
+    read_info(class_reader) {
         let length = class_reader.read_unit16().readInt16BE(0);
-        if(length === 0){
+        if (length === 0) {
             this.str = "";
-        }else{
+        } else {
             let bytes = class_reader.read_bytes(length);
             this.str = ConstantUtf8Info.decode_mutf8(bytes);
         }

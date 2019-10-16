@@ -11,7 +11,7 @@ let Cmd = require('./Cmd.class');
 let Classpath = require('./classpath/Classpath.class');
 let path = require('path');
 
-function main(input_args){
+function main(input_args) {
     process.argv = input_args;
     program
         .version('0.0.1')
@@ -31,9 +31,9 @@ function start_JVM(cmd) {
     console.log('classpath: %j class: %j args: %j\n', class_path.toString(), cmd.class_name, cmd.args);
 
     // 读取主类数据
-    let class_name = cmd.class_name.replace(/\./g,"/");
+    let class_name = cmd.class_name.replace(/\./g, "/");
     let result = class_path.read_class(class_name);
-    if(result.error != null){
+    if (result.error != null) {
         console.log("Could not find or load main class %j\n", cmd.class_name);
         return;
     }

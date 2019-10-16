@@ -9,7 +9,7 @@
 let program = require('commander');
 let Cmd = require('./cmd.class');
 
-function main(input_args){
+function main(input_args) {
     process.argv = input_args;
     program
         .version('0.0.1')
@@ -17,7 +17,7 @@ function main(input_args){
         .option('-c, --classpath [value]', 'Class Path')
         .parse(process.argv);
 
-    if(program.classpath){
+    if (program.classpath) {
         let cmd = new Cmd(program);
         start_JVM(cmd);
     }

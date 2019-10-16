@@ -12,7 +12,7 @@ let Classpath = require('./classpath/Classpath.class');
 let path = require('path');
 let ClassFile = require('./classfile/ClassFile.class');
 
-function main(input_args){
+function main(input_args) {
     process.argv = input_args;
     program
         .version('0.0.1')
@@ -25,14 +25,12 @@ function main(input_args){
     start_JVM(cmd);
 }
 
-
-
 function start_JVM(cmd) {
     // 解析类路径
     let class_path = Classpath.parse(cmd.XjreOption, cmd.cpOption);
 
     // 读取主类数据
-    let class_name = cmd.class_name.replace(/\./g,"/");
+    let class_name = cmd.class_name.replace(/\./g, "/");
 
     let class_file = load_class(class_name, class_path);
 
@@ -41,7 +39,7 @@ function start_JVM(cmd) {
 }
 
 // 加载class
-function  load_class(class_name, class_path){
+function load_class(class_name, class_path) {
     let result = class_path.read_class(class_name);
     let class_file = new ClassFile(result.data);
     return class_file.parse();
@@ -55,11 +53,11 @@ function print_class_info(class_file) {
     console.log("super class: %j", class_file.super_class_name());
     console.log("interfaces: %j", class_file.interface_names());
     console.log("fields count: %j", class_file.fields.length);
-    for(let field of class_file.fields) {
+    for (let field of class_file.fields) {
         console.log("   %j", field.name());
     }
     console.log("methods count: %j", class_file.methods.length);
-    for(let method of class_file.methods) {
+    for (let method of class_file.methods) {
         console.log("   %j", method.name());
     }
 }

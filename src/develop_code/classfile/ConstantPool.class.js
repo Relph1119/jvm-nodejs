@@ -6,7 +6,6 @@
  */
 
 
-
 class ConstantPool {
     constructor() {
         this.cp = []

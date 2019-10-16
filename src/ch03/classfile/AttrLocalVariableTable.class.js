@@ -16,7 +16,7 @@ class LocalVariableTableAttribute extends AttributeInfo {
     read_info(class_reader) {
         let local_variable_table_length = class_reader.read_unit16().readInt16BE(0);
 
-        for (let i = 0; i< local_variable_table_length; i++) {
+        for (let i = 0; i < local_variable_table_length; i++) {
             let local_variable_table_entry = new LocalVariableTableEntry();
             local_variable_table_entry.start_pc = class_reader.read_unit16().readInt16BE(0);
             local_variable_table_entry.length = class_reader.read_unit16().readInt16BE(0);

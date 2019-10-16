@@ -10,25 +10,25 @@ let path = require('path');
 let fs = require('fs');
 
 class DirEntry extends Entry {
-    constructor(path_parameter){
+    constructor(path_parameter) {
         super();
         // 将参数转换成绝对路径
         this.absDir = path_parameter;
     }
 
-    read_class(class_name){
+    read_class(class_name) {
         let file_name = path.join(this.absDir, class_name);
-        let data, error;
-        fs.readFile(file_name, function (err,bytesData) {
-            if (err){
+        let data = null, error = null;
+        fs.readFile(file_name, function (err, bytesData) {
+            if (err) {
                 error = err;
             }
             data = bytesData;
         });
-        return {error:error, entry:this, data:data};
+        return {error: error, entry: this, data: data};
     }
 
-    toString(){
+    toString() {
         return this.absDir;
     }
 }

@@ -7,7 +7,7 @@
 let ConstantInfo = require('./ConstantInfo.class');
 
 class ConstantMethodHandleInfo extends ConstantInfo {
-    constructor(){
+    constructor() {
         super();
         this.referenceKind = 0;
         this.referenceIndex = 0;
@@ -31,7 +31,7 @@ class ConstantMethodTypeInfo extends ConstantInfo {
 }
 
 class ConstantInvokeDynamicInfo extends ConstantInfo {
-    constructor(){
+    constructor() {
         super();
         this.bootstrapMethodAttrIndex = 0;
         this.nameAndTypeIndex = 0;

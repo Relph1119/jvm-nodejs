@@ -7,7 +7,7 @@
 let AttributeInfo = require('./AttributeInfo.class');
 
 class ConstantValueAttribute extends AttributeInfo {
-    constructor(){
+    constructor() {
         super();
         this.constant_value_index = 0;
     }

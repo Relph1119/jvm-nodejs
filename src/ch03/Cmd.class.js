@@ -5,8 +5,8 @@
  * @desc: 命令行类
  */
 
-class Cmd{
-    constructor(program){
+class Cmd {
+    constructor(program) {
         // 指定用户类路径
         this.cpOption = program.classpath;
         // 类名
@@ -20,12 +20,12 @@ class Cmd{
     }
 
     // 打印类信息
-    print_classpath(){
+    print_classpath() {
         console.log('classpath:%j class:%j args:%j\n', this.cpOption, this.class_name, this.args)
     }
 
     // 打印传入参数
-    print_args(){
+    print_args() {
         return '[' + this.argvs.join(' ') + ']';
     }
 }
