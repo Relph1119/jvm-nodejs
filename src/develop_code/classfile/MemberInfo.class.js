@@ -31,8 +31,8 @@ class MemberInfo {
         // 初始化MemberInfo对象
         let member = new MemberInfo(constant_pool);
         member.access_flags = class_reader.read_unit16();
-        member.name_index = class_reader.read_unit16().readUInt16BE();
-        member.descriptor_index = class_reader.read_unit16().readUInt16BE();
+        member.name_index = class_reader.read_unit16().readUInt16BE(0);
+        member.descriptor_index = class_reader.read_unit16().readUInt16BE(0);
         member.attributes = AttributeInfo.read_attributes(class_reader, constant_pool);
         return member
     }

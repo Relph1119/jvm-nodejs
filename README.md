@@ -73,6 +73,17 @@ src------------------------------------jvm代码
 &emsp;&emsp;实现运行时数据区（run-time data area），可分为两类：一类是多线程共享的，另一类是线程私有的。多线程共享的运行时数据区需要在Java虚拟机启动时创建好，在Java虚拟机退出时销毁。线程私有的运行时数据区则在创建线程时才创建，线程退出时销毁。  
 &emsp;&emsp;多现场共享的内存区域主要存放两类数据：类数据和类实例（也就是对象）。对象数据存放在堆中，类数据存放在方法区中。线程私有的运行时数据区用于辅助执行Java字节码。  
 ![](images/ch04/运行时数据区.png)
+1. 不能使用以下代码初始化对象数组，需要用for循环遍历初始化对象，因为会陷入死循环（栈溢出）。
+    ```
+    Array(cp_count).fill(null).map(() => new Object());
+    ```
+2. 为了使用String.format，导入string-format包，使用方法如下：  
+    ```
+    let format = require('string-format');
+    format.extend(String.prototype);
+    let a = "size:{0} slots:{1}".format(this.size, this.slots.toString());
+    console.log(a)
+    ```
 
 ### 第5章-指令集和解释器
 &emsp;&emsp;在前两章的基础上编写了一个简单的解释器，并实现大约150条指令，可以执行100个整数求和的程序，能得到5050的正确答案。  
