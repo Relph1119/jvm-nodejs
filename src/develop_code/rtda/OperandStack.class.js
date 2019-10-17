@@ -7,7 +7,7 @@
 
 let format = require('string-format');
 format.extend(String.prototype);
-let Slot = require('./Slot.class');
+let Slot = require("./Slot.class").Slot;
 
 class OperandStack {
     constructor(max_stack) {
@@ -59,4 +59,4 @@ class OperandStack {
 
 }
 
-module.exports = OperandStack;
+exports.OperandStack = OperandStack;

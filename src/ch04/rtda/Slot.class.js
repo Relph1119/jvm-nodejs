@@ -21,4 +21,6 @@ class Slot {
     }
 }
 
-module.exports = Slot;
+module.exports = {
+    Slot: Slot
+};

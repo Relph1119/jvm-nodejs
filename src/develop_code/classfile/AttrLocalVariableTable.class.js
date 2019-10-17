@@ -5,7 +5,7 @@
  * @desc: LocalVariableTable属性表中存放方法的局部变量信息
  */
 
-let AttributeInfo = require('./AttributeInfo.class');
+let AttributeInfo = require("./AttributeInfo.class").AttributeInfo;
 
 class LocalVariableTableAttribute extends AttributeInfo {
     constructor() {

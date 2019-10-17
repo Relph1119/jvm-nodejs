@@ -12,7 +12,7 @@ class ConstantPool {
     }
 
     read_constant_pool(class_reader) {
-        let ConstantInfo = require('./ConstantInfo.class');
+        let ConstantInfo = require("./ConstantInfo.class").ConstantInfo;
         let ConstantDoubleInfo = require("./CpNumeric.class").ConstantDoubleInfo;
         let ConstantLongInfo = require("./CpNumeric.class").ConstantLongInfo;
 
@@ -61,4 +61,4 @@ class ConstantPool {
 
 }
 
-module.exports = ConstantPool;
+exports.ConstantPool = ConstantPool;

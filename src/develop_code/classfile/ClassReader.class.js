@@ -58,4 +58,4 @@ class ClassReader {
 
 }
 
-module.exports = ClassReader;
+exports.ClassReader = ClassReader;

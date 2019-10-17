@@ -5,7 +5,7 @@
  * @desc:
  */
 
-let Entry = require('./Entry.class');
+let Entry = require("./Entry.class").Entry;
 let path = require('path');
 let fs = require('fs');
 
@@ -33,4 +33,4 @@ class DirEntry extends Entry {
     }
 }
 
-module.exports = DirEntry;
+exports.DirEntry = DirEntry;

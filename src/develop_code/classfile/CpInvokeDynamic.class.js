@@ -4,7 +4,7 @@
  * @time: 2019/10/16
  * @desc:
  */
-let ConstantInfo = require('./ConstantInfo.class');
+let ConstantInfo = require("./ConstantInfo.class").ConstantInfo;
 
 class ConstantMethodHandleInfo extends ConstantInfo {
     constructor() {

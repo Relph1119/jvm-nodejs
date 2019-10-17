@@ -4,7 +4,7 @@
  * @time: 2019/10/16
  * @desc: 表示字段或方法的名称和描述符
  */
-let ConstantInfo = require('./ConstantInfo.class');
+let ConstantInfo = require("./ConstantInfo.class").ConstantInfo;
 
 class ConstantNameAndTypeInfo extends ConstantInfo {
     constructor() {
@@ -20,4 +20,4 @@ class ConstantNameAndTypeInfo extends ConstantInfo {
 
 }
 
-module.exports = ConstantNameAndTypeInfo;
+exports.ConstantNameAndTypeInfo = ConstantNameAndTypeInfo;

@@ -5,7 +5,7 @@
  * @desc: 由更小的Entry组成（继承Entry类）
  */
 
-let Entry = require('./Entry.class');
+let Entry = require("./Entry.class").Entry;
 let format = require('string-format');
 format.extend(String.prototype);
 
@@ -40,4 +40,4 @@ class CompositeEntry extends Entry {
 
 }
 
-module.exports = CompositeEntry;
+exports.CompositeEntry = CompositeEntry;

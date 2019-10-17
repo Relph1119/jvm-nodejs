@@ -5,8 +5,8 @@
  * @desc: 帧
  */
 
-let LocalVars = require('./LocalVars.class');
-let OperandStack = require('./OperandStack.class');
+let LocalVars = require("./LocalVars.class").LocalVars;
+let OperandStack = require("./OperandStack.class").OperandStack;
 
 class Frame {
     constructor(max_locals, max_stack) {
@@ -20,4 +20,4 @@ class Frame {
 
 }
 
-module.exports = Frame;
+exports.Frame = Frame;

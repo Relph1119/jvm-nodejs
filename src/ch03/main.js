@@ -7,10 +7,10 @@
  * @desc: 主函数
  */
 let program = require('commander');
-let Cmd = require('./Cmd.class');
-let Classpath = require('./classpath/Classpath.class');
+let Cmd = require("./Cmd.class").Cmd;
+let Classpath = require("./classpath/Classpath.class").Classpath;
 let path = require('path');
-let ClassFile = require('./classfile/ClassFile.class');
+let ClassFile = require("./classfile/ClassFile.class").ClassFile;
 
 function main(input_args) {
     process.argv = input_args;

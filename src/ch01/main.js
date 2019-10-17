@@ -7,7 +7,7 @@
  * @desc: 主函数
  */
 let program = require('commander');
-let Cmd = require('./Cmd.class');
+let Cmd = require("./Cmd.class").Cmd;
 
 function main(input_args) {
     process.argv = input_args;

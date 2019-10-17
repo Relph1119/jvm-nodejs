@@ -31,4 +31,4 @@ class ConstantUtf8Info extends ConstantInfo {
     }
 }
 
-module.exports = ConstantUtf8Info;
+exports.ConstantUtf8Info = ConstantUtf8Info;

@@ -37,10 +37,10 @@ class ConstantInfo {
         const ConstantLongInfo = require("./CpNumeric.class").ConstantLongInfo;
         const ConstantFloatInfo = require("./CpNumeric.class").ConstantFloatInfo;
         const ConstantIntegerInfo = require("./CpNumeric.class").ConstantIntegerInfo;
-        const ConstantUtf8Info = require("./ConstantUtf8Info.class");
-        const ConstantStringInfo = require('./ConstantStringInfo.class');
-        const ConstantClassInfo = require('./ConstantClassInfo.class');
-        const ConstantNameAndTypeInfo = require('./ConstantNameAndTypeInfo.class');
+        const ConstantUtf8Info = require("./ConstantUtf8Info.class").ConstantUtf8Info;
+        const ConstantStringInfo = require("./ConstantStringInfo.class").ConstantStringInfo;
+        const ConstantClassInfo = require("./ConstantClassInfo.class").ConstantClassInfo;
+        const ConstantNameAndTypeInfo = require("./ConstantNameAndTypeInfo.class").ConstantNameAndTypeInfo;
         const ConstantInterfaceMethodRefInfo = require("./ConstantMemberRefInfo.class").ConstantInterfaceMethodRefInfo;
         const ConstantMethodRefInfo = require("./ConstantMemberRefInfo.class").ConstantMethodRefInfo;
         const ConstantFieldRefInfo = require("./ConstantMemberRefInfo.class").ConstantFieldRefInfo;
@@ -83,4 +83,4 @@ class ConstantInfo {
     }
 }
 
-module.exports = ConstantInfo;
+exports.ConstantInfo = ConstantInfo;

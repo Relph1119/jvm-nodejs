@@ -5,7 +5,7 @@
  * @desc:
  */
 
-let AttributeInfo = require('./AttributeInfo.class');
+let AttributeInfo = require("./AttributeInfo.class").AttributeInfo;
 
 class SourceFileAttribute extends AttributeInfo {
     constructor(constant_pool) {
@@ -19,9 +19,9 @@ class SourceFileAttribute extends AttributeInfo {
     }
 
     file_name() {
-        return this.cp.get_utf8(self.sourceFile_index);
+        return this.cp.get_utf8(this.sourceFile_index);
     }
 
 }
 
-module.exports = SourceFileAttribute;
+exports.SourceFileAttribute = SourceFileAttribute;

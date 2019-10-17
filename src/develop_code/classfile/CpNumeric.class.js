@@ -5,7 +5,7 @@
  * @desc: 用一个module编写数值常量类
  */
 
-let ConstantInfo = require('./ConstantInfo.class');
+let ConstantInfo = require("./ConstantInfo.class").ConstantInfo;
 let bufferUtils = require('../utils/bufferUtil');
 
 // 使用4字节存储整数常量

@@ -22,4 +22,4 @@ class Cmd {
     }
 }
 
-module.exports = Cmd;
+exports.Cmd = Cmd;

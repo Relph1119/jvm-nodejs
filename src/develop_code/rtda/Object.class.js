@@ -9,4 +9,4 @@ class Object {
 
 }
 
-module.exports = Object;
+exports.Object = Object;

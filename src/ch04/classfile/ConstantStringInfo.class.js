@@ -5,7 +5,7 @@
  * @desc: 表示java.lang.String字面量
  */
 
-let ConstantInfo = require('./ConstantInfo.class');
+let ConstantInfo = require("./ConstantInfo.class").ConstantInfo;
 
 class ConstantStringInfo extends ConstantInfo {
     constructor(constant_pool) {
@@ -25,4 +25,4 @@ class ConstantStringInfo extends ConstantInfo {
 
 }
 
-module.exports = ConstantStringInfo;
+exports.ConstantStringInfo = ConstantStringInfo;

@@ -5,7 +5,7 @@
  * @desc: 未解析的属性
  */
 
-let AttributeInfo = require('./AttributeInfo.class');
+let AttributeInfo = require("./AttributeInfo.class").AttributeInfo;
 
 class UnparsedAttribute extends AttributeInfo {
     constructor(attr_name, attr_len) {
@@ -21,4 +21,4 @@ class UnparsedAttribute extends AttributeInfo {
 
 }
 
-module.exports = UnparsedAttribute;
+exports.UnparsedAttribute = UnparsedAttribute;

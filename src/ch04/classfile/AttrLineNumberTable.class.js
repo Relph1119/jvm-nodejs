@@ -5,7 +5,7 @@
  * @desc: LineNumberTable属性表存放方法的行号信息
  */
 
-let AttributeInfo = require('./AttributeInfo.class');
+let AttributeInfo = require("./AttributeInfo.class").AttributeInfo;
 
 class LineNumberTableAttribute extends AttributeInfo {
     constructor() {

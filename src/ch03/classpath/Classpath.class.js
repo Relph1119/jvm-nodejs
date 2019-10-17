@@ -7,8 +7,8 @@
 
 let path = require('path');
 let fs = require('fs');
-let Entry = require('./Entry.class');
-let WildcardEntry = require('./WildcardEntry.class');
+let Entry = require("./Entry.class").Entry;
+let WildcardEntry = require("./WildcardEntry.class").WildcardEntry;
 
 class Classpath {
     constructor() {
@@ -61,7 +61,7 @@ class Classpath {
         return stat.isDirectory()
     }
 
-    parse_user_classpath(self, cpOption) {
+    parse_user_classpath(cpOption) {
         if (cpOption == null) {
             cpOption = "."
         }
@@ -73,13 +73,14 @@ class Classpath {
         class_name = class_name + ".class";
         if (this.boot_classpath != null) {
             result = this.boot_classpath.read_class(class_name);
-            return {data: result.data, entry: result.entry, error: result.error};
+            if (this.ext_classPath != null && result.data == null) {
+                result = this.ext_classPath.read_class(class_name);
+                if (this.user_classpath != null && result.data == null) {
+                    return this.user_classpath.read_class(class_name);
+                }
+            }
         }
-        if (this.ext_classPath != null) {
-            result = this.ext_classPath.read_class(class_name);
-            return {data: result.data, entry: result.entry, error: result.error};
-        }
-        return this.user_classpath.read_class(class_name)
+        return {data: result.data, entry: result.entry, error: result.error};
     }
 
     toString() {
@@ -88,4 +89,4 @@ class Classpath {
 
 }
 
-module.exports = Classpath;
+exports.Classpath = Classpath;

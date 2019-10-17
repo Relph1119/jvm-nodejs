@@ -7,8 +7,8 @@
  * @desc: 主函数
  */
 let program = require('commander');
-let Cmd = require('./Cmd.class');
-let Classpath = require('./classpath/Classpath.class');
+let Cmd = require("./Cmd.class").Cmd;
+let Classpath = require("./classpath/Classpath.class").Classpath;
 let path = require('path');
 
 function main(input_args) {

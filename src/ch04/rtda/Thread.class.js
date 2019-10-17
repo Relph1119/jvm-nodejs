@@ -5,7 +5,7 @@
  * @desc: 线程
  */
 
-let Stack = require('./Stack.class');
+let Stack = require("./Stack.class").Stack;
 
 class Thread {
     constructor() {
@@ -26,4 +26,4 @@ class Thread {
     }
 }
 
-module.exports = Thread;
+exports.Thread = Thread;

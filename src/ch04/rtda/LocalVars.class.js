@@ -5,7 +5,7 @@
  * @desc: 局部变量表，用于python的列表能存储任何数据类型，所以将基本数据类型和引用类型都用一个Slot表示。
  */
 
-let Slot = require('./Slot.class');
+let Slot = require("./Slot.class").Slot;
 
 class LocalVars extends Array {
     constructor(max_locals) {
@@ -39,4 +39,4 @@ class LocalVars extends Array {
     }
 }
 
-module.exports = LocalVars;
+exports.LocalVars = LocalVars;

@@ -5,7 +5,7 @@
  * @desc: Zip或JAR文件形式的类路径（继承Entry类）
  */
 
-let Entry = require('./Entry.class');
+let Entry = require("./Entry.class").Entry;
 
 class ZipEntry extends Entry {
     constructor(path_parameter) {
@@ -46,4 +46,4 @@ class ZipEntry extends Entry {
     }
 }
 
-module.exports = ZipEntry;
+exports.ZipEntry = ZipEntry;

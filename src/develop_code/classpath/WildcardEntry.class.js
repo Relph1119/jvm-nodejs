@@ -5,9 +5,9 @@
  * @desc: 通配符实例类（继承CompositeEntry类）
  */
 
-let CompositeEntry = require('./CompositeEntry.class');
+let CompositeEntry = require("./CompositeEntry.class").CompositeEntry;
 let path = require('path');
-let ZipEntry = require('./ZipEntry.class');
+let ZipEntry = require("./ZipEntry.class").ZipEntry;
 let fs = require('fs');
 
 class WildcardEntry extends CompositeEntry {
@@ -34,4 +34,4 @@ function readDirSync(root_path, compositeEntryList) {
 }
 
 
-module.exports = WildcardEntry;
+exports.WildcardEntry = WildcardEntry;

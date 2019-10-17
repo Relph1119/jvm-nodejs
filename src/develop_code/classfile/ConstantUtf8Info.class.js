@@ -4,7 +4,7 @@
  * @time: 2019/10/16
  * @desc: MUTF-9编码的字符串类
  */
-let ConstantInfo = require("./ConstantInfo.class");
+let ConstantInfo = require("./ConstantInfo.class").ConstantInfo;
 
 class ConstantUtf8Info extends ConstantInfo {
     constructor() {
@@ -31,4 +31,4 @@ class ConstantUtf8Info extends ConstantInfo {
     }
 }
 
-module.exports = ConstantUtf8Info;
+exports.ConstantUtf8Info = ConstantUtf8Info;

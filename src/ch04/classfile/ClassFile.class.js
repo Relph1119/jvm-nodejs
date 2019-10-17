@@ -5,10 +5,10 @@
  * @desc: 解析class文件
  */
 
-let ClassReader = require('./ClassReader.class');
-let ConstantPool = require('./ConstantPool.class');
-let MemberInfo = require('./MemberInfo.class');
-let AttributeInfo = require('./AttributeInfo.class');
+let ClassReader = require("./ClassReader.class").ClassReader;
+let ConstantPool = require("./ConstantPool.class").ConstantPool;
+let MemberInfo = require("./MemberInfo.class").MemberInfo;
+let AttributeInfo = require("./AttributeInfo.class").AttributeInfo;
 
 class ClassFile {
     constructor(class_data) {
@@ -105,4 +105,4 @@ class ClassFile {
 
 }
 
-module.exports = ClassFile;
+exports.ClassFile = ClassFile;

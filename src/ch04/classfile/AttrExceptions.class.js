@@ -5,7 +5,7 @@
  * @desc: 记录方法抛出的异常表
  */
 
-let AttributeInfo = require('./AttributeInfo.class');
+let AttributeInfo = require("./AttributeInfo.class").AttributeInfo;
 
 class ExceptionsAttribute extends AttributeInfo {
     constructor() {
@@ -19,4 +19,4 @@ class ExceptionsAttribute extends AttributeInfo {
 
 }
 
-module.exports = ExceptionsAttribute;
+exports.ExceptionsAttribute = ExceptionsAttribute;

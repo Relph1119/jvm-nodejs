@@ -5,7 +5,7 @@
  * @desc: 表示类或者接口的符号引用
  */
 
-let ConstantInfo = require('./ConstantInfo.class');
+let ConstantInfo = require("./ConstantInfo.class").ConstantInfo;
 
 class ConstantClassInfo extends ConstantInfo {
     constructor(constant_pool) {
@@ -23,4 +23,4 @@ class ConstantClassInfo extends ConstantInfo {
     }
 }
 
-module.exports = ConstantClassInfo;
+exports.ConstantClassInfo = ConstantClassInfo;

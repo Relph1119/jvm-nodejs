@@ -5,7 +5,7 @@
  * @desc: 对象引用类
  */
 
-let ConstantInfo = require('./ConstantInfo.class');
+let ConstantInfo = require("./ConstantInfo.class").ConstantInfo;
 
 class ConstantMemberRefInfo extends ConstantInfo {
     constructor(constant_pool) {

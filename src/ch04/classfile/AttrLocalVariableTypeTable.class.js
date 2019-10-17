@@ -5,7 +5,7 @@
  * @desc: LocalVariableTypeTable属性类型表中存放方法的局部变量类型信息
  */
 
-let AttributeInfo = require('./AttributeInfo.class');
+let AttributeInfo = require("./AttributeInfo.class").AttributeInfo;
 
 class LocalVariableTypeTableAttribute extends AttributeInfo {
     constructor() {
@@ -23,7 +23,7 @@ class LocalVariableTypeTableAttribute extends AttributeInfo {
             local_variable_type_table_entry.name_index = class_reader.read_unit16().readInt16BE(0);
             local_variable_type_table_entry.signature_index = class_reader.read_unit16().readInt16BE(0);
             local_variable_type_table_entry.index = class_reader.read_unit16().readInt16BE(0);
-            self.localVariableTable[i] = local_variable_type_table_entry;
+            this.localVariableTable[i] = local_variable_type_table_entry;
         }
     }
 
