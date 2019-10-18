@@ -47,7 +47,7 @@ class Interpreter {
             inst.fetch_operands(reader);
             frame.next_pc = reader.pc;
 
-            console.log("pc:{0} opcode:0x{1} inst:{2} [{3}]".format(pc, parseInt(opcode, 16), inst.constructor.name,
+            console.log("pc:{0} opcode:0x{1} inst:{2} [{3}]".format(pc, opcode.toString(16), inst.constructor.name,
                 Interpreter.print_obj(inst)));
             inst.execute(frame);
         }

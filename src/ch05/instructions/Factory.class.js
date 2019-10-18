@@ -204,7 +204,6 @@ class Factory {
             case 0x11:
                 return new SIPUSH();
 
-            // TODO:
             case 0x15:
                 return new ILOAD();
             case 0x16:
@@ -256,7 +255,6 @@ class Factory {
             case 0x2d:
                 return new ALOAD_3();
 
-            // TODO:
             case 0x36:
                 return new ISTORE();
             case 0x37:
@@ -308,7 +306,6 @@ class Factory {
             case 0x4e:
                 return new ASTORE_3();
 
-            // TODO:
             case 0x57:
                 return new POP();
             case 0x58:
@@ -472,17 +469,14 @@ class Factory {
             case 0xa7:
                 return new GOTO();
 
-            // TODO:
             case 0xaa:
                 return new TABLE_SWITCH();
             case 0xab:
                 return new LOOKUP_SWITCH();
 
-            // TODO:
             case 0xc4:
                 return new WIDE();
 
-            // TODO:
             case 0xc6:
                 return new IFNULL();
             case 0xc7:
