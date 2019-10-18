@@ -7,8 +7,11 @@
 
 
 class ConstantPool {
-    constructor() {
-        this.cp = []
+    constructor(cp) {
+        if (!cp) {
+            cp = []
+        }
+        this.cp = cp;
     }
 
     read_constant_pool(class_reader) {
@@ -16,7 +19,7 @@ class ConstantPool {
         let ConstantDoubleInfo = require("./CpNumeric.class").ConstantDoubleInfo;
         let ConstantLongInfo = require("./CpNumeric.class").ConstantLongInfo;
 
-        let cp_count = class_reader.read_unit16().readUInt16BE(0);
+        let cp_count = class_reader.read_uint16().readUInt16BE(0);
         this.cp = Array(cp_count).fill(null).map(() => 0);
 
         // 索引从1开始

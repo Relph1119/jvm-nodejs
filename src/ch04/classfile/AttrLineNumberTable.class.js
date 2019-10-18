@@ -14,12 +14,12 @@ class LineNumberTableAttribute extends AttributeInfo {
     }
 
     read_info(class_reader) {
-        let line_number_table_length = class_reader.read_unit16().readInt16BE(0);
+        let line_number_table_length = class_reader.read_uint16().readInt16BE(0);
         this.lineNumberTable = [];
         for (let i = 0; i < line_number_table_length; i++) {
             let line_number_table_entry = new LineNumberTableEntry();
-            line_number_table_entry.start_pc = class_reader.read_unit16().readInt16BE(0);
-            line_number_table_entry.line_number = class_reader.read_unit16().readInt16BE(0);
+            line_number_table_entry.start_pc = class_reader.read_uint16().readInt16BE(0);
+            line_number_table_entry.line_number = class_reader.read_uint16().readInt16BE(0);
             this.lineNumberTable[i] = line_number_table_entry;
         }
     }

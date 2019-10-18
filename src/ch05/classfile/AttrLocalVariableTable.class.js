@@ -14,15 +14,15 @@ class LocalVariableTableAttribute extends AttributeInfo {
     }
 
     read_info(class_reader) {
-        let local_variable_table_length = class_reader.read_unit16().readInt16BE(0);
+        let local_variable_table_length = class_reader.read_uint16().readInt16BE(0);
 
         for (let i = 0; i < local_variable_table_length; i++) {
             let local_variable_table_entry = new LocalVariableTableEntry();
-            local_variable_table_entry.start_pc = class_reader.read_unit16().readInt16BE(0);
-            local_variable_table_entry.length = class_reader.read_unit16().readInt16BE(0);
-            local_variable_table_entry.name_index = class_reader.read_unit16().readInt16BE(0);
-            local_variable_table_entry.descriptor_index = class_reader.read_unit16().readInt16BE(0);
-            local_variable_table_entry.index = class_reader.read_unit16().readInt16BE(0);
+            local_variable_table_entry.start_pc = class_reader.read_uint16().readInt16BE(0);
+            local_variable_table_entry.length = class_reader.read_uint16().readInt16BE(0);
+            local_variable_table_entry.name_index = class_reader.read_uint16().readInt16BE(0);
+            local_variable_table_entry.descriptor_index = class_reader.read_uint16().readInt16BE(0);
+            local_variable_table_entry.index = class_reader.read_uint16().readInt16BE(0);
             this.localVariableTable[i] = local_variable_table_entry;
         }
     }

@@ -17,7 +17,7 @@ class ConstantIntegerInfo extends ConstantInfo {
 
     // 先读取一个uint32数据，然后把它转型成int32类型
     read_info(class_reader) {
-        this.val = class_reader.read_unit32().readInt32BE(0);
+        this.val = class_reader.read_uint32().readInt32BE(0);
     }
 
 }
@@ -30,7 +30,7 @@ class ConstantFloatInfo extends ConstantInfo {
     }
 
     read_info(class_reader) {
-        this.val = class_reader.read_unit32().readFloatBE(0);
+        this.val = class_reader.read_uint32().readFloatBE(0);
     }
 }
 
@@ -42,7 +42,7 @@ class ConstantLongInfo extends ConstantInfo {
     }
 
     read_info(class_reader) {
-        let byte_data = class_reader.read_unit64();
+        let byte_data = class_reader.read_uint64();
         const view = new DataView(bufferUtils.toArrayBuffer(byte_data));
         this.val = view.getBigInt64(0);
     }
@@ -56,7 +56,7 @@ class ConstantDoubleInfo extends ConstantInfo {
     }
 
     read_info(class_reader) {
-        this.val = class_reader.read_unit32().readDoubleBE(0);
+        this.val = class_reader.read_uint32().readDoubleBE(0);
     }
 }
 

@@ -14,7 +14,7 @@ class ExceptionsAttribute extends AttributeInfo {
     }
 
     read_info(class_reader) {
-        this.exception_index_table = class_reader.read_unit16s();
+        this.exception_index_table = class_reader.read_uint16s();
     }
 
 }

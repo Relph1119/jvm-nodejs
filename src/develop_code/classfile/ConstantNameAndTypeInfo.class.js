@@ -14,8 +14,8 @@ class ConstantNameAndTypeInfo extends ConstantInfo {
     }
 
     read_info(class_reader) {
-        this.name_index = class_reader.read_unit16().readInt16BE(0);
-        this.descriptor_index = class_reader.read_unit16().readInt16BE(0);
+        this.name_index = class_reader.read_uint16().readInt16BE(0);
+        this.descriptor_index = class_reader.read_uint16().readInt16BE(0);
     }
 
 }

@@ -6,18 +6,19 @@
  */
 
 let ConstantInfo = require("./ConstantInfo.class").ConstantInfo;
+const ConstantPool = require("./ConstantPool.class").ConstantPool;
 
 class ConstantMemberRefInfo extends ConstantInfo {
     constructor(constant_pool) {
         super();
-        this.cp = constant_pool;
+        this.cp = new ConstantPool(constant_pool);
         this.class_index = 0;
         this.name_and_type_index = 0;
     }
 
     read_info(class_reader) {
-        this.class_index = class_reader.read_unit16().readInt16BE(0);
-        this.name_and_type_index = class_reader.read_unit16().readInt16BE(0);
+        this.class_index = class_reader.read_uint16().readInt16BE(0);
+        this.name_and_type_index = class_reader.read_uint16().readInt16BE(0);
     }
 
     class_name() {

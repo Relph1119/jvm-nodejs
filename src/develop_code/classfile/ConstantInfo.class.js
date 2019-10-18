@@ -26,7 +26,7 @@ class ConstantInfo {
     }
 
     static read_constant_info(class_reader, constant_pool) {
-        let tag = class_reader.read_unit8().readInt8(0);
+        let tag = class_reader.read_uint8().readInt8(0);
         let c = ConstantInfo.new_constant_info(tag, constant_pool);
         c.read_info(class_reader);
         return c

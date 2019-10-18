@@ -15,7 +15,7 @@ class SourceFileAttribute extends AttributeInfo {
     }
 
     read_info(class_reader) {
-        this.sourceFile_index = class_reader.read_unit16().readInt16BE(0);
+        this.sourceFile_index = class_reader.read_uint16().readInt16BE(0);
     }
 
     file_name() {

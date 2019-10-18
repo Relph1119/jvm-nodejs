@@ -13,7 +13,7 @@ class ConstantValueAttribute extends AttributeInfo {
     }
 
     read_info(class_reader) {
-        this.constant_value_index = class_reader.read_unit16().readInt16BE(0);
+        this.constant_value_index = class_reader.read_uint16().readInt16BE(0);
     }
 }
 

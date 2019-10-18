@@ -51,7 +51,7 @@ class Index8Instruction extends Instruction {
 
     // 从字节码中读取一个int8整数
     fetch_operands(reader) {
-        this.index = reader.read_unit8();
+        this.index = reader.read_uint8();
     }
 
     execute(frame) {
@@ -67,7 +67,7 @@ class Index16Instruction extends Instruction {
 
     // 从字节码中读取一个uint16整数
     fetch_operands(reader) {
-        this.index = reader.read_unit16();
+        this.index = reader.read_uint16();
     }
 
     execute(frame) {

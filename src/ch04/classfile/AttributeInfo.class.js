@@ -12,7 +12,7 @@ class AttributeInfo {
 
     // 读取属性表
     static read_attributes(class_reader, constant_pool) {
-        let attributes_count = class_reader.read_unit16().readInt16BE(0);
+        let attributes_count = class_reader.read_uint16().readInt16BE(0);
         let attributes = [];
         for (let i = 0; i < attributes_count; i++) {
             attributes[i] = AttributeInfo.read_attribute(class_reader, constant_pool);
@@ -21,12 +21,12 @@ class AttributeInfo {
     }
 
     static read_attribute(class_reader, constant_pool) {
-        let attr_name_index = class_reader.read_unit16().readInt16BE(0);
+        let attr_name_index = class_reader.read_uint16().readInt16BE(0);
         let attr_name = "";
         if (attr_name_index !== 0) {
             attr_name = constant_pool.get_utf8(attr_name_index);
         }
-        let attr_len = class_reader.read_unit32().readInt32BE(0);
+        let attr_len = class_reader.read_uint32().readInt32BE(0);
         let attr_info = AttributeInfo.new_attribute_info(attr_name, attr_len, constant_pool);
         attr_info.read_info(class_reader);
         return attr_info

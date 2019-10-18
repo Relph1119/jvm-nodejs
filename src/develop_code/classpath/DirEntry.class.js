@@ -18,7 +18,7 @@ class DirEntry extends Entry {
 
     read_class(class_name) {
         let file_name = path.join(this.absDir, class_name);
-        let data = null, error = null;
+        let data, error = null;
         data = fs.readFileSync(file_name, function (err) {
             if (err) {
                 error = err;

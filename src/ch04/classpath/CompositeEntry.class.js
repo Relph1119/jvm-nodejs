@@ -18,7 +18,7 @@ class CompositeEntry extends Entry {
             // 把参数（路径列表）按分隔符分成小路径，然后把每个小路径都转换成具体的Entry实例
             path_list.toString().split(Entry.path_list_separator).forEach((path) => {
                 let entry = Entry.new_entry(path);
-                this.compositeEntryList.append(entry);
+                this.compositeEntryList.push(entry);
             })
         }
     }

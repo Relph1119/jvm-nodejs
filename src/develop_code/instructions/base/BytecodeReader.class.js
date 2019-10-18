@@ -68,7 +68,7 @@ class BytecodeReader {
     read_int32s(n) {
         let ints = [];
         for (let i = 0; i < n; i++) {
-            ints.append(this.read_int32());
+            ints.push(this.read_int32());
         }
         return ints
     }

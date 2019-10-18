@@ -14,8 +14,8 @@ class ConstantMethodHandleInfo extends ConstantInfo {
     }
 
     read_info(class_reader) {
-        this.referenceKind = class_reader.read_unit8().readInt8(0);
-        this.referenceIndex = class_reader.read_unit16().readInt16BE(0);
+        this.referenceKind = class_reader.read_uint8().readInt8(0);
+        this.referenceIndex = class_reader.read_uint16().readInt16BE(0);
     }
 }
 
@@ -26,7 +26,7 @@ class ConstantMethodTypeInfo extends ConstantInfo {
     }
 
     read_info(class_reader) {
-        this.descriptorIndex = class_reader.read_unit16().readInt16BE(0);
+        this.descriptorIndex = class_reader.read_uint16().readInt16BE(0);
     }
 }
 
@@ -38,8 +38,8 @@ class ConstantInvokeDynamicInfo extends ConstantInfo {
     }
 
     read_info(class_reader) {
-        this.bootstrapMethodAttrIndex = class_reader.read_unit16().readInt16BE(0);
-        this.nameAndTypeIndex = class_reader.read_unit16().readInt16BE(0);
+        this.bootstrapMethodAttrIndex = class_reader.read_uint16().readInt16BE(0);
+        this.nameAndTypeIndex = class_reader.read_uint16().readInt16BE(0);
     }
 }
 

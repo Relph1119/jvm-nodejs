@@ -6,17 +6,18 @@
  */
 
 let ConstantInfo = require("./ConstantInfo.class").ConstantInfo;
+const ConstantPool = require("./ConstantPool.class").ConstantPool;
 
 class ConstantStringInfo extends ConstantInfo {
     constructor(constant_pool) {
         super();
-        this.cp = constant_pool;
+        this.cp = new ConstantPool(constant_pool);
         this.string_index = 0;
     }
 
     // 读取常量池索引
     read_info(class_reader) {
-        this.string_index = class_reader.read_unit16().readInt16BE(0);
+        this.string_index = class_reader.read_uint16().readInt16BE(0);
     }
 
     toString() {

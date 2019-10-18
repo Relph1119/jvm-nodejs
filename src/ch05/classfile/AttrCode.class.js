@@ -24,23 +24,23 @@ class CodeAttribute extends AttributeInfo {
     }
 
     read_info(class_reader) {
-        this.max_stack = class_reader.read_unit16().readInt16BE(0);
-        this.max_locals = class_reader.read_unit16().readInt16BE(0);
-        let code_length = class_reader.read_unit32().readInt32BE(0);
+        this.max_stack = class_reader.read_uint16().readInt16BE(0);
+        this.max_locals = class_reader.read_uint16().readInt16BE(0);
+        let code_length = class_reader.read_uint32().readInt32BE(0);
         this.code = class_reader.read_bytes(code_length);
         this.exception_table = CodeAttribute.read_exception_table(class_reader);
         this.attributes = AttributeInfo.read_attributes(class_reader, this.cp);
     }
 
     static read_exception_table(class_reader) {
-        let exception_table_length = class_reader.read_unit16().readInt16BE(0);
+        let exception_table_length = class_reader.read_uint16().readInt16BE(0);
         let exception_table = [];
         for (let i = 0; i < exception_table_length; i++) {
             let exception_table_entry = new ExceptionTableEntry();
-            exception_table_entry.start_pc = class_reader.read_unit16().readInt16BE(0);
-            exception_table_entry.end_pc = class_reader.read_unit16().readInt16BE(0);
-            exception_table_entry.handler_pc = class_reader.read_unit16().readInt16BE(0);
-            exception_table_entry.catch_type = class_reader.read_unit16().readInt16BE(0);
+            exception_table_entry.start_pc = class_reader.read_uint16().readInt16BE(0);
+            exception_table_entry.end_pc = class_reader.read_uint16().readInt16BE(0);
+            exception_table_entry.handler_pc = class_reader.read_uint16().readInt16BE(0);
+            exception_table_entry.catch_type = class_reader.read_uint16().readInt16BE(0);
             exception_table[i] = exception_table_entry;
         }
         return exception_table

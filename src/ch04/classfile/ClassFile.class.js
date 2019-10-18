@@ -51,10 +51,10 @@ class ClassFile {
         this.constant_pool = new ConstantPool();
         this.constant_pool.read_constant_pool(class_reader);
 
-        this.access_flags = class_reader.read_unit16();
-        this.this_class = class_reader.read_unit16().readInt16BE(0);
-        this.super_class = class_reader.read_unit16().readInt16BE(0);
-        this.interfaces = class_reader.read_unit16s();
+        this.access_flags = class_reader.read_uint16().readInt16BE(0);
+        this.this_class = class_reader.read_uint16().readInt16BE(0);
+        this.super_class = class_reader.read_uint16().readInt16BE(0);
+        this.interfaces = class_reader.read_uint16s();
 
         this.fields = MemberInfo.read_members(class_reader, this.constant_pool);
         this.methods = MemberInfo.read_members(class_reader, this.constant_pool);
@@ -63,7 +63,7 @@ class ClassFile {
 
     // 读取并检查Class文件的起始字节，必须以0xCAFEBABE固定字节开头
     static read_and_check_magic(class_reader) {
-        let magic = class_reader.read_unit32();
+        let magic = class_reader.read_uint32();
         if (!magic.equals(Buffer.from([0xca, 0xfe, 0xba, 0xbe]))) {
             throw new Error("java.lang.ClassFormatError: magic!");
         }
@@ -71,8 +71,8 @@ class ClassFile {
 
     // 读取并检查版本号，由于采用java1.8的编译器，故支持版本号为45.0~52.0的class文件
     read_and_check_version(class_reader) {
-        this.minor_version = class_reader.read_unit16().readInt16BE(0);
-        this.major_version = class_reader.read_unit16().readInt16BE(0);
+        this.minor_version = class_reader.read_uint16().readInt16BE(0);
+        this.major_version = class_reader.read_uint16().readInt16BE(0);
 
         if (this.major_version === 45) {
             return;

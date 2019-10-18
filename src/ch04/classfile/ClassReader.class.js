@@ -11,40 +11,40 @@ class ClassReader {
     }
 
     // 读取u1类型数据
-    read_unit8() {
+    read_uint8() {
         let val = this.data.slice(0, 1);
         this.data = this.data.slice(1);
         return Buffer.from(val);
     }
 
     // 读取u2类型数据
-    read_unit16() {
+    read_uint16() {
         let val = this.data.slice(0, 2);
         this.data = this.data.slice(2);
         return Buffer.from(val);
     }
 
     // 读取u4类型数据
-    read_unit32() {
+    read_uint32() {
         let val = this.data.slice(0, 4);
         this.data = this.data.slice(4);
         return Buffer.from(val);
     }
 
     // 读取u8类型数据
-    read_unit64() {
+    read_uint64() {
         let val = this.data.slice(0, 8);
         this.data = this.data.slice(8);
         return Buffer.from(val);
     }
 
     // 读取uint16表
-    read_unit16s() {
+    read_uint16s() {
         // 表的大小由开头的uint16数据指出
-        let n = this.read_unit16().readInt16BE(0);
+        let n = this.read_uint16().readInt16BE(0);
         let s = [];
         for (let i = 0; i < n; i++) {
-            s[i] = this.read_unit16().readInt16BE(0);
+            s[i] = this.read_uint16().readInt16BE(0);
         }
         return s;
     }

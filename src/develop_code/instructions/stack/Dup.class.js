@@ -8,7 +8,7 @@
 const NoOperandsInstruction = require("../base/Instruction.class").NoOperandsInstruction;
 const Slot = require("../../rtda/Slot.class").Slot;
 
-// slot拷贝，不能使用深拷贝copy.deepcopy函数，由于ref复制的是引用，需要将num和ref都进行拷贝。
+// slot拷贝，不能使用深拷贝函数，由于ref复制的是引用，需要将num和ref都进行拷贝。
 function copy_slot(slot) {
     let new_slot = new Slot();
     new_slot.num = slot.num;
