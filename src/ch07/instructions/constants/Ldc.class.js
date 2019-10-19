@@ -15,8 +15,13 @@ function _ldc(frame, index) {
     let cp = frame.method.get_class().constant_pool;
     let c = cp.get_constant(index);
 
+
     if (c.constructor === Number) {
         stack.push_numeric(c);
+    } else if (c.constructor === BigInt) {
+        if (c <= Number.MAX_SAFE_INTEGER) {
+            stack.push_numeric(Number(c));
+        }
     } else {
         throw new Error("todo: ldc!")
     }

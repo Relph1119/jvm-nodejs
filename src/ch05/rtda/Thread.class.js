@@ -23,7 +23,7 @@ class Thread {
     }
 
     current_frame() {
-        return this.stack.pop()
+        return this.stack.top();
     }
 
     new_frame(max_locals, max_stack) {

@@ -114,6 +114,8 @@ src------------------------------------jvm代码
 ### 第7章-方法调用和返回
 &emsp;&emsp;基本完成了方法调用和返回，并实现了类初始化逻辑，已经可以运行Fibonacci程序（求第30个Fibonacci数）。  
 ![](images/ch07/解析Fibonacci程序.png)
+1. 该程序会执行很长的时间，但是最后会打印出832040结果。
+2. 该程序可能会报“JavaScript heap out of memory”错误，可以在Node Parameters中添加“--max-old-space-size=8000”，表示内存地址8000MB大小。
 
 ### 第8章-数组和字符串
 实现了数组和字符串的加载，终于可以运行HelloWorld程序了。
