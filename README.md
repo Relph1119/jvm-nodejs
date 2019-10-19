@@ -13,6 +13,7 @@ images---------------------------------运行截图
 java-----------------------------------java的代码与class文件
 +----class-----------------------------java编译生成的class文件
 +----code------------------------------java的测试代码
+node_modules---------------------------node.js用到的包
 src------------------------------------jvm代码
 +-----ch01-----------------------------对应书中第1章实现代码
 +-----ch02-----------------------------对应书中第2章实现代码
@@ -30,6 +31,7 @@ src------------------------------------jvm代码
       +-----instructions---------------指令集
       +-----native---------------------本地方法目录
       +-----rtda-----------------------运行时数据区
+      +-----utils----------------------工具类
 </pre>
 
 ## 代码编写与运行结果
@@ -125,6 +127,17 @@ src------------------------------------jvm代码
 ![](images/ch08/解析并执行HelloWorld程序.png)
 3. 解析并执行PrintArgs程序，打印出传入的参数
 ![](images/ch08/解析并执行PrintArgs程序.png)
+
+**本章总结：** 
+1. 实现了对象深拷贝方法，在utils/objectUtil.js中的deepcopy方法
+2. node.js的Map遍历的方法如下（其中PrimitiveTypes是Map类型）：
+    ```
+    for(let [class_name, d] of PrimitiveTypes) {
+            if (d === descriptor) {
+                return class_name;
+            }
+        }
+    ```
 
 ### 第9章-本地方法调用
 实现了本地方法调用的指令，以及Java类库中一些最基本的类和本地方法，有如下本地方法：java.lang.Object.getClass()、java.lang.Class.getPrimitiveClass()、java.lang.Class.getName0()、java.lang.Class.desiredAssertionStatues0、System.arrayCopy()、Float.floatToRawIntBits()、Double.doubleToRawLongBits()  

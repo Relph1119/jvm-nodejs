@@ -9,16 +9,16 @@ class Cmd {
     constructor(program) {
         this.cpOption = program.classpath;
         this.class_name = program.args[0];
-        this.argvs = program.args.slice(1);
+        this.args = program.args.slice(1);
         this.version = program.version();
     }
 
     print_classpath() {
-        console.log('classpath:%j class:%j args:%j\n', this.cpOption, this.class_name, this.argvs)
+        console.log('classpath:%j class:%j args:%j\n', this.cpOption, this.class_name, this.args)
     }
 
     print_args() {
-        return '[' + this.argvs.join(' ') + ']';
+        return '[' + this.args.join(' ') + ']';
     }
 }
 

@@ -21,7 +21,7 @@ class NEW extends Index16Instruction {
             throw new Error("java.lang.InstantiationError")
         }
 
-        let ref = clazz.new_object();
+        let ref = ObjectClass.new_object();
         frame.operand_stack.push_ref(ref);
     }
 }

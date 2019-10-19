@@ -26,7 +26,7 @@ class Cmd {
 
     // 打印传入参数
     print_args() {
-        return '[' + this.argvs.join(' ') + ']';
+        return '[' + this.args.join(' ') + ']';
     }
 }
 
