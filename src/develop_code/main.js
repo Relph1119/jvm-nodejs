@@ -66,6 +66,10 @@ let resources_path = path.join(root_path, 'java/class');
 
 // 2. 执行StringTest程序，执行结果为true, false, true
 // let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'inst', '--classpath', resources_path, 'jvmgo.book.ch09.StringTest'];
-let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch09.StringTest'];
+// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch09.StringTest'];
+
+// 3. 执行ObjectTest程序
+// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'inst', '--classpath', resources_path, 'jvmgo.book.ch09.ObjectTest'];
+let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch09.ObjectTest'];
 
 main(fake_args);

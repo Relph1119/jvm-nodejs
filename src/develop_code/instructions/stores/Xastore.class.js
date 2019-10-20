@@ -52,7 +52,7 @@ class CASTORE extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
         let val = stack.pop_numeric();
-        let index = stack.pop_numeric();
+        let index = parseInt(stack.pop_numeric());
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
