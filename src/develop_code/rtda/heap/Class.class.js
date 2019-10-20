@@ -12,6 +12,7 @@ const Slots = require("../Slot.class").Slots;
 const Field = require("./Field.class").Field;
 const Method = require("./Method.class").Method;
 const ConstantPool = require("./ConstantPool.class").ConstantPool;
+const PrimitiveTypes = require("./ClassNameHelper.class").PrimitiveTypes;
 
 class Class {
     constructor() {

@@ -8,6 +8,7 @@
 let format = require('string-format');
 format.extend(String.prototype);
 let Slot = require("./Slot.class").Slot;
+const struct = require('python-struct');
 
 class LocalVars extends Array {
     constructor(max_locals) {
@@ -15,7 +16,6 @@ class LocalVars extends Array {
         for (let i = 0; i < this.length; i++) {
             this[i] = new Slot();
         }
-
     }
 
     set_numeric(index, val) {
@@ -24,6 +24,26 @@ class LocalVars extends Array {
 
     get_numeric(index) {
         return this[index].num;
+    }
+
+    get_double(index) {
+        let val = this.get_numeric(index);
+        return struct.unpack('>d', struct.pack('>q', val))[0];
+    }
+
+    set_double(index, val) {
+        val = struct.unpack('>q', struct.pack('>d', val))[0];
+        this.set_numeric(index, val)
+    }
+
+    get_float(index) {
+        let val = this.get_numeric(index);
+        return struct.unpack('>f', struct.pack('>l', val))[0];
+    }
+
+    set_float(index, val) {
+        val = struct.unpack('>l', struct.pack('>f', val))[0];
+        this.set_numeric(index, val);
     }
 
     set_ref(index, ref) {

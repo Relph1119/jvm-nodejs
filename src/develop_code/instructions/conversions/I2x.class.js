@@ -43,7 +43,7 @@ class I2D extends NoOperandsInstruction {
         let stack = frame.operand_stack;
         let i = stack.pop_numeric();
         let d = parseFloat(i);
-        stack.push_numeric(d);
+        stack.push_double(d);
     }
 }
 
@@ -53,7 +53,7 @@ class I2F extends NoOperandsInstruction {
         let stack = frame.operand_stack;
         let i = stack.pop_numeric();
         let f = parseFloat(i);
-        stack.push_numeric(f);
+        stack.push_float(f);
     }
 }
 

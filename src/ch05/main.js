@@ -36,7 +36,7 @@ function start_JVM(cmd) {
     // 解析类路径
     let class_path = Classpath.parse(cmd.XjreOption, cmd.cpOption);
     // 打印命令行参数
-    console.log('classpath: %s class: %s args: %s\n', class_path.toString(), cmd.class_name, cmd.args);
+    console.log('classpath: %s class: %s args: %s', class_path.toString(), cmd.class_name, cmd.args);
 
     // 读取主类数据
     let class_name = cmd.class_name.replace(/\./g, "/");

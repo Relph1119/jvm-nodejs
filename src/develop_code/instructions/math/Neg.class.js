@@ -16,14 +16,18 @@ function _neg(frame) {
 // double negate
 class DNEG extends NoOperandsInstruction {
     execute(frame) {
-        _neg(frame);
+        let stack = frame.operand_stack;
+        let val = stack.pop_double();
+        stack.push_double(-val);
     }
 }
 
 // float negate
 class FNEG extends NoOperandsInstruction {
     execute(frame) {
-        _neg(frame);
+        let stack = frame.operand_stack;
+        let val = stack.pop_float();
+        stack.push_float(-val);
     }
 }
 

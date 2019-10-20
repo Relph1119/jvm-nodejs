@@ -77,6 +77,9 @@ class ConstantPool {
     get_constant(index) {
         let c = this.consts[index];
         if (c != null) {
+            if (c.constructor === BigInt && c < Number.MAX_VALUE) {
+                c = parseInt(c);
+            }
             return c;
         } else {
             throw new Error("No constants at index {0}".format(index))

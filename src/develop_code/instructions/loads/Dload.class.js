@@ -9,8 +9,8 @@ const NoOperandsInstruction = require("../base/Instruction.class").NoOperandsIns
 const Index8Instruction = require("../base/Instruction.class").Index8Instruction;
 
 function _dload(frame, index) {
-    let val = frame.local_vars.get_numeric(index);
-    frame.operand_stack.push_numeric(val);
+    let val = frame.local_vars.get_double(index);
+    frame.operand_stack.push_double(val);
 }
 
 class DLOAD extends Index8Instruction {

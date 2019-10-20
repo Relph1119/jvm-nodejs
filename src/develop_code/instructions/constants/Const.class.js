@@ -17,35 +17,35 @@ class ACONST_NULL extends NoOperandsInstruction {
 // 把double类型0推入操作数栈顶
 class DCONST_0 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(0.0);
+        frame.operand_stack.push_double(0.0);
     }
 }
 
 // 把double类型1推入操作数栈顶
 class DCONST_1 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(1.0);
+        frame.operand_stack.push_double(1.0);
     }
 }
 
 // 把float类型0推入操作数栈顶
 class FCONST_0 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(0.0);
+        frame.operand_stack.push_float(0.0);
     }
 }
 
 // 把float类型1推入操作数栈顶
 class FCONST_1 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(1.0);
+        frame.operand_stack.push_float(1.0);
     }
 }
 
 // 把float类型2推入操作数栈顶
 class FCONST_2 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(2.0);
+        frame.operand_stack.push_float(2.0);
     }
 }
 

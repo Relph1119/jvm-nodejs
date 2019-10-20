@@ -198,6 +198,12 @@ class ClassLoader {
             if (["Z", "B", "C", "S", "I", "J", "F", "D"].includes(field.descriptor)) {
                 let val = constant_pool.get_constant(cp_index);
                 static_vars.set_numeric(slot_id, val);
+            } else if(field.descriptor === 'D') {
+                let val = constant_pool.get_constant(cp_index);
+                static_vars.set_double(slot_id, val);
+            }  else if(field.descriptor === 'F') {
+                let val = constant_pool.get_constant(cp_index);
+                static_vars.set_float(slot_id, val);
             } else if (field.descriptor === "Ljava/lang/String") {
                 let nodejs_str = constant_pool.get_constant(cp_index);
                 let j_str = j_string(clazz.loader, nodejs_str);

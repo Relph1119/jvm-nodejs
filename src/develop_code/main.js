@@ -37,7 +37,7 @@ function start_JVM(cmd) {
     // 解析类路径
     let class_path = Classpath.parse(cmd.XjreOption, cmd.cpOption);
     // 打印命令行参数
-    console.log('classpath: %s class: %s args: %s\n', class_path.toString(), cmd.class_name, cmd.args);
+    console.log('classpath: %s class: %s args: %s', class_path.toString(), cmd.class_name, cmd.args);
 
     let class_loader = new ClassLoader(class_path, cmd.verbose_class_flag);
 
@@ -62,6 +62,10 @@ let resources_path = path.join(root_path, 'java/class');
 
 // 1. 执行GetClassTest程序
 // let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'inst', '--classpath', resources_path, 'jvmgo.book.ch09.GetClassTest'];
-let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch09.GetClassTest'];
+// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch09.GetClassTest'];
+
+// 2. 执行StringTest程序，执行结果为true, false, true
+// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'inst', '--classpath', resources_path, 'jvmgo.book.ch09.StringTest'];
+let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch09.StringTest'];
 
 main(fake_args);

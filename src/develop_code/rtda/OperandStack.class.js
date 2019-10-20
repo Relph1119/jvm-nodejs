@@ -8,6 +8,7 @@
 let format = require('string-format');
 format.extend(String.prototype);
 let Slot = require("./Slot.class").Slot;
+const struct = require('python-struct');
 
 class OperandStack {
     constructor(max_stack) {
@@ -29,6 +30,26 @@ class OperandStack {
     pop_numeric() {
         this.size--;
         return this.slots[this.size].num;
+    }
+
+    push_double(val) {
+        val = struct.unpack('>q', struct.pack('>d', val))[0];
+        this.push_numeric(val)
+    }
+
+    pop_double() {
+        let val = this.pop_numeric();
+        return struct.unpack('>d', struct.pack('>q', val))[0];
+    }
+
+    push_float(val){
+        val = struct.unpack('>l', struct.pack('>f', val))[0];
+        this.push_numeric(val)
+    }
+
+    pop_float(){
+        let val = this.pop_numeric();
+        return struct.unpack('>f', struct.pack('>l', val))[0];
     }
 
     push_boolean(val) {

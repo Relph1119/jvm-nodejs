@@ -52,7 +52,23 @@ function utf16_to_string(s) {
     return Buffer.from(s, 'utf8').toString();
 }
 
+/**
+ * 如果字符串还没有入池，把它放入并返回该字符串，否则找到已入池字符串并返回。
+ * @param j_str
+ */
+function intern_string(j_str) {
+    let nodejs_str = nodejs_string(j_str);
+    let interned = interned_strings.get(nodejs_str);
+    if (interned != null) {
+        return interned
+    }
+    interned_strings.set(nodejs_str, j_str);
+    return j_str;
+}
+
+
 module.exports = {
     j_string: j_string,
-    nodejs_string: nodejs_string
+    nodejs_string: nodejs_string,
+    intern_string: intern_string
 };

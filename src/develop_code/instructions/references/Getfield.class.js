@@ -28,8 +28,12 @@ class GET_FIELD extends Index16Instruction {
         let slot_id = field.slot_id;
         let slots = ref.fields();
 
-        if (["Z", "B", "C", "S", "I", "F", "J", "D"].includes(descriptor[0])) {
+        if (["Z", "B", "C", "S", "I", "J"].includes(descriptor[0])) {
             stack.push_numeric(slots.get_numeric(slot_id));
+        } else if (descriptor[0] === 'F') {
+            stack.push_float(slots.get_float(slot_id))
+        } else if (descriptor[0] === 'D') {
+            stack.push_double(slots.get_double(slot_id))
         } else if (["L", "["].includes(descriptor[0])) {
             stack.push_ref(slots.get_ref(slot_id))
         }

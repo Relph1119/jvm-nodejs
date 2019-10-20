@@ -15,7 +15,7 @@ class GET_STATIC extends Index16Instruction {
         let field = field_ref.resolve_field();
         let clazz = field.get_class();
 
-        if (!clazz.init_started){
+        if (!clazz.init_started) {
             frame.revert_next_pc();
             ClassInitLogic.init_class(frame.thread, clazz);
             return
@@ -31,8 +31,12 @@ class GET_STATIC extends Index16Instruction {
         let slots = clazz.static_vars;
         let stack = frame.operand_stack;
 
-        if (["Z", "B", "C", "S", "I", "F", "J", "D"].includes(descriptor[0])) {
+        if (["Z", "B", "C", "S", "I", "J"].includes(descriptor[0])) {
             stack.push_numeric(slots.get_numeric(slot_id));
+        } else if (descriptor[0] === 'F') {
+            stack.push_float(slots.get_float(slot_id))
+        } else if (descriptor[0] === 'D') {
+            stack.push_double(slots.get_double(slot_id))
         } else if (["L", "["].includes(descriptor[0])) {
             stack.push_ref(slots.get_ref(slot_id))
         }

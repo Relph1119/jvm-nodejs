@@ -17,14 +17,22 @@ function _add(frame) {
 // double add
 class DADD extends NoOperandsInstruction {
     execute(frame) {
-        _add(frame);
+        let stack = frame.operand_stack;
+        let v1 = stack.pop_double();
+        let v2 = stack.pop_double();
+        let result = v1 + v2;
+        stack.push_double(result);
     }
 }
 
 // float add
 class FADD extends NoOperandsInstruction {
     execute(frame) {
-        _add(frame);
+        let stack = frame.operand_stack;
+        let v1 = stack.pop_float();
+        let v2 = stack.pop_float();
+        let result = v1 + v2;
+        stack.push_float(result);
     }
 }
 

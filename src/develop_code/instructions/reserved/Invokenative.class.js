@@ -11,7 +11,11 @@ const NoOperandsInstruction = require("../base/Instruction.class").NoOperandsIns
 let LOAD_MODULES = [
     '../../native/Registry.class',
     '../../native/java/lang/Class.class',
-    '../../native/java/lang/Object.class'
+    '../../native/java/lang/Double.class',
+    '../../native/java/lang/Float.class',
+    '../../native/java/lang/Object.class',
+    '../../native/java/lang/String.class',
+    '../../native/java/lang/System.class',
 ];
 
 class INVOKE_NATIVE extends NoOperandsInstruction {

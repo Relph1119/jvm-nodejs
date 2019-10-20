@@ -53,8 +53,12 @@ class INVOKE_VIRTURL extends Index16Instruction {
     static _println(stack, descriptor) {
         if (descriptor === "(Z)V") {
             console.log("{0}".format(stack.pop_numeric() !== 0));
-        } else if (["(C)V", "(B)V", "(S)V", "(I)V", "(J)V", "(F)V", "(D)V"].includes(descriptor)) {
+        } else if (["(C)V", "(B)V", "(S)V", "(I)V", "(J)V"].includes(descriptor)) {
             console.log("{0}".format(stack.pop_numeric()));
+        } else if (descriptor === "(D)V") {
+            console.log("{0}".format(stack.pop_double()));
+        } else if (descriptor === "(F)V") {
+            console.log("{0}".format(stack.pop_float()));
         } else if (descriptor === "(Ljava/lang/String;)V") {
             let j_str = stack.pop_ref();
             let nodejs_str = nodejs_string(j_str);

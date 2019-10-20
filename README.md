@@ -152,6 +152,22 @@ src------------------------------------jvm代码
 5. 执行BoxTest程序，可以打印出数组的元素
 ![](images/ch09/执行BoxTest程序.png)
 
+**本章总结：** 
+1. 由于invokenative指令是动态执行本地方法，又因为本地方法在不同的模块里，因此自己实现了动态加载模块，并执行对应的函数方法。  
+    ```
+    for (let load_module of LOAD_MODULES){
+        // 加载该模块，判断里面是否有native_method方法
+        let md = require(load_module);
+        if(Object.getOwnPropertyDescriptors(md).hasOwnProperty(native_method.name)) {
+            let func = Object.getOwnPropertyDescriptors(md)[native_method.name].value;
+            func.call(func, frame);
+            return;
+        }
+    }
+    ```
+2. 
+
+
 ### 第10章-异常处理
 实现了异常抛出和处理、异常处理表、athrow指令。在Java语言中，异常可以分为两类：Checked异常和Unchecked异常。Unchecked异常包括java.lang.RuntimeException、java.lang.Error以及它们的子类，其他异常都是Checked异常。所有异常都最终继承自java.lang.Throwable。如果一个方法有可能导致Checked异常抛出，则该方法要么需要捕获该异常并妥善处理，要么必须把该异常列在自己的throws子句中，否则无法通过编译。Unchecked异常没有这个限制。
 1. 执行ParseIntTest程序，输出参数123

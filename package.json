@@ -8,6 +8,7 @@
     "commander": "^3.0.2",
     "fnv-plus": "^1.2.12",
     "path": "^0.12.7",
+    "python-struct": "^1.1.2",
     "string-format": "^2.0.0"
   },
   "devDependencies": {},

@@ -65,7 +65,7 @@ class CASTORE extends NoOperandsInstruction {
 class DASTORE extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let val = stack.pop_numeric();
+        let val = stack.pop_double();
         let index = stack.pop_numeric();
         let arr_ref = stack.pop_ref();
 
@@ -79,7 +79,7 @@ class DASTORE extends NoOperandsInstruction {
 class FASTORE extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let val = stack.pop_numeric();
+        let val = stack.pop_float();
         let index = stack.pop_numeric();
         let arr_ref = stack.pop_ref();
 

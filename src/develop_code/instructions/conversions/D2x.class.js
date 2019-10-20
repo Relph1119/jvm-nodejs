@@ -11,9 +11,9 @@ const NoOperandsInstruction = require("../base/Instruction.class").NoOperandsIns
 class D2F extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let d = stack.pop_numeric();
+        let d = stack.pop_double();
         let f = parseFloat(d);
-        stack.push_numeric(f)
+        stack.push_float(f)
     }
 }
 
@@ -21,7 +21,7 @@ class D2F extends NoOperandsInstruction {
 class D2I extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let d = stack.pop_numeric();
+        let d = stack.pop_double();
         let i = parseInt(d);
         stack.push_numeric(i)
     }
@@ -31,7 +31,7 @@ class D2I extends NoOperandsInstruction {
 class D2L extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let d = stack.pop_numeric();
+        let d = stack.pop_double();
         let l = parseInt(d);
         stack.push_numeric(l)
     }

@@ -33,13 +33,21 @@ class ARETURN extends NoOperandsInstruction {
 
 class DRETURN extends NoOperandsInstruction {
     execute(frame) {
-        _numeric_return(frame);
+        let thread = frame.thread;
+        let current_frame = thread.pop_frame();
+        let invoker_frame = thread.top_frame();
+        let val = current_frame.operand_stack.pop_double();
+        invoker_frame.operand_stack.push_double(val);
     }
 }
 
 class FRETURN extends NoOperandsInstruction {
     execute(frame) {
-        _numeric_return(frame);
+        let thread = frame.thread;
+        let current_frame = thread.pop_frame();
+        let invoker_frame = thread.top_frame();
+        let val = current_frame.operand_stack.pop_float();
+        invoker_frame.operand_stack.push_float(val);
     }
 }
 

@@ -9,8 +9,8 @@ const NoOperandsInstruction = require("../base/Instruction.class").NoOperandsIns
 
 function _dcmp(frame, gFlag) {
     let stack = frame.operand_stack;
-    let v2 = stack.pop_numeric();
-    let v1 = stack.pop_numeric();
+    let v2 = stack.pop_double();
+    let v1 = stack.pop_double();
     if (v1 > v2) {
         stack.push_numeric(1);
     } else if (v1 === v2) {

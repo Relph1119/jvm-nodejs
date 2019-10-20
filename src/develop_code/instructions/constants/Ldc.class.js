@@ -19,7 +19,11 @@ function _ldc(frame, index) {
 
     switch (c.constructor) {
         case Number:
-            stack.push_numeric(c);
+            if (c % 1 !==0){
+                stack.push_float(c);
+            }else {
+                stack.push_numeric(c);
+            }
             break;
         case BigInt:
             if (c <= Number.MAX_SAFE_INTEGER) {
@@ -55,7 +59,19 @@ class LDC_W extends Index16Instruction {
 
 class LDC2_W extends Index16Instruction {
     execute(frame) {
-        _ldc(frame, this.index);
+        let stack = frame.operand_stack;
+        let cp = frame.method.get_class().constant_pool;
+        let c = cp.get_constant(this.index);
+
+        if (c.constructor === Number) {
+            if (c % 1 !== 0) {
+                stack.push_double(c);
+            } else {
+                stack.push_numeric(c);
+            }
+        } else {
+            throw new Error("java.lang.ClassFormatError")
+        }
     }
 }
 

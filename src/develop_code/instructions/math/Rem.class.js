@@ -11,10 +11,10 @@ const NoOperandsInstruction = require("../base/Instruction.class").NoOperandsIns
 class DREM extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_double();
+        let v1 = stack.pop_double();
         let result = v1 % v2;
-        stack.push_numeric(result);
+        stack.push_double(result);
     }
 }
 
@@ -22,10 +22,10 @@ class DREM extends NoOperandsInstruction {
 class FREM extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_float();
+        let v1 = stack.pop_float();
         let result = v1 % v2;
-        stack.push_numeric(result);
+        stack.push_float(result);
     }
 }
 

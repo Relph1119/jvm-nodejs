@@ -18,14 +18,22 @@ function _mul(frame) {
 // double mul
 class DMUL extends NoOperandsInstruction {
     execute(frame) {
-        _mul(frame);
+        let stack = frame.operand_stack;
+        let v2 = stack.pop_double();
+        let v1 = stack.pop_double();
+        let result = v1 * v2;
+        stack.push_double(result);
     }
 }
 
 // float mul
 class FMUL extends NoOperandsInstruction {
     execute(frame) {
-        _mul(frame);
+        let stack = frame.operand_stack;
+        let v2 = stack.pop_float();
+        let v1 = stack.pop_float();
+        let result = v1 * v2;
+        stack.push_float(result);
     }
 }
 

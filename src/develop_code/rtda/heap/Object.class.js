@@ -110,7 +110,11 @@ class ObjectClass {
     static array_copy(src, dest, src_pos, dest_pos, length){
         if(src.data.constructor === Array){
             dest.data.splice.apply(dest.data, [dest_pos, length].concat(src.data.slice(src_pos, src_pos + length)));
-        } else {
+        } else if(src.data.constructor === String) {
+            let src_data_arr = src.data.split('').map((c) => c.charCodeAt());
+            dest.data.splice.apply(dest.data, [dest_pos, length].concat(src_data_arr.slice(src_pos, src_pos + length)));
+        }
+        else {
             throw new Error("Not array!");
         }
     }

@@ -18,14 +18,22 @@ function _sub(frame) {
 // double sub
 class DSUB extends NoOperandsInstruction {
     execute(frame) {
-        _sub(frame);
+        let stack = frame.operand_stack;
+        let v2 = stack.pop_double();
+        let v1 = stack.pop_double();
+        let result = v1 - v2;
+        stack.push_double(result);
     }
 }
 
 // float sub
 class FSUB extends NoOperandsInstruction {
     execute(frame) {
-        _sub(frame);
+        let stack = frame.operand_stack;
+        let v2 = stack.pop_float();
+        let v1 = stack.pop_float();
+        let result = v1 - v2;
+        stack.push_float(result);
     }
 }
 

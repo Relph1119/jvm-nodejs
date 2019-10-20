@@ -70,7 +70,7 @@ class DALOAD extends NoOperandsInstruction {
         check_not_none(arr_ref);
         let double_array = arr_ref.doubles();
         check_index(double_array.length, index);
-        stack.push_numeric(double_array[index])
+        stack.push_double(double_array[index])
     }
 }
 
@@ -83,7 +83,7 @@ class FALOAD extends NoOperandsInstruction {
         check_not_none(arr_ref);
         let float_array = arr_ref.floats();
         check_index(float_array.length, index);
-        stack.push_numeric(float_array[index])
+        stack.push_float(float_array[index])
     }
 }
 
