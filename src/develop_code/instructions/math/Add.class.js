@@ -46,7 +46,11 @@ class IADD extends NoOperandsInstruction {
 // long add
 class LADD extends NoOperandsInstruction {
     execute(frame) {
-        _add(frame);
+        let stack = frame.operand_stack;
+        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_numeric();
+        let result = BigInt(v1) + BigInt(v2);
+        stack.push_numeric(result);
     }
 }
 

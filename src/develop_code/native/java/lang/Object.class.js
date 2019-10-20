@@ -27,7 +27,7 @@ function hash_code(frame) {
 function clone(frame) {
     let this_ref = frame.local_vars.get_this();
     let cloneable = this_ref.get_class().loader.load_class("java/lang/Cloneable");
-    if (!this_ref.get_class().is_implements(cloneable)){
+    if (!this_ref.get_class().is_implements(cloneable)) {
         throw new Error("java.lang.CloneNotSupportedException")
     }
     frame.operand_stack.push_ref(this_ref.clone())

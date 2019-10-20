@@ -49,8 +49,8 @@ class LSHL extends NoOperandsInstruction {
         let stack = frame.operand_stack;
         let v2 = stack.pop_numeric();
         let v1 = stack.pop_numeric();
-        let s = v2 & 0x3f;
-        let result = v1 << s;
+        let s = BigInt(v2) & BigInt(0x3f);
+        let result = BigInt(v1) << s;
         stack.push_numeric(result);
     }
 }
@@ -61,8 +61,8 @@ class LSHR extends NoOperandsInstruction {
         let stack = frame.operand_stack;
         let v2 = stack.pop_numeric();
         let v1 = stack.pop_numeric();
-        let s = v2 & 0x3f;
-        let result = v1 >> s;
+        let s = BigInt(v2) & BigInt(0x3f);
+        let result = BigInt(v1) >> s;
         stack.push_numeric(result);
     }
 }
@@ -73,8 +73,8 @@ class LUSHR extends NoOperandsInstruction {
         let stack = frame.operand_stack;
         let v2 = stack.pop_numeric();
         let v1 = stack.pop_numeric();
-        let s = v2 & 0x3f;
-        let result = v1 >> s;
+        let s = BigInt(v2) & BigInt(0x3f);
+        let result = BigInt(v1) >> s;
         stack.push_numeric(result)
     }
 }

@@ -41,14 +41,14 @@ class PUT_FIELD extends Index16Instruction {
         } else if (descriptor[0] === 'D') {
             let val = stack.pop_double();
             let ref = stack.pop_ref();
-            if(ref == null) {
+            if (ref == null) {
                 throw new Error("java.lang.NollPointerException");
             }
             ref.fields().set_double(slot_id, val);
         } else if (descriptor[0] === 'F') {
             let val = stack.pop_float();
             let ref = stack.pop_ref();
-            if(ref == null){
+            if (ref == null) {
                 throw new Error("java.lang.NollPointerException")
             }
             ref.fields().set_float(slot_id, val)

@@ -22,7 +22,7 @@ class PUT_STATIC extends Index16Instruction {
         let field = field_ref.resolve_field();
         let clazz = field.get_class();
 
-        if(!clazz.init_started){
+        if (!clazz.init_started) {
             frame.revert_next_pc();
             ClassInitLogic.init_class(frame.thread, clazz);
             return;

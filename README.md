@@ -23,9 +23,7 @@ src------------------------------------jvm代码
 +-----ch06-----------------------------对应书中第6章实现代码
 +-----ch07-----------------------------对应书中第7章实现代码
 +-----ch08-----------------------------对应书中第8章实现代码
-+-----ch09-----------------------------对应书中第9章实现代码
-+-----ch10-----------------------------对应书中第10章实现代码
-+-----develop_code---------------------持续开发的实现代码
++-----develop_code---------------------持续开发的实现代码（目前到第9章的9.7节-自动拆装箱）
       +-----classfile------------------class文件解析的对象类
       +-----classpath------------------类路径目录
       +-----instructions---------------指令集
@@ -149,8 +147,6 @@ src------------------------------------jvm代码
 ![](images/ch09/执行ObjectTest程序.png)
 4. 执行CloneTest程序，可以观察到克隆的对象与原始对象的pi值不一样
 ![](images/ch09/执行CloneTest程序.png)
-5. 执行BoxTest程序，可以打印出数组的元素
-![](images/ch09/执行BoxTest程序.png)
 
 **本章总结：** 
 1. 由于invokenative指令是动态执行本地方法，又因为本地方法在不同的模块里，因此自己实现了动态加载模块，并执行对应的函数方法。  
@@ -165,16 +161,41 @@ src------------------------------------jvm代码
         }
     }
     ```
-2. 
+2. 在生成hash code时，采用fnv-plus包，具体代码如下：
+    ```
+    const fnv = require('fnv-plus');
+    let hash_value = fnv.hash(this_ref.toString(), 32).dec();
+    ```
+3. 在处理float和double的时候，采用struct-python包，该包是struct的js实现：
+    ```
+    const struct = require('python-struct');
+    struct.unpack('>q', struct.pack('>d', val))[0];
+    ```
+4. 在加载java/util/Hashtable类时，由于解析Class文件，初始化ConstantPool的时候，node.js赋值float型的数据不能保留原始数据类型，导致程序运行失败，具体错误如下：  
+    ```
+    LocalVars: slots:[ num:0 ref:[object Object], num:0 ref:[object Object], num:0 ref:null, num:0 ref:null ]
+    OperandStack: size:1 slots:[ num:0 ref:[object Object], num:1 ref:[object Object] ]
+    RangeError [ERR_OUT_OF_RANGE]: The value of "value" is out of range. It must be >= -2147483648 and <= 2147483647. Received 2147483648
+        at checkInt (internal/buffer.js:58:11)
+        at writeU_Int32BE (internal/buffer.js:788:3)
+        at Buffer.writeInt32BE (internal/buffer.js:876:10)
+        at PACK_INT32_BE (D:\MyJSWork\JVMByNodeJS\node_modules\python-struct\src\core.js:90:51)
+        at Function.pack (D:\MyJSWork\JVMByNodeJS\node_modules\python-struct\src\core.js:602:25)
+        at LocalVars.get_float (D:\MyJSWork\JVMByNodeJS\src\develop_code\rtda\LocalVars.class.js:41:43)
+        at _fload (D:\MyJSWork\JVMByNodeJS\src\develop_code\instructions\loads\Fload.class.js:12:32)
+        at FLOAD_1.execute (D:\MyJSWork\JVMByNodeJS\src\develop_code\instructions\loads\Fload.class.js:30:9)
+        at Function.loop (D:\MyJSWork\JVMByNodeJS\src\develop_code\Interpreter.class.js:53:18)
+        at Function.interpret (D:\MyJSWork\JVMByNodeJS\src\develop_code\Interpreter.class.js:27:25)
+    ```
+    value的值是2147483648，原本该值应该通过local_vars.get_float()转化为float的类型，值为2147483648.0，由于解析Class文件的时候，在ConstantFloatInfo类调用read_info()函数，初始化val的时候，丢失了原始数据类型。
+    
+## 总结
+&emsp;&emsp;历时8天完成1-9章的代码，基本实现了一个JVM的功能，能提供如下命令：
+> -v, --version : 版本号  
+--verbose class : 打印类加载信息    
+--verbose inst : 打印指令  
+--classpath : 用户类路径  
+--Xjre : jre的路径  
 
-
-### 第10章-异常处理
-实现了异常抛出和处理、异常处理表、athrow指令。在Java语言中，异常可以分为两类：Checked异常和Unchecked异常。Unchecked异常包括java.lang.RuntimeException、java.lang.Error以及它们的子类，其他异常都是Checked异常。所有异常都最终继承自java.lang.Throwable。如果一个方法有可能导致Checked异常抛出，则该方法要么需要捕获该异常并妥善处理，要么必须把该异常列在自己的throws子句中，否则无法通过编译。Unchecked异常没有这个限制。
-1. 执行ParseIntTest程序，输出参数123
-![](images/ch10/执行ParseIntTest-输入参数123.png)
-2. 执行ParseIntTest程序，输出参数abc
-![](images/ch10/执行ParseIntTest-输入参数abc.png)
-3. 执行ParseIntTest程序，无输出参数，会抛出异常信息
-![](images/ch10/执行ParseIntTest-无参数.png)
-
-   
+&emsp;&emsp;其中遇到的问题都写在前面了，目前完成的功能有基本的命令行、class文件搜索和解析、运行时数据区、指令集和解释器、类和对象、方法调用和返回（支持迭代和递归）、数组和字符串类的加载、调用本地方法。    
+&emsp;&emsp;由于运行第9章的BoxTest程序（打印数组元素）报错，导致不能再继续用Node.js实现JVM，后期可能会自定义Float类型，以区别Number类型中的int类型。

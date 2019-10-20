@@ -13,7 +13,7 @@ const register = require("../../Registry.class").register;
  (F)I
  * @param frame
  */
-function floatToRawIntBits(frame){
+function floatToRawIntBits(frame) {
     let value = frame.local_vars.get_numeric(0);
     let bits = struct.unpack('>l', struct.pack('>f', value))[0];
     frame.operand_stack.push_numeric(parseInt(bits));

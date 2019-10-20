@@ -18,7 +18,7 @@ class NEW extends Index16Instruction {
         let class_ref = cp.get_constant(this.index);
         let clazz = class_ref.resolved_class();
 
-        if(!clazz.init_started){
+        if (!clazz.init_started) {
             frame.revert_next_pc();
             ClassInitLogic.init_class(frame.thread, clazz);
             return;

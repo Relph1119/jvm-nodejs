@@ -44,7 +44,7 @@ class Method extends ClassMember {
         // 先计算arg_slot_count字段
         method.calc_arg_slot_count(md.parameter_types);
         // 如果是本地方法，则注入字节码和其他信息。
-        if(method.is_native()){
+        if (method.is_native()) {
             method.inject_code_attribute(md.return_type);
         }
         return method
@@ -82,7 +82,7 @@ class Method extends ClassMember {
                 this.code = [0xfe, 0xac]
         }
     }
-    
+
 
     /**
      * 从method_info结构中提取max_stack、max_locals、code信息

@@ -27,7 +27,7 @@ class BytecodeReader {
     get_data() {
         let i = this.code.slice(this.pc, this.pc + 1);
         this.pc++;
-        if (i.constructor === Array){
+        if (i.constructor === Array) {
             return Buffer.from(i);
         }
         return i;

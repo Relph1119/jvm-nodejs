@@ -19,16 +19,14 @@ function _ldc(frame, index) {
 
     switch (c.constructor) {
         case Number:
-            if (c % 1 !==0){
+            if (c % 1 !== 0) {
                 stack.push_float(c);
-            }else {
+            } else {
                 stack.push_numeric(c);
             }
             break;
         case BigInt:
-            if (c <= Number.MAX_SAFE_INTEGER) {
-                stack.push_numeric(Number(c));
-            }
+            stack.push_numeric(c);
             break;
         case String:
             // 从运行时常量池中加载字符串常量，先通过常量拿到python字符串，然后把它转成Java字符串实例

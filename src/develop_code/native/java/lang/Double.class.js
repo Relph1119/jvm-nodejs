@@ -26,6 +26,9 @@ function doubleToRawLongBits(frame) {
  */
 function longBitsToDouble(frame) {
     let bits = frame.local_vars.get_numeric(0);
+    if (bits.constructor === BigInt) {
+        bits = Number(bits);
+    }
     let value = struct.unpack('>d', struct.pack('>q', bits))[0];
     frame.operand_stack.push_double(value);
 }

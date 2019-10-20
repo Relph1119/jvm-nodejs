@@ -52,7 +52,7 @@ class LREM extends NoOperandsInstruction {
         if (v2 === 0) {
             throw new Error("java.lang.ArithmeticException: / by zero");
         }
-        let result = v1 % v2;
+        let result = BigInt(v1) % BigInt(v2);
         stack.push_numeric(result);
     }
 }

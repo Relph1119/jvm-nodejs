@@ -10,6 +10,9 @@ const Index8Instruction = require("../base/Instruction.class").Index8Instruction
 
 function _aload(frame, index) {
     let ref = frame.local_vars.get_ref(index);
+    if (ref === 0) {
+        ref = null;
+    }
     frame.operand_stack.push_ref(ref);
 }
 

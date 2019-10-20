@@ -286,11 +286,11 @@ class Class {
 
     // 根据字段名和描述符查找方法
     get_method(name, descriptor, is_static_flag) {
-       let c = this;
-        while (c){
-            for(let method of c.methods) {
+        let c = this;
+        while (c) {
+            for (let method of c.methods) {
                 if (method.is_static() === is_static_flag
-                        && method.name === name && method.descriptor === descriptor) {
+                    && method.name === name && method.descriptor === descriptor) {
                     return method;
                 }
             }
@@ -320,12 +320,12 @@ class Class {
     }
 
     // 返回转换后的类名,this.class_name形如java/lang/Object，转换后为java.lang.Object
-    java_name(){
+    java_name() {
         return this.class_name.replace(/\//g, ".");
     }
 
     // 判断类是否是基本类型的类
-    is_primitive(){
+    is_primitive() {
         return !!PrimitiveTypes.get(this.class_name);
     }
 
@@ -333,12 +333,12 @@ class Class {
         return this.get_method(name, descriptor, false);
     }
 
-    get_ref_var(field_name, field_descriptor){
+    get_ref_var(field_name, field_descriptor) {
         let field = this.get_field(field_name, field_descriptor, true);
         return this.static_vars.get_ref(field.slot_id);
     }
 
-    set_ref_var(field_name, field_descriptor, ref){
+    set_ref_var(field_name, field_descriptor, ref) {
         let field = this.get_field(field_name, field_descriptor, true);
         this.static_vars.set_ref(field.slot_id, ref);
     }

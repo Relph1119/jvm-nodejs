@@ -107,10 +107,10 @@ class ObjectClass {
     /**
      * 数组拷贝
      */
-    static array_copy(src, dest, src_pos, dest_pos, length){
-        if(src.data.constructor === Array){
+    static array_copy(src, dest, src_pos, dest_pos, length) {
+        if (src.data.constructor === Array) {
             dest.data.splice.apply(dest.data, [dest_pos, length].concat(src.data.slice(src_pos, src_pos + length)));
-        } else if(src.data.constructor === String) {
+        } else if (src.data.constructor === String) {
             let src_data_arr = src.data.split('').map((c) => c.charCodeAt());
             dest.data.splice.apply(dest.data, [dest_pos, length].concat(src_data_arr.slice(src_pos, src_pos + length)));
         }
@@ -124,11 +124,11 @@ class ObjectClass {
     }
 
     clone_data() {
-        if(this.data.constructor !== Slots){
+        if (this.data.constructor !== Slots) {
             return this.data.slice()
         } else {
             let new_data = new Slots(this.data.length);
-            for(let i = 0; i < this.data.length; i++) {
+            for (let i = 0; i < this.data.length; i++) {
                 let slot = this.data[i];
                 new_data[i] = copy_slot(slot);
             }

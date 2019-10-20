@@ -24,7 +24,11 @@ class IAND extends NoOperandsInstruction {
 
 class LAND extends NoOperandsInstruction {
     execute(frame) {
-        _and(frame);
+        let stack = frame.operand_stack;
+        let v2 = stack.pop_numeric();
+        let v1 = stack.pop_numeric();
+        let result = BigInt(v1) & BigInt(v2);
+        stack.push_numeric(result);
     }
 }
 

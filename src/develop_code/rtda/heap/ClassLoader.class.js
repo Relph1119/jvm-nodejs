@@ -40,7 +40,7 @@ class ClassLoader {
 
         // 在类加载完之后，判断java.lang.Class是否已经加载。
         let jl_class_class = this.class_map.get('java/lang/Class');
-        if(jl_class_class){
+        if (jl_class_class) {
             // 如果加载，则给类关联类对象
             clazz.j_class = jl_class_class.new_object();
             clazz.j_class.extra = clazz;
@@ -198,10 +198,10 @@ class ClassLoader {
             if (["Z", "B", "C", "S", "I", "J", "F", "D"].includes(field.descriptor)) {
                 let val = constant_pool.get_constant(cp_index);
                 static_vars.set_numeric(slot_id, val);
-            } else if(field.descriptor === 'D') {
+            } else if (field.descriptor === 'D') {
                 let val = constant_pool.get_constant(cp_index);
                 static_vars.set_double(slot_id, val);
-            }  else if(field.descriptor === 'F') {
+            } else if (field.descriptor === 'F') {
                 let val = constant_pool.get_constant(cp_index);
                 static_vars.set_float(slot_id, val);
             } else if (field.descriptor === "Ljava/lang/String") {
@@ -216,8 +216,8 @@ class ClassLoader {
         // 先加载java.lang.Class类
         let jl_class_class = this.load_class("java/lang/Class");
         // 遍历class_map，给已经加载的每个类关联类的对象。
-        for(let [_, clazz] of this.class_map) {
-            if (!clazz.j_class){
+        for (let [_, clazz] of this.class_map) {
+            if (!clazz.j_class) {
                 clazz.j_class = jl_class_class.new_object();
             }
             clazz.j_class.extra = clazz;

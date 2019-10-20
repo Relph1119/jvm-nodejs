@@ -42,18 +42,18 @@ class OperandStack {
         return struct.unpack('>d', struct.pack('>q', val))[0];
     }
 
-    push_float(val){
+    push_float(val) {
         val = struct.unpack('>l', struct.pack('>f', val))[0];
         this.push_numeric(val)
     }
 
-    pop_float(){
+    pop_float() {
         let val = this.pop_numeric();
         return struct.unpack('>f', struct.pack('>l', val))[0];
     }
 
     push_boolean(val) {
-        if(val){
+        if (val) {
             this.push_numeric(1)
         } else {
             this.push_numeric(0)

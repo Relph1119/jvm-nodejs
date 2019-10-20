@@ -7,25 +7,25 @@
 
 const NoOperandsInstruction = require("../base/Instruction.class").NoOperandsInstruction;
 
-function _or(frame) {
-    let stack = frame.operand_stack;
-    let v2 = stack.pop_numeric();
-    let v1 = stack.pop_numeric();
-    let result = v1 | v2;
-    stack.push_numeric(result);
-}
-
 // int or
 class IOR extends NoOperandsInstruction {
     execute(frame) {
-        _or(frame);
+        let stack = frame.operand_stack;
+        let v2 = stack.pop_numeric();
+        let v1 = stack.pop_numeric();
+        let result = v1 | v2;
+        stack.push_numeric(result);
     }
 }
 
 // long or
 class LOR extends NoOperandsInstruction {
     execute(frame) {
-        _or(frame);
+        let stack = frame.operand_stack;
+        let v2 = stack.pop_numeric();
+        let v1 = stack.pop_numeric();
+        let result = BigInt(v1) | BigInt(v2);
+        stack.push_numeric(result);
     }
 }
 

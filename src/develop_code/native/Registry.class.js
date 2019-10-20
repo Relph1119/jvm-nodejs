@@ -33,10 +33,10 @@ function register(class_name, method_name, method_descriptor, method) {
 function find_native_method(class_name, method_name, method_descriptor) {
     let key = class_name + "~" + method_name + "~" + method_descriptor;
     let method = Registry.get(key);
-    if (method){
+    if (method) {
         return method
     }
-    if(method_descriptor === "()V" && method_name === "registerNatives") {
+    if (method_descriptor === "()V" && method_name === "registerNatives") {
         return empty_native_method
     }
     return null;
