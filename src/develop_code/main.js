@@ -70,6 +70,11 @@ let resources_path = path.join(root_path, 'java/class');
 
 // 3. 执行ObjectTest程序
 // let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'inst', '--classpath', resources_path, 'jvmgo.book.ch09.ObjectTest'];
-let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch09.ObjectTest'];
+// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch09.ObjectTest'];
+
+// 4. 执行CloneTest程序
+// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'inst', '--classpath', resources_path, 'jvmgo.book.ch09.CloneTest'];
+let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch09.CloneTest'];
+
 
 main(fake_args);
