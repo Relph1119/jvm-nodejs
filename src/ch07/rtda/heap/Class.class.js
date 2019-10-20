@@ -142,6 +142,7 @@ class Class {
             if (c === otherClass) {
                 return true;
             }
+            c = c.super_class;
         }
         return false;
     }

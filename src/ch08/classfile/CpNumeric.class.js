@@ -56,7 +56,7 @@ class ConstantDoubleInfo extends ConstantInfo {
     }
 
     read_info(class_reader) {
-        this.val = class_reader.read_uint32().readDoubleBE(0);
+        this.val = class_reader.read_uint64().readDoubleBE(0);
     }
 }
 

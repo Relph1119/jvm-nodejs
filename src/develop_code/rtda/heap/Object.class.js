@@ -5,17 +5,25 @@
  * @desc: 表示对象
  */
 
+const copy_slot = require("../../instructions/stack/Dup.class").copy_slot;
 const Slots = require("../Slot.class").Slots;
 
 class ObjectClass {
-    constructor(clazz, data = null) {
+    constructor(clazz, data = null, extra = null) {
         // 存放对象的class
         this._class = clazz;
         // 存放实例变量
         if (!data) {
-            data = []
+            this.data = []
+        } else {
+            this.data = data;
         }
-        this.data = data;
+        // 用来记录Object结构体实例的额外信息
+        if (!extra) {
+            this.extra = []
+        } else {
+            this.extra = extra;
+        }
     }
 
     static new_object(clazz) {
@@ -95,6 +103,36 @@ class ObjectClass {
         let slots = this.data;
         return slots.get_ref(field.slot_id);
     }
+
+    /**
+     * 数组拷贝
+     */
+    static array_copy(src, dest, src_pos, dest_pos, length){
+        if(src.data.constructor === Array){
+            dest.data.splice.apply(dest.data, [dest_pos, length].concat(src.data.slice(src_pos, src_pos + length)));
+        } else {
+            throw new Error("Not array!");
+        }
+    }
+
+    clone() {
+        return new ObjectClass(this._class, this.clone_data());
+    }
+
+    clone_data() {
+        if(this.data.constructor !== Slots){
+            return this.data.slice()
+        } else {
+            let new_data = new Slots(this.data.length);
+            for(let i = 0; i < this.data.length; i++) {
+                let slot = this.data[i];
+                new_data[i] = copy_slot(slot);
+            }
+            return new_data;
+        }
+
+    }
+
 }
 
 exports.ObjectClass = ObjectClass;

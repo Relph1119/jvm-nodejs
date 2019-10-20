@@ -12,8 +12,6 @@ let AttributeInfo = require("./AttributeInfo.class").AttributeInfo;
 
 class ClassFile {
     constructor(class_data) {
-        // class文件数据
-        this.class_data = class_data;
         // 魔数
         this.magic = "";
         // 小版本号
@@ -38,9 +36,9 @@ class ClassFile {
         this.attributes = [];
     }
 
-    parse() {
+    parse(class_data) {
         try {
-            let class_reader = new ClassReader(this.class_data);
+            let class_reader = new ClassReader(class_data);
             this.read(class_reader);
             return {class_file: this, error: null};
         } catch (err) {

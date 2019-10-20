@@ -23,14 +23,6 @@ function invoke_method(invoker_frame, method) {
         }
     }
 
-    if (method.is_native()) {
-        if (method.name === "registerNatives") {
-            thread.pop_frame()
-        } else {
-            throw new Error("native method: {0}.{1}{2}".format(method.get_class().name, method.name, method.descriptor))
-        }
-    }
-
 }
 
 module.exports = {

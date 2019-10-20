@@ -8,6 +8,7 @@
  第二个操作数是要赋值给静态变量的值，从操作数栈中弹出。
  */
 
+const ClassInitLogic = require("../base/ClassInitLogic.class");
 const Index16Instruction = require("../base/Instruction.class").Index16Instruction;
 
 class PUT_STATIC extends Index16Instruction {
@@ -20,6 +21,12 @@ class PUT_STATIC extends Index16Instruction {
         let field_ref = cp.get_constant(this.index);
         let field = field_ref.resolve_field();
         let clazz = field.get_class();
+
+        if(!clazz.init_started){
+            frame.revert_next_pc();
+            ClassInitLogic.init_class(frame.thread, clazz);
+            return;
+        }
 
         // 如果解析后的字段是实例字段而非静态字段，则抛出IncompatibleClassChangeError异常
         if (!field.is_static()) {

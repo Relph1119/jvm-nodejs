@@ -24,7 +24,7 @@ function deepcopy(out) {
                     if (item.hasOwnProperty(key)) {
                         if (typeof item[key] === 'object') {
                             out[key] = out[key] || {};  // 这步是最重要的！
-                            extend(out[key], item[key])
+                            deepcopy(out[key], item[key])
                         } else {
                             out[key] = item[key]
                         }

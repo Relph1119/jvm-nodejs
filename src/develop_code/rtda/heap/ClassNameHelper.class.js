@@ -70,7 +70,8 @@ function to_class_name(descriptor) {
 module.exports = {
     get_array_class_name: get_array_class_name,
     to_descriptor: to_descriptor,
-    to_class_name: to_class_name
+    to_class_name: to_class_name,
+    PrimitiveTypes: PrimitiveTypes
 };
 
 

@@ -29,16 +29,60 @@ class Method extends ClassMember {
     static new_methods(clazz, cfMethods) {
         let methods = [];
         for (let cfMethod of cfMethods) {
-            let method = new Method();
-            method.set_class(clazz);
-            method.copy_member_info(cfMethod);
-            method.copy_attributes(cfMethod);
-            method.calc_arg_slot_count();
+            let method = Method.new_method(clazz, cfMethod);
             methods.push(method);
         }
-
         return methods
     }
+
+    static new_method(clazz, cfMethod) {
+        let method = new Method();
+        method.set_class(clazz);
+        method.copy_member_info(cfMethod);
+        method.copy_attributes(cfMethod);
+        let md = MethodDescriptorParser.parse_method_descriptor(method.descriptor);
+        // 先计算arg_slot_count字段
+        method.calc_arg_slot_count(md.parameter_types);
+        // 如果是本地方法，则注入字节码和其他信息。
+        if(method.is_native()){
+            method.inject_code_attribute(md.return_type);
+        }
+        return method
+    }
+
+    inject_code_attribute(return_type) {
+        // 由于本地方法在class文件中没有Code属性，所以需要给max_stack和max_locals赋值。
+        this.max_stack = 4;
+        this.max_locals = this.arg_slot_count;
+        // code字段是本地方法的字节码，第一条指令都是0xfe，第二条指令则根据函数的返回值选择相应的返回指令。
+        switch (return_type[0]) {
+            case 'V':
+                // 对应指令return
+                this.code = [0xfe, 0xb1];
+                break;
+            case 'D':
+                // 对应指令dreturn
+                this.code = [0xfe, 0xaf];
+                break;
+            case 'F':
+                // 对应指令freturn
+                this.code = [0xfe, 0xae];
+                break;
+            case 'J':
+                // 对应指令lreturn
+                this.code = [0xfe, 0xad];
+                break;
+            case 'L':
+            case '[':
+                // 对应指令areturn
+                this.code = [0xfe, 0xb0];
+                break;
+            default:
+                // 对应指令ireturn
+                this.code = [0xfe, 0xac]
+        }
+    }
+    
 
     /**
      * 从method_info结构中提取max_stack、max_locals、code信息
@@ -56,9 +100,8 @@ class Method extends ClassMember {
     /**
      * 计算参数在局部变量表中占用多少位置
      */
-    calc_arg_slot_count() {
-        let parsed_descriptor = MethodDescriptorParser.parse_method_descriptor(this.descriptor);
-        this.arg_slot_count = parsed_descriptor.parameter_types.length;
+    calc_arg_slot_count(param_types) {
+        this.arg_slot_count = param_types.length;
 
         if (!this.is_static()) {
             this.arg_slot_count += 1

@@ -5,6 +5,7 @@
  * @desc: getstatic指令和putstatic指令正好相反，它取出类的某个静态变量值，然后推入栈顶。
  */
 
+const ClassInitLogic = require("../base/ClassInitLogic.class");
 const Index16Instruction = require("../base/Instruction.class").Index16Instruction;
 
 class GET_STATIC extends Index16Instruction {
@@ -13,6 +14,12 @@ class GET_STATIC extends Index16Instruction {
         let field_ref = cp.get_constant(this.index);
         let field = field_ref.resolve_field();
         let clazz = field.get_class();
+
+        if (!clazz.init_started){
+            frame.revert_next_pc();
+            ClassInitLogic.init_class(frame.thread, clazz);
+            return
+        }
 
         // 如果解析后的字段不是静态字段，抛出IncompatibleClassChangeError异常
         if (!field.is_static()) {

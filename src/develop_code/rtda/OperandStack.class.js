@@ -31,6 +31,18 @@ class OperandStack {
         return this.slots[this.size].num;
     }
 
+    push_boolean(val) {
+        if(val){
+            this.push_numeric(1)
+        } else {
+            this.push_numeric(0)
+        }
+    }
+
+    pop_boolean() {
+        return this.pop_numeric() === 1;
+    }
+
     push_ref(ref) {
         this.slots[this.size].ref = ref;
         this.size++;

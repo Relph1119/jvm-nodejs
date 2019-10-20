@@ -77,14 +77,14 @@ class MethodDescriptorParser {
 
     parse_return_type() {
         if (this.read_uint8() === 'V') {
-            this.parsed.returnType = "V";
+            this.parsed.return_type = "V";
             return;
         }
 
         this.unread_uint8();
         let t = this.parse_field_type();
         if (t !== "") {
-            this.parsed.returnType = t;
+            this.parsed.return_type = t;
             return
         }
         this.cause_panic()

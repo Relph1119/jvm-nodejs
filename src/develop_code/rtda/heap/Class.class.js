@@ -43,6 +43,8 @@ class Class {
         this.static_vars = new Slots();
         // 表示类的<clinit>方法是否已经开始执行
         this.init_started = false;
+        // 表示java.lang.Class实例
+        this.j_class = null;
     }
 
     // 用来把classFile类转换成Class类
@@ -164,6 +166,7 @@ class Class {
             if (c === otherClass) {
                 return true;
             }
+            c = c.super_class;
         }
         return false;
     }
@@ -280,6 +283,21 @@ class Class {
 
     }
 
+    // 根据字段名和描述符查找方法
+    get_method(name, descriptor, is_static_flag) {
+       let c = this;
+        while (c){
+            for(let method of c.methods) {
+                if (method.is_static() === is_static_flag
+                        && method.name === name && method.descriptor === descriptor) {
+                    return method;
+                }
+            }
+            c = c.super_class;
+        }
+        return null;
+    }
+
     /**
      * 根据字段名和描述符查找字段
      * @param name
@@ -299,6 +317,31 @@ class Class {
         }
         return null;
     }
+
+    // 返回转换后的类名,this.class_name形如java/lang/Object，转换后为java.lang.Object
+    java_name(){
+        return this.class_name.replace(/\//g, ".");
+    }
+
+    // 判断类是否是基本类型的类
+    is_primitive(){
+        return !!PrimitiveTypes.get(this.class_name);
+    }
+
+    get_instance_method(name, descriptor) {
+        return this.get_method(name, descriptor, false);
+    }
+
+    get_ref_var(field_name, field_descriptor){
+        let field = this.get_field(field_name, field_descriptor, true);
+        return this.static_vars.get_ref(field.slot_id);
+    }
+
+    set_ref_var(field_name, field_descriptor, ref){
+        let field = this.get_field(field_name, field_descriptor, true);
+        this.static_vars.set_ref(field.slot_id, ref);
+    }
+
 }
 
 exports.Class = Class;

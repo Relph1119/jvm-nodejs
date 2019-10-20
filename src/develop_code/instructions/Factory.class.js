@@ -6,6 +6,7 @@
  */
 
 let format = require('string-format');
+const INVOKE_NATIVE = require("./reserved/Invokenative.class").INVOKE_NATIVE;
 const MULTI_ANEW_ARRAY = require("./references/Multianewarray.class").MULTI_ANEW_ARRAY;
 const ARRAY_LENGTH = require("./references/ArrayLength.class").ARRAY_LENGTH;
 const ANEW_ARRAY = require("./references/Anewarray.class").ANEW_ARRAY;
@@ -577,6 +578,7 @@ class Factory {
                 return new INVOKE_STATIC();
             case 0xb9:
                 return new INVOKE_INTERFACE();
+
             // TODO:
             case 0xbb:
                 return new NEW();
@@ -604,6 +606,9 @@ class Factory {
                 return new IFNONNULL();
             case 0xc8:
                 return new GOTO_W();
+            // TODO:
+            case 0xfe:
+                return new INVOKE_NATIVE();
             default:
                 throw new Error("Unsupported opcode: 0x{0}!".format(opcode.toString(16)));
         }

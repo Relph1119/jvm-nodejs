@@ -37,14 +37,14 @@ class PUT_FIELD extends Index16Instruction {
             if (ref === null) {
                 throw new Error("java.lang.NollPointerException")
             }
-            ref.fields.set_numeric(slot_id, val);
+            ref.fields().set_numeric(slot_id, val);
         } else if (["L", "["].includes(descriptor[0])) {
             let val = stack.pop_ref();
             let ref = stack.pop_ref();
             if (ref === null) {
                 throw new Error("java.lang.NollPointerException")
             }
-            ref.fields.set_ref(slot_id, val);
+            ref.fields().set_ref(slot_id, val);
         }
     }
 }

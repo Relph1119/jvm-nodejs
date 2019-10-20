@@ -60,14 +60,8 @@ let root_path = path.join(__dirname, '../../');
 // 得到java的用户类路径
 let resources_path = path.join(root_path, 'java/class');
 
-// 1. 冒泡排序算法测试
-// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'inst', '--classpath', resources_path, 'jvmgo.book.ch08.BubbleSortTest'];
-// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch08.BubbleSortTest'];
+// 1. 执行GetClassTest程序
+// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'inst', '--classpath', resources_path, 'jvmgo.book.ch09.GetClassTest'];
+let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch09.GetClassTest'];
 
-// 2. HelloWorld程序
-// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'inst', '--classpath', resources_path, 'jvmgo.book.ch01.HelloWorld'];
-// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch01.HelloWorld'];
-
-// 3. PrintArgs程序
-let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch08.PrintArgs', 'foo', 'bar', '你好，世界！'];
 main(fake_args);

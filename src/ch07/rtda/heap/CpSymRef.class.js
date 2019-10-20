@@ -21,7 +21,7 @@ class SymRef {
 
     // 解析类
     resolved_class() {
-        if (this.get_class() === null) {
+        if (!this.get_class()) {
             this.resolve_class_ref();
         }
         return this.get_class()

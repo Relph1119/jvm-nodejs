@@ -6,6 +6,7 @@
   "dependencies": {
     "adm-zip": "^0.4.13",
     "commander": "^3.0.2",
+    "fnv-plus": "^1.2.12",
     "path": "^0.12.7",
     "string-format": "^2.0.0"
   },

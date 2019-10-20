@@ -5,6 +5,7 @@
  * @desc: new指令
  */
 
+const ClassInitLogic = require("../base/ClassInitLogic.class");
 const Index16Instruction = require("../base/Instruction.class").Index16Instruction;
 
 class NEW extends Index16Instruction {
@@ -16,6 +17,12 @@ class NEW extends Index16Instruction {
         let cp = frame.method.get_class().constant_pool;
         let class_ref = cp.get_constant(this.index);
         let clazz = class_ref.resolved_class();
+
+        if(!clazz.init_started){
+            frame.revert_next_pc();
+            ClassInitLogic.init_class(frame.thread, clazz);
+            return;
+        }
 
         if (clazz.is_interface() || clazz.is_abstract()) {
             throw new Error("java.lang.InstantiationError")

@@ -153,5 +153,6 @@ module.exports = {
     DUP_X2: DUP_X2,
     DUP2: DUP2,
     DUP2_X1: DUP2_X1,
-    DUP2_X2: DUP2_X2
+    DUP2_X2: DUP2_X2,
+    copy_slot: copy_slot
 };

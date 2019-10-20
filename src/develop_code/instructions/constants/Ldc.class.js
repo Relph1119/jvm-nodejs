@@ -7,6 +7,7 @@
  ldc2_w指令用于加载long和double常量。
  */
 
+const ClassRef = require("../../rtda/heap/CpClassRef.class").ClassRef;
 const j_string = require("../../rtda/heap/StringPool.class").j_string;
 const Index16Instruction = require("../base/Instruction.class").Index16Instruction;
 const Index8Instruction = require("../base/Instruction.class").Index8Instruction;
@@ -30,6 +31,10 @@ function _ldc(frame, index) {
             let interned_str = j_string(clazz.loader, c);
             // 把引用推入操作数栈顶
             stack.push_ref(interned_str);
+            break;
+        case ClassRef:
+            let class_obj = c.resolved_class().j_class;
+            stack.push_ref(class_obj);
             break;
         default:
             throw new Error("todo: ldc!");

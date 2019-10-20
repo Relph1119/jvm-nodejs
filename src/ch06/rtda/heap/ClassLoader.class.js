@@ -65,8 +65,8 @@ class ClassLoader {
 
     // 把class文件数据转换成Class对象
     static parse_class(data) {
-        let class_file = new ClassFile(data);
-        let result = class_file.parse();
+        let class_file = new ClassFile();
+        let result = class_file.parse(data);
         if (result.error) {
             throw new Error("java.lang.ClassFormatError!");
         } else {

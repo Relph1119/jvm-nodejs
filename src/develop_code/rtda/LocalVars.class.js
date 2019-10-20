@@ -38,6 +38,10 @@ class LocalVars extends Array {
         this[index] = slot;
     }
 
+    get_this() {
+        return this.get_ref(0);
+    }
+
     toString() {
         return "slots:{0}".format("[ " + this.map((value) => value.toString()).join(', ') + " ]");
     }

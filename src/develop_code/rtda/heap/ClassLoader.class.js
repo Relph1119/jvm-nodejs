@@ -11,6 +11,7 @@ const ClassFile = require("../../classfile/ClassFile.class").ClassFile;
 const Class = require("./Class.class").Class;
 format.extend(String.prototype);
 const AccessFlags = require("./AccessFlags");
+const PrimitiveTypes = require("./ClassNameHelper.class").PrimitiveTypes;
 const j_string = require("./StringPool.class").j_string;
 
 class ClassLoader {
@@ -21,6 +22,8 @@ class ClassLoader {
         this.verbose_flag = verbose_flag;
         // 记录已经加载的类数据
         this.class_map = new Map();
+        this.load_basic_classes();
+        this.load_primitive_classes();
     }
 
     // 把类数据加载到方法区
@@ -30,10 +33,20 @@ class ClassLoader {
             // 类已经加载
             return clazz
         } else if (name[0] === '[') {
-            return this.load_array_class(name);
+            clazz = this.load_array_class(name);
         } else {
-            return this.load_non_array_class(name);
+            clazz = this.load_non_array_class(name);
         }
+
+        // 在类加载完之后，判断java.lang.Class是否已经加载。
+        let jl_class_class = this.class_map.get('java/lang/Class');
+        if(jl_class_class){
+            // 如果加载，则给类关联类对象
+            clazz.j_class = jl_class_class.new_object();
+            clazz.j_class.extra = clazz;
+        }
+
+        return clazz;
     }
 
     // 数组类加载
@@ -90,9 +103,10 @@ class ClassLoader {
 
     // 把class文件数据转换成Class对象
     static parse_class(data) {
-        let class_file = new ClassFile(data);
-        let result = class_file.parse();
+        let class_file = new ClassFile();
+        let result = class_file.parse(data);
         if (result.error) {
+            console.log(result.error);
             throw new Error("java.lang.ClassFormatError!");
         } else {
             return Class.new_class(result.class_file);
@@ -192,6 +206,45 @@ class ClassLoader {
         }
     }
 
+    load_basic_classes() {
+        // 先加载java.lang.Class类
+        let jl_class_class = this.load_class("java/lang/Class");
+        // 遍历class_map，给已经加载的每个类关联类的对象。
+        for(let [_, clazz] of this.class_map) {
+            if (!clazz.j_class){
+                clazz.j_class = jl_class_class.new_object();
+            }
+            clazz.j_class.extra = clazz;
+        }
+    }
+
+    // 加载基本类型的类
+    load_primitive_classes() {
+        for (let [primitive_type, _] of PrimitiveTypes) {
+            // primitive_type是void、int、float等
+            this.load_primitive_class(primitive_type);
+        }
+    }
+
+    /**
+     * 加载基本类型的单个类
+     * 有3点说明：1. void和基本类型的类名就是void、int、float等。
+     * 2. 基本类型的类没有超类，也没有实现任何接口。
+     * 3. 非基本类型的类对象是通过ldc指令加载到操作数栈中的。
+     而基本类型的类对象，虽然在Java代码中看起来是通过字面量获取的，但是编译之后的指令并不是ldc，而是getstatic。
+     * @param class_name
+     */
+    load_primitive_class(class_name) {
+        let clazz = new Class();
+        clazz.access_flags = AccessFlags.ACC_PUBLIC;
+        clazz.class_name = class_name;
+        clazz.loader = this;
+        clazz.init_started = true;
+
+        clazz.j_class = this.class_map.get('java/lang/Class').new_object();
+        clazz.j_class.extra = clazz;
+        this.class_map.set(class_name, clazz);
+    }
 }
 
 exports.ClassLoader = ClassLoader;

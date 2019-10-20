@@ -76,7 +76,7 @@ class ConstantPool {
     // 根据索引返回常量
     get_constant(index) {
         let c = this.consts[index];
-        if (c) {
+        if (c != null) {
             return c;
         } else {
             throw new Error("No constants at index {0}".format(index))

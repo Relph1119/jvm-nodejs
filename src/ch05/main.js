@@ -56,8 +56,8 @@ function start_JVM(cmd) {
 // 加载class
 function load_class(class_name, class_path) {
     let result = class_path.read_class(class_name);
-    let class_file = new ClassFile(result.data);
-    return class_file.parse();
+    let class_file = new ClassFile();
+    return class_file.parse(result.data);
 }
 
 // 查找类的main()方法
