@@ -3,21 +3,23 @@
 /**
  * @author: HuRuiFeng
  * @file: main.js
- * @time: 2019/10/10
+ * @time: 2023-06-19 23:01:56
  * @desc: 主函数
  */
-let program = require('commander');
-let Cmd = require("./Cmd.class").Cmd;
+const program = require('commander');
+
+const Cmd = require("./Cmd").Cmd;
 
 function main(input_args) {
     process.argv = input_args;
+
     program
-        .version('0.0.1')
+        .version('0.0.1', '-V, --version', 'display current version')
         .usage('[options] class [args...]')
         .option('-c, --classpath [value]', 'Class Path')
         .parse(process.argv);
 
-    if (program.classpath) {
+    if (program.getOptionValue('classpath')) {
         let cmd = new Cmd(program);
         start_JVM(cmd);
     }

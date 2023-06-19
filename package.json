@@ -1,17 +1,13 @@
 {
-  "name": "JVMByNodeJS",
+  "name": "jvm-nodejs",
   "version": "1.0.0",
   "description": "JVM的Node.js实现",
   "main": "index.js",
   "dependencies": {
-    "adm-zip": "^0.4.13",
-    "commander": "^3.0.2",
-    "fnv-plus": "^1.2.12",
-    "path": "^0.12.7",
-    "python-struct": "^1.1.2",
+    "adm-zip": "^0.5.10",
+    "commander": "^11.0.0",
     "string-format": "^2.0.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,6 +21,5 @@
   "bugs": {
     "url": "https://github.com/Relph1119/JVMByNodeJS/issues"
   },
-  "homepage": "https://github.com/Relph1119/JVMByNodeJS#readme",
-  "type": "module"
+  "homepage": "https://github.com/Relph1119/JVMByNodeJS#readme"
 }
