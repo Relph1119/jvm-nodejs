@@ -1,6 +1,6 @@
 /**
  * @author: HuRuiFeng
- * @file: cmd.js
+ * @file: Cmd.js
  * @time: 2023-06-19 23:02:04
  * @desc: 命令行类
  */

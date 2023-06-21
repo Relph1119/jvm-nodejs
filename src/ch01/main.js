@@ -16,7 +16,7 @@ function main(input_args) {
     program
         .version('0.0.1', '-V, --version', 'display current version')
         .usage('[options] class [args...]')
-        .option('-c, --classpath [value]', 'Class Path')
+        .option('-cp, --classpath [value]', 'Class Path')
         .parse(process.argv);
 
     if (program.getOptionValue('classpath')) {
@@ -31,5 +31,6 @@ function start_JVM(cmd) {
 
 // let fake_args = ['node', 'main.js', '-h'];
 // let fake_args = ['node', 'main.js', '-V'];
-let fake_args = ['node', 'main.js', '--classpath', 'foo/bar', 'MyApp', 'arg1', 'arg2'];
+// let fake_args = ['node', 'main.js', '--classpath', 'foo/bar', 'MyApp', 'arg1', 'arg2'];
+let fake_args = ['node', 'main.js', '-cp', 'foo/bar', 'MyApp', 'arg1', 'arg2'];
 main(fake_args);

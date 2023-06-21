@@ -7,8 +7,8 @@
  * @desc: 主函数
  */
 let program = require('commander');
-let Cmd = require("./Cmd.class").Cmd;
-let Classpath = require("./classpath/Classpath.class").Classpath;
+let Cmd = require("./Cmd").Cmd;
+let Classpath = require("./classpath/Classpath").Classpath;
 let path = require('path');
 
 function main(input_args) {
@@ -16,7 +16,7 @@ function main(input_args) {
     program
         .version('0.0.1')
         .usage('[options] class [args...]')
-        .option('-c, --classpath [value]', 'Class Path')
+        .option('-cp, --classpath [value]', 'Class Path')
         .option('-j, --Xjre [value]', 'path to jre')
         .parse(process.argv);
 
@@ -39,7 +39,7 @@ function start_JVM(cmd) {
     }
 
     // 打印class里面的数据信息
-    console.log("class data: %j", result.data);
+    console.log("class data: %j", [...result.data]);
 }
 
 let Xjre_path = path.join(process.env.JAVA_HOME, 'jre');

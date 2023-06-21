@@ -15,16 +15,17 @@ class Entry {
 
     // 根据参数常见不同类型的Entry实例
     static new_entry(path) {
-        let CompositeEntry = require("./CompositeEntry.class").CompositeEntry;
-        let WildcardEntry = require("./WildcardEntry.class").WildcardEntry;
-        let ZipEntry = require("./ZipEntry.class").ZipEntry;
-        let DirEntry = require("./DirEntry.class").DirEntry;
+        let CompositeEntry = require("./CompositeEntry").CompositeEntry;
+        let WildcardEntry = require("./WildcardEntry").WildcardEntry;
+        let ZipEntry = require("./ZipEntry").ZipEntry;
+        let DirEntry = require("./DirEntry").DirEntry;
 
         if (path.includes(Entry.path_list_separator)) {
             return new CompositeEntry(path);
         } else if (path.endsWith('*')) {
             return new WildcardEntry(path);
-        } else if (path.endsWith('.jar') || path.endsWith('.JAR') || path.endsWith(".zip") || path.endsWith(".ZIP")) {
+        } else if (path.endsWith('.jar') || path.endsWith('.JAR')
+            || path.endsWith(".zip") || path.endsWith(".ZIP")) {
             return new ZipEntry(path);
         } else {
             return new DirEntry(path);

@@ -1,13 +1,13 @@
 /**
  * @author: HuRuiFeng
- * @file: WildcardEntry.class.js
+ * @file: WildcardEntry.js
  * @time: 2019/10/14
  * @desc: 通配符实例类（继承CompositeEntry类）
  */
 
-let CompositeEntry = require("./CompositeEntry.class").CompositeEntry;
+let CompositeEntry = require("./CompositeEntry").CompositeEntry;
 let path = require('path');
-let ZipEntry = require("./ZipEntry.class").ZipEntry;
+let ZipEntry = require("./ZipEntry").ZipEntry;
 let fs = require('fs');
 
 class WildcardEntry extends CompositeEntry {

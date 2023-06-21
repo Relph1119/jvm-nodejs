@@ -1,12 +1,12 @@
 /**
  * @author: HuRuiFeng
- * @file: CompositeEntry.class.js
+ * @file: CompositeEntry.js
  * @time: 2019/10/14
  * @desc: 由更小的Entry组成（继承Entry类）
  */
 
-let Entry = require("./Entry.class").Entry;
-let format = require('string-format');
+const Entry = require("./Entry").Entry;
+const format = require('string-format');
 format.extend(String.prototype);
 
 class CompositeEntry extends Entry {

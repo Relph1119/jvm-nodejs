@@ -1,11 +1,11 @@
 /**
  * @author: HuRuiFeng
- * @file: DirEntry.class.js
+ * @file: DirEntry.js
  * @time: 2019/10/14
- * @desc:
+ * @desc: 目录形式的类路径（继承Entry类）
  */
 
-let Entry = require("./Entry.class").Entry;
+let Entry = require("./Entry").Entry;
 let path = require('path');
 let fs = require('fs');
 

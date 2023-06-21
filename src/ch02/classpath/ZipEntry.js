@@ -1,11 +1,11 @@
 /**
  * @author: HuRuiFeng
- * @file: ZipEntry.class.js
+ * @file: ZipEntry.js
  * @time: 2019/10/14
  * @desc: Zip或JAR文件形式的类路径（继承Entry类）
  */
 
-let Entry = require("./Entry.class").Entry;
+let Entry = require("./Entry").Entry;
 
 class ZipEntry extends Entry {
     constructor(path_parameter) {
@@ -17,7 +17,7 @@ class ZipEntry extends Entry {
     read_class(class_name) {
         let error, data = null;
         let AdmZip = require('adm-zip');
-        let zip = new AdmZip(this.absPath);
+        let zip = new AdmZip(this.absPath, null);
         let zipEntries = zip.getEntries();
         for (const zipEntry of zipEntries) {
             if (zipEntry.isDirectory === false) {

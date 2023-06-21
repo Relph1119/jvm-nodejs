@@ -7,8 +7,8 @@
 
 let path = require('path');
 let fs = require('fs');
-let Entry = require("./Entry.class").Entry;
-let WildcardEntry = require("./WildcardEntry.class").WildcardEntry;
+let Entry = require("./Entry").Entry;
+let WildcardEntry = require("./WildcardEntry").WildcardEntry;
 
 class Classpath {
     constructor() {
@@ -68,6 +68,7 @@ class Classpath {
         this.user_classpath = Entry.new_entry(cpOption)
     }
 
+    // 依次从启动类路径、扩展类路径和用户类路径中搜索class文件
     read_class(class_name) {
         let result;
         class_name = class_name + ".class";
