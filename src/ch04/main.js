@@ -7,8 +7,8 @@
  * @desc: 主函数
  */
 let program = require('commander');
-let Cmd = require("./Cmd.class").Cmd;
-let Frame = require("./rtda/Frame.class").Frame;
+let Cmd = require("./Cmd").Cmd;
+let Frame = require("./rtda/Frame").Frame;
 
 function main(input_args) {
 

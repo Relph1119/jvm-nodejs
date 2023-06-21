@@ -9,11 +9,11 @@
 let program = require('commander');
 const format = require('string-format');
 format.extend(String.prototype);
-const Cmd = require("./Cmd.class").Cmd;
+const Cmd = require("./Cmd").Cmd;
 const path = require('path');
-const ClassLoader = require("./rtda/heap/ClassLoader.class").ClassLoader;
-let Classpath = require("./classpath/Classpath.class").Classpath;
-const Interpreter = require("./Interpreter.class").Interpreter;
+const ClassLoader = require("./rtda/heap/ClassLoader").ClassLoader;
+let Classpath = require("./classpath/Classpath").Classpath;
+const Interpreter = require("./Interpreter").Interpreter;
 
 
 function main(input_args) {

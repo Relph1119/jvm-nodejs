@@ -183,11 +183,11 @@ src------------------------------------jvm代码
         at Buffer.writeInt32BE (internal/buffer.js:876:10)
         at PACK_INT32_BE (D:\MyJSWork\JVMByNodeJS\node_modules\python-struct\src\core.js:90:51)
         at Function.pack (D:\MyJSWork\JVMByNodeJS\node_modules\python-struct\src\core.js:602:25)
-        at LocalVars.get_float (D:\MyJSWork\JVMByNodeJS\src\develop_code\rtda\LocalVars.class.js:41:43)
-        at _fload (D:\MyJSWork\JVMByNodeJS\src\develop_code\instructions\loads\Fload.class.js:12:32)
-        at FLOAD_1.execute (D:\MyJSWork\JVMByNodeJS\src\develop_code\instructions\loads\Fload.class.js:30:9)
-        at Function.loop (D:\MyJSWork\JVMByNodeJS\src\develop_code\Interpreter.class.js:53:18)
-        at Function.interpret (D:\MyJSWork\JVMByNodeJS\src\develop_code\Interpreter.class.js:27:25)
+        at LocalVars.get_float (D:\MyJSWork\JVMByNodeJS\src\develop_code\rtda\LocalVars.js:41:43)
+        at _fload (D:\MyJSWork\JVMByNodeJS\src\develop_code\instructions\loads\Fload.js:12:32)
+        at FLOAD_1.execute (D:\MyJSWork\JVMByNodeJS\src\develop_code\instructions\loads\Fload.js:30:9)
+        at Function.loop (D:\MyJSWork\JVMByNodeJS\src\develop_code\Interpreter.js:53:18)
+        at Function.interpret (D:\MyJSWork\JVMByNodeJS\src\develop_code\Interpreter.js:27:25)
     ```
     value的值是2147483648，原本该值应该通过local_vars.get_float()转化为float的类型，值为2147483648.0，由于解析Class文件的时候，在ConstantFloatInfo类调用read_info()函数，初始化val的时候，丢失了原始数据类型。
     
