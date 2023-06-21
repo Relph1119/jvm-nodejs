@@ -22,6 +22,7 @@ class ConstantInfo {
     static CONSTANT_MethodType = 16;
     static CONSTANT_InvokeDynamic = 18;
 
+    // 读取常量信息
     read_info() {
     }
 

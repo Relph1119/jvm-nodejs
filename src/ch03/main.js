@@ -49,7 +49,7 @@ function load_class(class_name, class_path) {
 function print_class_info(class_file) {
     console.log("version: %i.%i", class_file.major_version, class_file.minor_version);
     console.log("constants count: %s", class_file.constant_pool.cp.length);
-    console.log("access flags: 0x%s", class_file.access_flags.readInt16BE(0).toString(16));
+    console.log("access flags: 0x%s", class_file.access_flags.toString(16));
     console.log("this class: %s", class_file.class_name());
     console.log("super class: %s", class_file.super_class_name());
     console.log("interfaces: %s", class_file.interface_names());
