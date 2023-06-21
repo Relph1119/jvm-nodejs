@@ -6,14 +6,16 @@
  * @time: 2019/10/10
  * @desc: 主函数
  */
+import program from 'commander'
+
 let program = require('commander');
 const format = require('string-format');
 format.extend(String.prototype);
-const Cmd = require("./Cmd.class").Cmd;
-const ClassFile = require("./classfile/ClassFile.class").ClassFile;
+const Cmd = require("./Cmd").Cmd;
+const ClassFile = require("./classfile/ClassFile").ClassFile;
 const path = require('path');
-let Classpath = require("./classpath/Classpath.class").Classpath;
-const Interpreter = require("./Interpreter.class").Interpreter;
+let Classpath = require("./classpath/Classpath").Classpath;
+const Interpreter = require("./Interpreter").Interpreter;
 
 
 function main(input_args) {
