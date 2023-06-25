@@ -6,11 +6,11 @@
  * @time: 2019/10/10
  * @desc: 主函数
  */
-let program = require('commander');
-let Cmd = require("./Cmd").Cmd;
-let Classpath = require("./classpath/Classpath").Classpath;
-let path = require('path');
-let ClassFile = require("./classfile/ClassFile").ClassFile;
+const program = require('commander');
+const Cmd = require("./Cmd").Cmd;
+const Classpath = require("./classpath/Classpath").Classpath;
+const path = require('path');
+const ClassFile = require("./classfile/ClassFile").ClassFile;
 
 function main(input_args) {
     process.argv = input_args;

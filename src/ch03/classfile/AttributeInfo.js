@@ -33,13 +33,13 @@ class AttributeInfo {
     }
 
     static new_attribute_info(attr_name, attr_len, constant_pool) {
-        let UnparsedAttribute = require("./AttrUnparsed").UnparsedAttribute;
+        const UnparsedAttribute = require("./AttrUnparsed").UnparsedAttribute;
         const DeprecatedAttribute = require("./AttrMarker").DeprecatedAttribute;
         const SyntheticAttribute = require("./AttrMarker").SyntheticAttribute;
-        let SourceFileAttribute = require("./AttrSourceFile").SourceFileAttribute;
-        let ConstantValueAttribute = require("./AttrConstantValue").ConstantValueAttribute;
+        const SourceFileAttribute = require("./AttrSourceFile").SourceFileAttribute;
+        const ConstantValueAttribute = require("./AttrConstantValue").ConstantValueAttribute;
         const CodeAttribute = require("./AttrCode").CodeAttribute;
-        let ExceptionsAttribute = require("./AttrExceptions").ExceptionsAttribute;
+        const ExceptionsAttribute = require("./AttrExceptions").ExceptionsAttribute;
         const LineNumberTableAttribute = require("./AttrLineNumberTable").LineNumberTableAttribute;
         const LocalVariableTableAttribute = require("./AttrLocalVariableTable").LocalVariableTableAttribute;
 
