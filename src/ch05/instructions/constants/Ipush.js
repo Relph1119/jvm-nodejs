@@ -20,7 +20,7 @@ class BIPUSH extends Instruction {
 
     execute(frame) {
         let i = this.val;
-        frame.operand_stack.push_numeric(i);
+        frame.operand_stack.push_int(i);
     }
 
 }
@@ -38,7 +38,7 @@ class SIPUSH extends Instruction {
 
     execute(frame) {
         let i = this.val;
-        frame.operand_stack.push_numeric(i);
+        frame.operand_stack.push_int(i);
     }
 }
 

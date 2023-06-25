@@ -5,7 +5,7 @@
  * @desc: 记录方法抛出的异常表
  */
 
-let AttributeInfo = require("./AttributeInfo").AttributeInfo;
+const AttributeInfo = require("./AttributeInfo").AttributeInfo;
 
 class ExceptionsAttribute extends AttributeInfo {
     constructor() {

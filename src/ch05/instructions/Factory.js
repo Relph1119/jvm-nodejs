@@ -5,7 +5,7 @@
  * @desc: 根据操作码创建具体的指令
  */
 
-let format = require('string-format');
+const format = require('string-format');
 format.extend(String.prototype);
 const GOTO_W = require("./extended/Gotow").GOTO_W;
 const IFNONNULL = require("./extended/Ifnull").IFNONNULL;

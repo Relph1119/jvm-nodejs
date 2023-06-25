@@ -5,8 +5,8 @@
  * @desc: 用一个module编写数值常量类
  */
 
-let ConstantInfo = require("./ConstantInfo").ConstantInfo;
-let bufferUtils = require('../utils/bufferUtil');
+const ConstantInfo = require("./ConstantInfo").ConstantInfo;
+const bufferUtils = require('../utils/bufferUtil');
 
 // 使用4字节存储整数常量
 class ConstantIntegerInfo extends ConstantInfo {

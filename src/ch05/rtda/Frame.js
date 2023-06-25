@@ -5,8 +5,8 @@
  * @desc: 帧
  */
 
-let LocalVars = require("./LocalVars").LocalVars;
-let OperandStack = require("./OperandStack").OperandStack;
+const LocalVars = require("./LocalVars").LocalVars;
+const OperandStack = require("./OperandStack").OperandStack;
 
 class Frame {
     constructor(thread, max_locals, max_stack) {
