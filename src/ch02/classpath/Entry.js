@@ -15,10 +15,10 @@ class Entry {
 
     // 根据参数常见不同类型的Entry实例
     static new_entry(path) {
-        let CompositeEntry = require("./CompositeEntry").CompositeEntry;
-        let WildcardEntry = require("./WildcardEntry").WildcardEntry;
-        let ZipEntry = require("./ZipEntry").ZipEntry;
-        let DirEntry = require("./DirEntry").DirEntry;
+        const CompositeEntry = require("./CompositeEntry").CompositeEntry;
+        const WildcardEntry = require("./WildcardEntry").WildcardEntry;
+        const ZipEntry = require("./ZipEntry").ZipEntry;
+        const DirEntry = require("./DirEntry").DirEntry;
 
         if (path.includes(Entry.path_list_separator)) {
             return new CompositeEntry(path);
