@@ -6,7 +6,7 @@
  */
 
 const Thread = require("./rtda/Thread").Thread;
-let format = require('string-format');
+const format = require('string-format');
 format.extend(String.prototype);
 const BytecodeReader = require("./instructions/base/BytecodeReader").BytecodeReader;
 
@@ -21,11 +21,10 @@ class Interpreter {
         try {
             Interpreter.loop(thread, method.code);
         } catch (e) {
-            console.log("LocalVars: {0}".format(frame.local_vars.toString()));
-            console.log("OperandStack: {0}".format(frame.operand_stack.toString()));
-            console.log(e);
+            // console.log("LocalVars: {0}".format(frame.local_vars.toString()));
+            // console.log("OperandStack: {0}".format(frame.operand_stack.toString()));
+            // console.log(e);
         }
-
     }
 
     static loop(thread, bytecode) {
@@ -46,7 +45,6 @@ class Interpreter {
                 Interpreter.print_obj(inst)));
             inst.execute(frame);
         }
-
     }
 
     static print_obj(obj) {

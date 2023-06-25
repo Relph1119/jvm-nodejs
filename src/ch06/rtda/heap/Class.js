@@ -95,7 +95,6 @@ class Class {
         return 0 !== (this.access_flags & AccessFlags.ACC_ENUM);
     }
 
-    //
     /**
      *  类的访问控制权限
      *  如果类D想访问类C，需要满足两个条件之一：C是public，或者C和D在同一个运行时包内。
@@ -130,7 +129,6 @@ class Class {
         } else {
             return s.is_implements(t);
         }
-
     }
 
     // 判断S是否是T的子类，也就是判断T是否是S的（直接或间接）超类
@@ -154,6 +152,7 @@ class Class {
                     return true;
                 }
             }
+            c = c.super_class;
         }
         return false;
     }

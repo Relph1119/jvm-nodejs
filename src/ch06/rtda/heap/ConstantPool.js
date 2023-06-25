@@ -6,7 +6,7 @@
  符号引用包括类符号引用、字段符号引用、方法符号引用和接口符号引用。
  */
 
-let format = require('string-format');
+const format = require('string-format');
 const InterfaceMethodRef = require("./CpInterfaceMethodRef").InterfaceMethodRef;
 const MethodRef = require("./CpMethodRef").MethodRef;
 const FieldRef = require("./CpFieldRef").FieldRef;
@@ -20,6 +20,10 @@ const ConstantDoubleInfo = require("../../classfile/CpNumeric").ConstantDoubleIn
 const ConstantLongInfo = require("../../classfile/CpNumeric").ConstantLongInfo;
 const ConstantFloatInfo = require("../../classfile/CpNumeric").ConstantFloatInfo;
 const ConstantIntegerInfo = require("../../classfile/CpNumeric").ConstantIntegerInfo;
+const Int = require("../Numeric").Int;
+const Long = require("../Numeric").Long;
+const Float = require("../Numeric").Float;
+const Double = require("../Numeric").Double;
 format.extend(String.prototype);
 
 class ConstantPool {
@@ -37,16 +41,16 @@ class ConstantPool {
             let cp_info = cfConstantPool.cp[i];
             switch (cp_info.constructor) {
                 case ConstantIntegerInfo:
-                    consts[i] = cp_info.val;
+                    consts[i] = new Int(cp_info.val);
                     break;
                 case ConstantFloatInfo:
-                    consts[i] = cp_info.val;
+                    consts[i] = new Float(cp_info.val);
                     break;
                 case ConstantLongInfo:
-                    consts[i] = cp_info.val;
+                    consts[i] = new Long(cp_info.val);
                     break;
                 case ConstantDoubleInfo:
-                    consts[i] = cp_info.val;
+                    consts[i] = new Double(cp_info.val);
                     break;
                 case ConstantStringInfo:
                     consts[i] = cp_info.toString();

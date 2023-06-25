@@ -39,10 +39,29 @@ class PUT_STATIC extends Index16Instruction {
         let slots = clazz.static_vars;
         let stack = frame.operand_stack;
 
-        if (["Z", "B", "C", "S", "I", "F", "J", "D"].includes(descriptor[0])) {
-            slots.set_numeric(slot_id, stack.pop_numeric());
-        } else if (["L", "["].includes(descriptor[0])) {
-            slots.set_ref(slot_id, stack.pop_ref())
+        switch (descriptor[0]) {
+            case "Z":
+            case "B":
+            case "C":
+            case "S":
+            case "I":
+                slots.set_int(slot_id, stack.pop_int());
+                break;
+            case "F":
+                slots.set_float(slot_id, stack.pop_float());
+                break;
+            case "J":
+                slots.set_long(slot_id, stack.pop_long());
+                break;
+            case "D":
+                slots.set_double(slot_id, stack.pop_double());
+                break;
+            case "L":
+            case "[":
+                slots.set_ref(slot_id, stack.pop_ref())
+                break;
+            default:
+                // todo
         }
     }
 }

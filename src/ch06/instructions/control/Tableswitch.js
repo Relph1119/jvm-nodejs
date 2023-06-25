@@ -32,7 +32,7 @@ class TABLE_SWITCH extends NoOperandsInstruction {
 
     execute(frame) {
         // 先从操作数栈中弹出一个int变量
-        let index = frame.operand_stack.pop_numeric();
+        let index = frame.operand_stack.pop_int();
         // 然后看它是否在low和high给定的范围内
         let offset = 0;
         if (this.low <= index <= this.high) {

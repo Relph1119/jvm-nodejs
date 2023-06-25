@@ -6,7 +6,7 @@
  */
 
 const Index16Instruction = require("../base/Instruction").Index16Instruction;
-let format = require('string-format');
+const format = require('string-format');
 format.extend(String.prototype);
 
 class INVOKE_VIRTURL extends Index16Instruction {
@@ -17,13 +17,30 @@ class INVOKE_VIRTURL extends Index16Instruction {
         if (method_ref.name === "println") {
             let stack = frame.operand_stack;
             let descriptor = method_ref.descriptor;
-            if (descriptor === "(Z)V") {
-                console.log("{0}".format(stack.pop_numeric() !== 0));
-            } else if (["(C)V", "(B)V", "(S)V", "(I)V", "(J)V", "(F)V", "(D)V"].includes(descriptor)) {
-                console.log("{0}".format(stack.pop_numeric()));
-            } else {
-                throw new Error("println: " + method_ref.descriptor);
+
+            switch (descriptor) {
+                case "(Z)V":
+                    console.log("{0}".format(stack.pop_int() !== 0));
+                    break;
+                case "(C)V":
+                case "(B)V":
+                case "(S)V":
+                case "(I)V":
+                    console.log("{0}".format(stack.pop_int()));
+                    break;
+                case "(F)V":
+                    console.log("{0}".format(stack.pop_float()));
+                    break;
+                case "(J)V":
+                    console.log("{0}".format(stack.pop_long()));
+                    break;
+                case "(D)V":
+                    console.log("{0}".format(stack.pop_double()));
+                    break;
+                default:
+                    throw new Error("println: " + method_ref.descriptor);
             }
+
             stack.pop_ref();
         }
     }

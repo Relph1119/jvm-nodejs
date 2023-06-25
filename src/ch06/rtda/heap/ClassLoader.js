@@ -5,7 +5,7 @@
  * @desc: 类加载器
  */
 
-let format = require('string-format');
+const format = require('string-format');
 const Slots = require("../Slot").Slots;
 const ClassFile = require("../../classfile/ClassFile").ClassFile;
 const Class = require("./Class").Class;
@@ -132,6 +132,7 @@ class ClassLoader {
             if (field.is_static()) {
                 field.slot_id = slot_id;
                 slot_id++;
+                // 不需要判断long和double，每一个slot可设置为一个对象
             }
         }
 
@@ -156,15 +157,37 @@ class ClassLoader {
         let slot_id = field.slot_id;
 
         if (cp_index > 0) {
-            if (["Z", "B", "C", "S", "I", "J", "F", "D"].includes(field.descriptor)) {
-                let val = constant_pool.get_constant(cp_index);
-                static_vars.set_numeric(slot_id, val);
-            } else if (field.descriptor === "Ljava/lang/String") {
-                throw new Error("todo");
+            switch (field.descriptor) {
+                case "Z":
+                case "B":
+                case "C":
+                case "S":
+                case "I": {
+                    let val = constant_pool.get_constant(cp_index);
+                    static_vars.set_int(slot_id, val);
+                    break;
+                }
+                case "J": {
+                    let val = constant_pool.get_constant(cp_index);
+                    static_vars.set_long(slot_id, val);
+                    break;
+                }
+                case "F": {
+                    let val = constant_pool.get_constant(cp_index);
+                    static_vars.set_float(slot_id, val);
+                    break;
+                }
+                case "D": {
+                    let val = constant_pool.get_constant(cp_index);
+                    static_vars.set_double(slot_id, val);
+                    break;
+                }
+                case "Ljava/lang/String": {
+                    // todo
+                }
             }
         }
     }
-
 }
 
 exports.ClassLoader = ClassLoader;

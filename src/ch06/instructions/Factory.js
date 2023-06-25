@@ -5,7 +5,7 @@
  * @desc: 根据操作码创建具体的指令
  */
 
-let format = require('string-format');
+const format = require('string-format');
 const INVOKE_SPECIAL = require("./references/Invokespecial").INVOKE_SPECIAL;
 const INVOKE_VIRTURL = require("./references/Invokevirtual").INVOKE_VIRTURL;
 const PUT_FIELD = require("./references/Putfield").PUT_FIELD;

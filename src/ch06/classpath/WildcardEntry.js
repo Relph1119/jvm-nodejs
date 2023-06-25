@@ -5,10 +5,10 @@
  * @desc: 通配符实例类（继承CompositeEntry类）
  */
 
-let CompositeEntry = require("./CompositeEntry").CompositeEntry;
-let path = require('path');
-let ZipEntry = require("./ZipEntry").ZipEntry;
-let fs = require('fs');
+const CompositeEntry = require("./CompositeEntry").CompositeEntry;
+const path = require('path');
+const ZipEntry = require("./ZipEntry").ZipEntry;
+const fs = require('fs');
 
 class WildcardEntry extends CompositeEntry {
     constructor(path_parameter) {

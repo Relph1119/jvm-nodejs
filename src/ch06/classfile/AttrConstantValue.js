@@ -4,7 +4,7 @@
  * @time: 2019/10/16
  * @desc: 用于表示常量表达式的值
  */
-let AttributeInfo = require("./AttributeInfo").AttributeInfo;
+const AttributeInfo = require("./AttributeInfo").AttributeInfo;
 
 class ConstantValueAttribute extends AttributeInfo {
     constructor() {

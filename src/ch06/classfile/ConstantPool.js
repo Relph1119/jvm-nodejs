@@ -15,9 +15,9 @@ class ConstantPool {
     }
 
     read_constant_pool(class_reader) {
-        let ConstantInfo = require("./ConstantInfo").ConstantInfo;
-        let ConstantDoubleInfo = require("./CpNumeric").ConstantDoubleInfo;
-        let ConstantLongInfo = require("./CpNumeric").ConstantLongInfo;
+        const ConstantInfo = require("./ConstantInfo").ConstantInfo;
+        const ConstantDoubleInfo = require("./CpNumeric").ConstantDoubleInfo;
+        const ConstantLongInfo = require("./CpNumeric").ConstantLongInfo;
 
         let cp_count = class_reader.read_uint16().readUInt16BE(0);
         this.cp = Array(cp_count).fill(null).map(() => 0);

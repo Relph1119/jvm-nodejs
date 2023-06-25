@@ -86,7 +86,6 @@ class ClassMember {
         }
         return d === c;
     }
-
 }
 
 exports.ClassMember = ClassMember;

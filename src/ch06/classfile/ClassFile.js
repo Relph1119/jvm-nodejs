@@ -5,13 +5,13 @@
  * @desc: 解析class文件
  */
 
-let ClassReader = require("./ClassReader").ClassReader;
-let ConstantPool = require("./ConstantPool").ConstantPool;
-let MemberInfo = require("./MemberInfo").MemberInfo;
-let AttributeInfo = require("./AttributeInfo").AttributeInfo;
+const ClassReader = require("./ClassReader").ClassReader;
+const ConstantPool = require("./ConstantPool").ConstantPool;
+const MemberInfo = require("./MemberInfo").MemberInfo;
+const AttributeInfo = require("./AttributeInfo").AttributeInfo;
 
 class ClassFile {
-    constructor(class_data) {
+    constructor() {
         // 魔数
         this.magic = "";
         // 小版本号
