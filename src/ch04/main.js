@@ -6,9 +6,9 @@
  * @time: 2019/10/10
  * @desc: 主函数
  */
-let program = require('commander');
-let Cmd = require("./Cmd").Cmd;
-let Frame = require("./rtda/Frame").Frame;
+const program = require('commander');
+const Cmd = require("./Cmd").Cmd;
+const Frame = require("./rtda/Frame").Frame;
 
 function main(input_args) {
 
@@ -29,37 +29,37 @@ function main(input_args) {
 
 // 测试局部变量表
 function test_local_vars(local_vars) {
-    local_vars.set_numeric(0, 100);
-    local_vars.set_numeric(1, -100);
-    local_vars.set_numeric(2, 2997924580);
-    local_vars.set_numeric(3, -2997924580);
-    local_vars.set_numeric(4, 3.1415926);
-    local_vars.set_numeric(5, 2.71828182845);
-    local_vars.set_ref(6, null);
-    console.log(local_vars.get_numeric(0));
-    console.log(local_vars.get_numeric(1));
-    console.log(local_vars.get_numeric(2));
-    console.log(local_vars.get_numeric(3));
-    console.log(local_vars.get_numeric(4));
-    console.log(local_vars.get_numeric(5));
-    console.log(local_vars.get_ref(6));
+    local_vars.set_int(0, 100);
+    local_vars.set_int(1, -100);
+    local_vars.set_long(2, 2997924580);
+    local_vars.set_long(4, -2997924580);
+    local_vars.set_float(6, 3.1415926);
+    local_vars.set_double(7, 2.71828182845);
+    local_vars.set_ref(9, null);
+    console.log(local_vars.get_int(0));
+    console.log(local_vars.get_int(1));
+    console.log(local_vars.get_long(2));
+    console.log(local_vars.get_long(4));
+    console.log(local_vars.get_float(6));
+    console.log(local_vars.get_double(7));
+    console.log(local_vars.get_ref(9));
 }
 
 function test_operand_stack(ops) {
-    ops.push_numeric(100);
-    ops.push_numeric(-100);
-    ops.push_numeric(2997924580);
-    ops.push_numeric(-2997924580);
-    ops.push_numeric(3.1415926);
-    ops.push_numeric(2.71828182845);
+    ops.push_int(100);
+    ops.push_int(-100);
+    ops.push_long(2997924580);
+    ops.push_long(-2997924580);
+    ops.push_float(3.1415926);
+    ops.push_double(2.71828182845);
     ops.push_ref(null);
     console.log(ops.pop_ref());
-    console.log(ops.pop_numeric());
-    console.log(ops.pop_numeric());
-    console.log(ops.pop_numeric());
-    console.log(ops.pop_numeric());
-    console.log(ops.pop_numeric());
-    console.log(ops.pop_numeric());
+    console.log(ops.pop_double());
+    console.log(ops.pop_float());
+    console.log(ops.pop_long());
+    console.log(ops.pop_long());
+    console.log(ops.pop_int());
+    console.log(ops.pop_int());
 }
 
 // 启动JVM函数

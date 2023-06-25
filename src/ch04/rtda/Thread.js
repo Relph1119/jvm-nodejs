@@ -5,7 +5,7 @@
  * @desc: 线程
  */
 
-let Stack = require("./Stack").Stack;
+const Stack = require("./Stack").Stack;
 
 class Thread {
     constructor() {

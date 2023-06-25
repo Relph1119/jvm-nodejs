@@ -5,7 +5,7 @@
  * @desc:
  */
 
-let AttributeInfo = require("./AttributeInfo").AttributeInfo;
+const AttributeInfo = require("./AttributeInfo").AttributeInfo;
 
 class SourceFileAttribute extends AttributeInfo {
     constructor(constant_pool) {
