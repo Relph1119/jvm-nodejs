@@ -11,9 +11,9 @@ const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstructi
 class I2B extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let i = stack.pop_numeric();
+        let i = stack.pop_int();
         let b = parseInt(i);
-        stack.push_numeric(b);
+        stack.push_int(b);
     }
 }
 
@@ -21,9 +21,9 @@ class I2B extends NoOperandsInstruction {
 class I2C extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let i = stack.pop_numeric();
+        let i = stack.pop_int();
         let c = parseInt(i);
-        stack.push_numeric(c);
+        stack.push_int(c);
     }
 }
 
@@ -31,9 +31,9 @@ class I2C extends NoOperandsInstruction {
 class I2S extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let i = stack.pop_numeric();
+        let i = stack.pop_int();
         let s = parseInt(i);
-        stack.push_numeric(s);
+        stack.push_int(s);
     }
 }
 
@@ -41,7 +41,7 @@ class I2S extends NoOperandsInstruction {
 class I2D extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let i = stack.pop_numeric();
+        let i = stack.pop_int();
         let d = parseFloat(i);
         stack.push_double(d);
     }
@@ -51,7 +51,7 @@ class I2D extends NoOperandsInstruction {
 class I2F extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let i = stack.pop_numeric();
+        let i = stack.pop_int();
         let f = parseFloat(i);
         stack.push_float(f);
     }
@@ -61,9 +61,9 @@ class I2F extends NoOperandsInstruction {
 class I2L extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let i = stack.pop_numeric();
+        let i = stack.pop_int();
         let l = parseInt(i);
-        stack.push_numeric(l);
+        stack.push_long(l);
     }
 }
 

@@ -5,7 +5,7 @@
  * @desc: java.lang.Double类
  */
 
-const struct = require('python-struct');
+// const struct = require('python-struct');
 const register = require("../../Registry").register;
 
 /**
@@ -15,8 +15,8 @@ const register = require("../../Registry").register;
  */
 function doubleToRawLongBits(frame) {
     let value = frame.local_vars.get_double(0);
-    let bits = struct.unpack('>q', struct.pack('>d', value))[0];
-    frame.operand_stack.push_numeric(bits);
+    // let bits = struct.unpack('>q', struct.pack('>d', value))[0];
+    frame.operand_stack.push_long(value);
 }
 
 /**
@@ -25,12 +25,12 @@ function doubleToRawLongBits(frame) {
  * @param frame
  */
 function longBitsToDouble(frame) {
-    let bits = frame.local_vars.get_numeric(0);
+    let bits = frame.local_vars.get_long(0);
     if (bits.constructor === BigInt) {
         bits = Number(bits);
     }
-    let value = struct.unpack('>d', struct.pack('>q', bits))[0];
-    frame.operand_stack.push_double(value);
+    // let value = struct.unpack('>d', struct.pack('>q', bits))[0];
+    frame.operand_stack.push_double(bits);
 }
 
 

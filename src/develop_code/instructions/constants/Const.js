@@ -52,63 +52,63 @@ class FCONST_2 extends NoOperandsInstruction {
 // 把int类型-1推入操作数栈顶
 class ICONST_M1 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(-1);
+        frame.operand_stack.push_int(-1);
     }
 }
 
 // 把int类型0推入操作数栈顶
 class ICONST_0 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(0);
+        frame.operand_stack.push_int(0);
     }
 }
 
 // 把int类型1推入操作数栈顶
 class ICONST_1 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(1);
+        frame.operand_stack.push_int(1);
     }
 }
 
 // 把int类型2推入操作数栈顶
 class ICONST_2 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(2);
+        frame.operand_stack.push_int(2);
     }
 }
 
 // 把int类型3推入操作数栈顶
 class ICONST_3 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(3);
+        frame.operand_stack.push_int(3);
     }
 }
 
 // 把int类型4推入操作数栈顶
 class ICONST_4 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(4);
+        frame.operand_stack.push_int(4);
     }
 }
 
 // 把int类型5推入操作数栈顶
 class ICONST_5 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(5);
+        frame.operand_stack.push_int(5);
     }
 }
 
 // 把long类型0推入操作数栈顶
 class LCONST_0 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(0);
+        frame.operand_stack.push_long(0);
     }
 }
 
 // 把long类型1推入操作数栈顶
 class LCONST_1 extends NoOperandsInstruction {
     execute(frame) {
-        frame.operand_stack.push_numeric(1);
+        frame.operand_stack.push_long(1);
     }
 }
 

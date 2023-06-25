@@ -7,14 +7,6 @@
 
 const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstruction;
 
-function _mul(frame) {
-    let stack = frame.operand_stack;
-    let v2 = stack.pop_numeric();
-    let v1 = stack.pop_numeric();
-    let result = v1 * v2;
-    stack.push_numeric(result);
-}
-
 // double mul
 class DMUL extends NoOperandsInstruction {
     execute(frame) {
@@ -40,7 +32,11 @@ class FMUL extends NoOperandsInstruction {
 // int mul
 class IMUL extends NoOperandsInstruction {
     execute(frame) {
-        _mul(frame);
+        let stack = frame.operand_stack;
+        let v2 = stack.pop_int();
+        let v1 = stack.pop_int();
+        let result = v1 * v2;
+        stack.push_int(result);
     }
 }
 
@@ -48,10 +44,10 @@ class IMUL extends NoOperandsInstruction {
 class LMUL extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_long();
+        let v1 = stack.pop_long();
         let result = BigInt(v1) * BigInt(v2);
-        stack.push_numeric(result);
+        stack.push_long(result);
     }
 }
 

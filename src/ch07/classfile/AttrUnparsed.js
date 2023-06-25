@@ -5,7 +5,7 @@
  * @desc: 未解析的属性
  */
 
-let AttributeInfo = require("./AttributeInfo").AttributeInfo;
+const AttributeInfo = require("./AttributeInfo").AttributeInfo;
 
 class UnparsedAttribute extends AttributeInfo {
     constructor(attr_name, attr_len) {

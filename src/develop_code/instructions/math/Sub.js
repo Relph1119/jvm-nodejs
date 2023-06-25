@@ -33,10 +33,10 @@ class FSUB extends NoOperandsInstruction {
 class ISUB extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_int();
+        let v1 = stack.pop_int();
         let result = v1 - v2;
-        stack.push_numeric(result);
+        stack.push_int(result);
     }
 }
 
@@ -44,10 +44,10 @@ class ISUB extends NoOperandsInstruction {
 class LSUB extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_long();
+        let v1 = stack.pop_long();
         let result = BigInt(v1) - BigInt(v2);
-        stack.push_numeric(result);
+        stack.push_long(result);
     }
 }
 

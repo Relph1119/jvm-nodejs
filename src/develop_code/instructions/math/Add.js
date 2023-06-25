@@ -6,14 +6,6 @@
  */
 const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstruction;
 
-function _add(frame) {
-    let stack = frame.operand_stack;
-    let v1 = stack.pop_numeric();
-    let v2 = stack.pop_numeric();
-    let result = v1 + v2;
-    stack.push_numeric(result);
-}
-
 // double add
 class DADD extends NoOperandsInstruction {
     execute(frame) {
@@ -39,7 +31,11 @@ class FADD extends NoOperandsInstruction {
 // int add
 class IADD extends NoOperandsInstruction {
     execute(frame) {
-        _add(frame);
+        let stack = frame.operand_stack;
+        let v1 = stack.pop_int();
+        let v2 = stack.pop_int();
+        let result = v1 + v2;
+        stack.push_int(result);
     }
 }
 
@@ -47,10 +43,10 @@ class IADD extends NoOperandsInstruction {
 class LADD extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v1 = stack.pop_numeric();
-        let v2 = stack.pop_numeric();
-        let result = BigInt(v1) + BigInt(v2);
-        stack.push_numeric(result);
+        let v1 = stack.pop_long();
+        let v2 = stack.pop_long();
+        let result = v1 + v2;
+        stack.push_long(result);
     }
 }
 

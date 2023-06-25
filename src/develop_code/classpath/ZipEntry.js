@@ -5,7 +5,7 @@
  * @desc: Zip或JAR文件形式的类路径（继承Entry类）
  */
 
-let Entry = require("./entry").Entry;
+const Entry = require("./entry").Entry;
 
 class ZipEntry extends Entry {
     constructor(path_parameter) {
@@ -16,14 +16,14 @@ class ZipEntry extends Entry {
     // Zip或JAR文件形式的类路径（继承Entry类）
     read_class(class_name) {
         let error, data = null;
-        let AdmZip = require('adm-zip');
+        const AdmZip = require('adm-zip');
         let zip = new AdmZip(this.absPath, null);
         let zipEntries = zip.getEntries();
         for (const zipEntry of zipEntries) {
             if (zipEntry.isDirectory === false) {
                 if (zipEntry.entryName.toString() === class_name) {
                     try {
-                        data = zip.readFile(zipEntry);
+                        data = zip.readFile(zipEntry, null);
                         break;
                     } catch (err) {
                         error = err;
@@ -33,7 +33,7 @@ class ZipEntry extends Entry {
             }
         }
         if (data === null) {
-            let format = require('string-format');
+            const format = require('string-format');
             format.extend(String.prototype);
             error = 'class not found:{0}'.format(class_name);
             return {error: error, entry: null, data: null};

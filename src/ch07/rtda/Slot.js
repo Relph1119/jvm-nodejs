@@ -5,7 +5,7 @@
  * @desc: Slot类，可以容纳一个int值和一个引用值
  */
 
-let format = require('string-format');
+const format = require('string-format');
 format.extend(String.prototype);
 
 class Slot {

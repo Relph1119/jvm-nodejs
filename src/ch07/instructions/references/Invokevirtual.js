@@ -6,7 +6,7 @@
  */
 
 const Index16Instruction = require("../base/Instruction").Index16Instruction;
-let format = require('string-format');
+const format = require('string-format');
 const MethodLookup = require("../../rtda/heap/MethodLookup");
 const MethodInvokeLogic = require("../base/MethodInvokeLogic");
 format.extend(String.prototype);

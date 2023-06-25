@@ -21,7 +21,7 @@ function get_class(frame) {
 function hash_code(frame) {
     let this_ref = frame.local_vars.get_this();
     let hash_value = fnv.hash(this_ref.toString(), 32).dec();
-    frame.operand_stack.push_numeric(hash_value);
+    frame.operand_stack.push_int(hash_value);
 }
 
 function clone(frame) {

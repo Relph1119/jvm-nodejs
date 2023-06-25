@@ -7,12 +7,6 @@
 
 const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstruction;
 
-function _neg(frame) {
-    let stack = frame.operand_stack;
-    let val = stack.pop_numeric();
-    stack.push_numeric(-val);
-}
-
 // double negate
 class DNEG extends NoOperandsInstruction {
     execute(frame) {
@@ -34,14 +28,18 @@ class FNEG extends NoOperandsInstruction {
 // int negate
 class INEG extends NoOperandsInstruction {
     execute(frame) {
-        _neg(frame);
+        let stack = frame.operand_stack;
+        let val = stack.pop_int();
+        stack.push_int(-val);
     }
 }
 
 // long negate
 class LNEG extends NoOperandsInstruction {
     execute(frame) {
-        _neg(frame);
+        let stack = frame.operand_stack;
+        let val = stack.pop_long();
+        stack.push_long(-val);
     }
 }
 

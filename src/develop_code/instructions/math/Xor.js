@@ -11,10 +11,10 @@ const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstructi
 class IXOR extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_int();
+        let v1 = stack.pop_int();
         let result = v1 ^ v2;
-        stack.push_numeric(result);
+        stack.push_int(result);
     }
 }
 
@@ -22,10 +22,10 @@ class IXOR extends NoOperandsInstruction {
 class LXOR extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_long();
+        let v1 = stack.pop_long();
         let result = BigInt(v1) ^ BigInt(v2);
-        stack.push_numeric(result);
+        stack.push_long(result);
     }
 }
 

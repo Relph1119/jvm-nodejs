@@ -5,10 +5,14 @@
  * @desc: 局部变量表，用于python的列表能存储任何数据类型，所以将基本数据类型和引用类型都用一个Slot表示。
  */
 
-let format = require('string-format');
+const format = require('string-format');
 format.extend(String.prototype);
-let Slot = require("./Slot").Slot;
-const struct = require('python-struct');
+const Slot = require("./Slot").Slot;
+const Int = require("./Numeric").Int
+const Long = require("./Numeric").Long
+const Float = require("./Numeric").Float
+const Double = require("./Numeric").Double
+
 
 class LocalVars extends Array {
     constructor(max_locals) {
@@ -18,32 +22,36 @@ class LocalVars extends Array {
         }
     }
 
-    set_numeric(index, val) {
-        this[index].num = val;
+    set_int(index, val) {
+        this[index].num = new Int(val);
     }
 
-    get_numeric(index) {
-        return this[index].num;
+    get_int(index, val) {
+        return this[index].num.value()
     }
 
-    get_double(index) {
-        let val = this.get_numeric(index);
-        return struct.unpack('>d', struct.pack('>q', val))[0];
+    set_long(index, val) {
+        this[index].num = new Long(val);
     }
 
-    set_double(index, val) {
-        val = struct.unpack('>q', struct.pack('>d', val))[0];
-        this.set_numeric(index, val)
-    }
-
-    get_float(index) {
-        let val = this.get_numeric(index);
-        return struct.unpack('>f', struct.pack('>l', val))[0];
+    get_long(index, val) {
+        return this[index].num.value()
     }
 
     set_float(index, val) {
-        val = struct.unpack('>l', struct.pack('>f', val))[0];
-        this.set_numeric(index, val);
+        this[index].num = new Float(val);
+    }
+
+    get_float(index, val) {
+        return this[index].num.value()
+    }
+
+    set_double(index, val) {
+        this[index].num = new Double(val);
+    }
+
+    get_double(index, val) {
+        return this[index].num.value()
     }
 
     set_ref(index, ref) {
@@ -67,4 +75,7 @@ class LocalVars extends Array {
     }
 }
 
+
+
 exports.LocalVars = LocalVars;
+

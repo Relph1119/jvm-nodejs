@@ -5,7 +5,7 @@
  * @desc: 在定位到需要调用的方法之后，Java虚拟机要给这个方法创建一个新的帧并把它推入Java虚拟机栈顶，然后传递参数。
  */
 
-let format = require('string-format');
+const format = require('string-format');
 format.extend(String.prototype);
 
 function invoke_method(invoker_frame, method) {

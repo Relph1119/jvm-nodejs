@@ -26,7 +26,7 @@ class LOOKUP_SWITCH extends NoOperandsInstruction {
 
     execute(frame) {
         // 先从操作数栈中弹出一个int变量
-        let key = frame.operand_stack.pop_numeric();
+        let key = frame.operand_stack.pop_int();
         // 然后用它查找match_offsets，看能否找到匹配的key
         for (let i = 0; i < this.n_pairs * 2; i += 2) {
             if (this.match_offsets[i] === key) {

@@ -6,7 +6,7 @@
  */
 
 const Thread = require("./rtda/Thread").Thread;
-let format = require('string-format');
+const format = require('string-format');
 format.extend(String.prototype);
 const BytecodeReader = require("./instructions/base/BytecodeReader").BytecodeReader;
 

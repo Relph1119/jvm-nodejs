@@ -4,7 +4,7 @@
  * @time: 2019/10/16
  * @desc: 表示字段或方法的名称和描述符
  */
-let ConstantInfo = require("./ConstantInfo").ConstantInfo;
+const ConstantInfo = require("./ConstantInfo").ConstantInfo;
 
 class ConstantNameAndTypeInfo extends ConstantInfo {
     constructor() {

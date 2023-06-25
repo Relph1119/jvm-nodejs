@@ -12,10 +12,10 @@ function arraycopy(frame) {
     let local_vars = frame.local_vars;
     // 从局部变量表中获取5个参数
     let src = local_vars.get_ref(0);
-    let src_pos = local_vars.get_numeric(1);
+    let src_pos = local_vars.get_int(1);
     let dest = local_vars.get_ref(2);
-    let dest_pos = local_vars.get_numeric(3);
-    let length = local_vars.get_numeric(4);
+    let dest_pos = local_vars.get_int(3);
+    let length = local_vars.get_int(4);
 
     // 源数据和目标数组都不能为None，否则按照System类的Javadoc应抛出NullPointerException异常
     if (src == null && dest == null) {

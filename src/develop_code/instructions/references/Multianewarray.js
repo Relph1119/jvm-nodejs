@@ -19,7 +19,7 @@ const Instruction = require("../base/Instruction").Instruction;
 function pop_and_check_counts(stack, dimensions) {
     let counts = Array(dimensions).fill(0);
     for (let i = dimensions - 1; i >= 0; i--) {
-        counts[i] = stack.pop_numeric();
+        counts[i] = stack.pop_int();
         if (counts[i] < 0) {
             throw new Error("java.lang.NegativeArraySizeException");
         }

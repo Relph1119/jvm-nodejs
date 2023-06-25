@@ -5,9 +5,9 @@
  * @desc: 操作数栈，用于python的列表能存储任何数据类型，所以将基本数据类型和引用类型都用一个Slot表示。
  */
 
-let format = require('string-format');
+const format = require('string-format');
 format.extend(String.prototype);
-let Slot = require("./Slot").Slot;
+const Slot = require("./Slot").Slot;
 
 class OperandStack {
     constructor(max_stack) {

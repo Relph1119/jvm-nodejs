@@ -23,7 +23,7 @@ class F2I extends NoOperandsInstruction {
         let stack = frame.operand_stack;
         let f = stack.pop_float();
         let i = parseInt(f);
-        stack.push_numeric(i)
+        stack.push_int(i)
     }
 }
 
@@ -33,7 +33,7 @@ class F2L extends NoOperandsInstruction {
         let stack = frame.operand_stack;
         let f = stack.pop_float();
         let l = parseInt(f);
-        stack.push_numeric(l)
+        stack.push_long(l)
     }
 }
 

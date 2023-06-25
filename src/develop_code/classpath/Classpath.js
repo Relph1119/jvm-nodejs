@@ -5,10 +5,10 @@
  * @desc: 类路径执行类
  */
 
-let path = require('path');
-let fs = require('fs');
-let Entry = require("./entry").Entry;
-let WildcardEntry = require("./WildcardEntry").WildcardEntry;
+const path = require('path');
+const fs = require('fs');
+const Entry = require("./entry").Entry;
+const WildcardEntry = require("./WildcardEntry").WildcardEntry;
 
 class Classpath {
     constructor() {

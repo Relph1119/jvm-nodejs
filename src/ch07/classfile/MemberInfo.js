@@ -29,7 +29,7 @@ class MemberInfo {
 
     // 读取字段或方法数据
     static read_member(class_reader, constant_pool) {
-        let AttributeInfo = require("./AttributeInfo").AttributeInfo;
+        const AttributeInfo = require("./AttributeInfo").AttributeInfo;
 
         // 初始化MemberInfo对象
         let member = new MemberInfo(constant_pool);

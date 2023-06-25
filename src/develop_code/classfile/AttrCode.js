@@ -5,7 +5,7 @@
  * @desc: Code属性存放字节码等方法相关信息
  */
 
-let AttributeInfo = require("./AttributeInfo").AttributeInfo;
+const AttributeInfo = require("./AttributeInfo").AttributeInfo;
 
 class CodeAttribute extends AttributeInfo {
     constructor(constant_pool) {

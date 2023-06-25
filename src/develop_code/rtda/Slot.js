@@ -5,14 +5,17 @@
  * @desc: Slot类，可以容纳一个int值和一个引用值
  */
 
-let format = require('string-format');
+const format = require('string-format');
 format.extend(String.prototype);
-const struct = require('python-struct');
+const Int = require("./Numeric").Int
+const Long = require("./Numeric").Long
+const Float = require("./Numeric").Float
+const Double = require("./Numeric").Double
 
 class Slot {
     constructor() {
         // 存放整数
-        this.num = 0;
+        this.num = new Int(0);
         /// 存放引用
         this.ref = null;
     }
@@ -30,32 +33,36 @@ class Slots extends Array {
         }
     }
 
-    set_numeric(index, val) {
-        this[index].num = val;
+    set_int(index, val) {
+        this[index].num = new Int(val);
     }
 
-    get_numeric(index) {
-        return this[index].num;
+    get_int(index, val) {
+        return this[index].num.value()
     }
 
-    set_double(index, val) {
-        val = struct.unpack('>q', struct.pack('>d', val))[0];
-        this.set_numeric(index, val)
+    set_long(index, val) {
+        this[index].num = new Long(val);
     }
 
-    get_double(index) {
-        let val = this.get_numeric(index);
-        return struct.unpack('>d', struct.pack('>q', val))[0]
+    get_long(index, val) {
+        return this[index].num.value()
     }
 
     set_float(index, val) {
-        val = struct.unpack('>l', struct.pack('>f', val))[0];
-        this.set_numeric(index, val);
+        this[index].num = new Float(val);
     }
 
-    get_float(index) {
-        let val = this.get_numeric(index);
-        return struct.unpack('>f', struct.pack('>l', val))[0];
+    get_float(index, val) {
+        return this[index].num.value()
+    }
+
+    set_double(index, val) {
+        this[index].num = new Double(val);
+    }
+
+    get_double(index, val) {
+        return this[index].num.value()
     }
 
     set_ref(index, ref) {
@@ -67,7 +74,5 @@ class Slots extends Array {
     }
 }
 
-module.exports = {
-    Slot: Slot,
-    Slots: Slots
-};
+exports.Slot = Slot;
+exports.Slots = Slots;

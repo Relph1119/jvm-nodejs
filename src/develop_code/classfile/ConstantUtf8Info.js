@@ -4,7 +4,7 @@
  * @time: 2019/10/16
  * @desc: MUTF-9编码的字符串类
  */
-let ConstantInfo = require("./ConstantInfo").ConstantInfo;
+const ConstantInfo = require("./ConstantInfo").ConstantInfo;
 
 class ConstantUtf8Info extends ConstantInfo {
     constructor() {
@@ -25,7 +25,7 @@ class ConstantUtf8Info extends ConstantInfo {
 
 
     static decode_mutf8(bytes) {
-        let StringDecoder = require('string_decoder').StringDecoder;
+        const StringDecoder = require('string_decoder').StringDecoder;
         let decoder = new StringDecoder('utf8');
         return decoder.write(bytes);
     }

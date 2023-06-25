@@ -6,7 +6,7 @@
  */
 
 const ConstantPool = require("./ConstantPool").ConstantPool;
-let ConstantInfo = require("./ConstantInfo").ConstantInfo;
+const ConstantInfo = require("./ConstantInfo").ConstantInfo;
 
 class ConstantClassInfo extends ConstantInfo {
     constructor(constant_pool) {

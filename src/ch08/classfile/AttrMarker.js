@@ -5,7 +5,7 @@
  * @desc: 起标记作用的属性
  */
 
-let AttributeInfo = require("./AttributeInfo").AttributeInfo;
+const AttributeInfo = require("./AttributeInfo").AttributeInfo;
 
 class MarkerAttribute extends AttributeInfo {
     read_info(class_reader) {

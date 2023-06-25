@@ -12,15 +12,15 @@ function _dcmp(frame, gFlag) {
     let v2 = stack.pop_double();
     let v1 = stack.pop_double();
     if (v1 > v2) {
-        stack.push_numeric(1);
+        stack.push_int(1);
     } else if (v1 === v2) {
-        stack.push_numeric(0);
+        stack.push_int(0);
     } else if (v1 < v2) {
-        stack.push_numeric(-1);
+        stack.push_int(-1);
     } else if (gFlag) {
-        stack.push_numeric(1);
+        stack.push_int(1);
     } else {
-        stack.push_numeric(-1);
+        stack.push_int(-1);
     }
 }
 

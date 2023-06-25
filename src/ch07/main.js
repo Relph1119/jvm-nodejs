@@ -6,13 +6,13 @@
  * @time: 2019/10/10
  * @desc: 主函数
  */
-let program = require('commander');
+const program = require('commander');
 const format = require('string-format');
 format.extend(String.prototype);
 const Cmd = require("./Cmd").Cmd;
 const path = require('path');
 const ClassLoader = require("./rtda/heap/ClassLoader").ClassLoader;
-let Classpath = require("./classpath/Classpath").Classpath;
+const Classpath = require("./classpath/Classpath").Classpath;
 const Interpreter = require("./Interpreter").Interpreter;
 
 

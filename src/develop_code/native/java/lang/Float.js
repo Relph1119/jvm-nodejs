@@ -5,7 +5,7 @@
  * @desc: java.lang.Float类
  */
 
-const struct = require('python-struct');
+// const struct = require('python-struct');
 const register = require("../../Registry").register;
 
 /**
@@ -14,9 +14,9 @@ const register = require("../../Registry").register;
  * @param frame
  */
 function floatToRawIntBits(frame) {
-    let value = frame.local_vars.get_numeric(0);
-    let bits = struct.unpack('>l', struct.pack('>f', value))[0];
-    frame.operand_stack.push_numeric(parseInt(bits));
+    let value = frame.local_vars.get_float(0);
+    // let bits = struct.unpack('>l', struct.pack('>f', value))[0];
+    frame.operand_stack.push_int(parseInt(value));
 }
 
 /**
@@ -25,9 +25,9 @@ function floatToRawIntBits(frame) {
  * @param frame
  */
 function intBitsToFloat(frame) {
-    let bits = frame.local_vars.get_numeric(0);
-    let value = struct.unpack('>f', struct.pack('>l', parseInt(bits)))[0];
-    frame.operand_stack.push_float(value);
+    let bits = frame.local_vars.get_int(0);
+    // let value = struct.unpack('>f', struct.pack('>l', parseInt(bits)))[0];
+    frame.operand_stack.push_float(bits);
 }
 
 jlFloat = "java/lang/Float";

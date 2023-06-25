@@ -178,6 +178,7 @@ class Class {
                     return true;
                 }
             }
+            c = c.super_class;
         }
         return false;
     }

@@ -6,7 +6,7 @@
  */
 
 const MethodDescriptor = require("./MethodDescriptor").MethodDescriptor;
-let format = require('string-format');
+const format = require('string-format');
 format.extend(String.prototype);
 
 class MethodDescriptorParser {

@@ -13,7 +13,7 @@ class Slot {
     constructor() {
         // 存放整数
         this.num = new Int(0);
-        /// 存放引用
+        // 存放引用
         this.ref = null;
     }
 

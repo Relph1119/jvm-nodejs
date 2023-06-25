@@ -9,14 +9,14 @@ const find_native_method = require("../../native/Registry").find_native_method;
 const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstruction;
 
 let LOAD_MODULES = [
-    '../../native/Registry.class',
-    '../../native/java/lang/Class.class',
-    '../../native/java/lang/Double.class',
-    '../../native/java/lang/Float.class',
-    '../../native/java/lang/Object.class',
-    '../../native/java/lang/String.class',
-    '../../native/java/lang/System.class',
-    '../../native/sun/misc/VM.class'
+    '../../native/Registry',
+    '../../native/java/lang/Class',
+    '../../native/java/lang/Double',
+    '../../native/java/lang/Float',
+    '../../native/java/lang/Object',
+    '../../native/java/lang/String',
+    '../../native/java/lang/System',
+    '../../native/sun/misc/VM'
 ];
 
 class INVOKE_NATIVE extends NoOperandsInstruction {
@@ -41,7 +41,7 @@ class INVOKE_NATIVE extends NoOperandsInstruction {
         // 遍历所有的本地方法所在的模块
         for (let load_module of LOAD_MODULES) {
             // 加载该模块，判断里面是否有native_method方法
-            let md = require(load_module);
+            const md = require(load_module);
             if (Object.getOwnPropertyDescriptors(md).hasOwnProperty(native_method.name)) {
                 let func = Object.getOwnPropertyDescriptors(md)[native_method.name].value;
                 func.call(func, frame);

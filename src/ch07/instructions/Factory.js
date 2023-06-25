@@ -5,7 +5,7 @@
  * @desc: 根据操作码创建具体的指令
  */
 
-let format = require('string-format');
+const format = require('string-format');
 const INVOKE_INTERFACE = require("./references/Invokeinterface").INVOKE_INTERFACE;
 const INVOKE_STATIC = require("./references/Invokestatic").INVOKE_STATIC;
 const ARETURN = require("./control/Return").ARETURN;

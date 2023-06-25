@@ -5,9 +5,9 @@
  * @desc: 目录形式的类路径（继承Entry类）
  */
 
-let Entry = require("./entry").Entry;
-let path = require('path');
-let fs = require('fs');
+const Entry = require("./entry").Entry;
+const path = require('path');
+const fs = require('fs');
 
 class DirEntry extends Entry {
     constructor(path_parameter) {

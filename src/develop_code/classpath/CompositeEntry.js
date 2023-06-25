@@ -5,8 +5,8 @@
  * @desc: 由更小的Entry组成（继承Entry类）
  */
 
-let Entry = require("./entry").Entry;
-let format = require('string-format');
+const Entry = require("./entry").Entry;
+const format = require('string-format');
 format.extend(String.prototype);
 
 class CompositeEntry extends Entry {

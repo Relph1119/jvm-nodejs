@@ -26,7 +26,7 @@ class GET_FIELD extends Index16Instruction {
 
         let descriptor = field.descriptor;
         let slot_id = field.slot_id;
-        let slots = ref.fields();
+        let slots = ref.fields;
 
         if (["Z", "B", "C", "S", "I", "F", "J", "D"].includes(descriptor[0])) {
             stack.push_numeric(slots.get_numeric(slot_id));

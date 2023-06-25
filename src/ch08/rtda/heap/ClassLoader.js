@@ -5,7 +5,7 @@
  * @desc: 类加载器
  */
 
-let format = require('string-format');
+const format = require('string-format');
 const Slots = require("../Slot").Slots;
 const ClassFile = require("../../classfile/ClassFile").ClassFile;
 const Class = require("./Class").Class;

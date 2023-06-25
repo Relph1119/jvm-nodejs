@@ -6,7 +6,7 @@
  符号引用包括类符号引用、字段符号引用、方法符号引用和接口符号引用。
  */
 
-let format = require('string-format');
+const format = require('string-format');
 const InterfaceMethodRef = require("./CpInterfaceMethodRef").InterfaceMethodRef;
 const MethodRef = require("./CpMethodRef").MethodRef;
 const FieldRef = require("./CpFieldRef").FieldRef;

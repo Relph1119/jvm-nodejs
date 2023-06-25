@@ -5,7 +5,7 @@
  * @desc: 根据操作码创建具体的指令
  */
 
-let format = require('string-format');
+const format = require('string-format');
 const MULTI_ANEW_ARRAY = require("./references/Multianewarray").MULTI_ANEW_ARRAY;
 const ARRAY_LENGTH = require("./references/ArrayLength").ARRAY_LENGTH;
 const ANEW_ARRAY = require("./references/Anewarray").ANEW_ARRAY;

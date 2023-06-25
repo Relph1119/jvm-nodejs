@@ -11,11 +11,11 @@ const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstructi
 class ISHL extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_int();
+        let v1 = stack.pop_int();
         let s = v2 & 0x1f;
         let result = v1 << s;
-        stack.push_numeric(result);
+        stack.push_int(result);
     }
 }
 
@@ -23,11 +23,11 @@ class ISHL extends NoOperandsInstruction {
 class ISHR extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_int();
+        let v1 = stack.pop_int();
         let s = v2 & 0x1f;
         let result = v1 >> s;
-        stack.push_numeric(result);
+        stack.push_int(result);
     }
 }
 
@@ -35,11 +35,11 @@ class ISHR extends NoOperandsInstruction {
 class IUSHR extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_int();
+        let v1 = stack.pop_int();
         let s = v2 & 0x1f;
         let result = v1 >> s;
-        stack.push_numeric(result)
+        stack.push_int(result)
     }
 }
 
@@ -47,11 +47,11 @@ class IUSHR extends NoOperandsInstruction {
 class LSHL extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_long();
+        let v1 = stack.pop_long();
         let s = BigInt(v2) & BigInt(0x3f);
         let result = BigInt(v1) << s;
-        stack.push_numeric(result);
+        stack.push_long(result);
     }
 }
 
@@ -59,11 +59,11 @@ class LSHL extends NoOperandsInstruction {
 class LSHR extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_long();
+        let v1 = stack.pop_long();
         let s = BigInt(v2) & BigInt(0x3f);
         let result = BigInt(v1) >> s;
-        stack.push_numeric(result);
+        stack.push_long(result);
     }
 }
 
@@ -71,11 +71,11 @@ class LSHR extends NoOperandsInstruction {
 class LUSHR extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_long();
+        let v1 = stack.pop_long();
         let s = BigInt(v2) & BigInt(0x3f);
         let result = BigInt(v1) >> s;
-        stack.push_numeric(result)
+        stack.push_long(result)
     }
 }
 

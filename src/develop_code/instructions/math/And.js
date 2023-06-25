@@ -7,28 +7,24 @@
 
 const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstruction;
 
-function _and(frame) {
-    let stack = frame.operand_stack;
-    let v2 = stack.pop_numeric();
-    let v1 = stack.pop_numeric();
-    let result = v1 & v2;
-    stack.push_numeric(result);
-}
-
 // int and
 class IAND extends NoOperandsInstruction {
     execute(frame) {
-        _and(frame);
+        let stack = frame.operand_stack;
+        let v2 = stack.pop_int();
+        let v1 = stack.pop_int();
+        let result = v1 & v2;
+        stack.push_int(result);
     }
 }
 
 class LAND extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_long();
+        let v1 = stack.pop_long();
         let result = BigInt(v1) & BigInt(v2);
-        stack.push_numeric(result);
+        stack.push_long(result);
     }
 }
 

@@ -31,34 +31,60 @@ class PUT_FIELD extends Index16Instruction {
         let slot_id = field.slot_id;
         let stack = frame.operand_stack;
 
-        if (["Z", "B", "C", "S", "I", "J"].includes(descriptor[0])) {
-            let val = stack.pop_numeric();
-            let ref = stack.pop_ref();
-            if (ref === null) {
-                throw new Error("java.lang.NollPointerException")
+        switch (descriptor[0]) {
+            case "Z":
+            case "B":
+            case "C":
+            case "S":
+            case "I": {
+                let val = stack.pop_int();
+                let ref = stack.pop_ref();
+                if (ref === null) {
+                    throw new Error("java.lang.NollPointerException")
+                }
+                ref.fields.set_int(slot_id, val);
+                break;
             }
-            ref.fields().set_numeric(slot_id, val);
-        } else if (descriptor[0] === 'D') {
-            let val = stack.pop_double();
-            let ref = stack.pop_ref();
-            if (ref == null) {
-                throw new Error("java.lang.NollPointerException");
+            case "J": {
+                let val = stack.pop_long();
+                let ref = stack.pop_ref();
+                if (ref === null) {
+                    throw new Error("java.lang.NollPointerException")
+                }
+                ref.fields.set_long(slot_id, val);
+                break;
             }
-            ref.fields().set_double(slot_id, val);
-        } else if (descriptor[0] === 'F') {
-            let val = stack.pop_float();
-            let ref = stack.pop_ref();
-            if (ref == null) {
-                throw new Error("java.lang.NollPointerException")
+            case "D": {
+                let val = stack.pop_double();
+                let ref = stack.pop_ref();
+                if (ref == null) {
+                    throw new Error("java.lang.NollPointerException");
+                }
+                ref.fields().set_double(slot_id, val);
+                break;
             }
-            ref.fields().set_float(slot_id, val)
-        } else if (["L", "["].includes(descriptor[0])) {
-            let val = stack.pop_ref();
-            let ref = stack.pop_ref();
-            if (ref === null) {
-                throw new Error("java.lang.NollPointerException")
+            case "F": {
+                let val = stack.pop_float();
+                let ref = stack.pop_ref();
+                if (ref == null) {
+                    throw new Error("java.lang.NollPointerException")
+                }
+                ref.fields().set_float(slot_id, val);
+                break;
             }
-            ref.fields().set_ref(slot_id, val);
+            case "L":
+            case "[": {
+                let val = stack.pop_ref();
+                let ref = stack.pop_ref();
+                if (ref === null) {
+                    throw new Error("java.lang.NollPointerException")
+                }
+                ref.fields().set_ref(slot_id, val);
+                break;
+            }
+            default: {
+                // todo
+            }
         }
     }
 }

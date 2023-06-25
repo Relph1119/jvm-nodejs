@@ -22,11 +22,11 @@ function _ldc(frame, index) {
             if (c % 1 !== 0) {
                 stack.push_float(c);
             } else {
-                stack.push_numeric(c);
+                stack.push_long(c);
             }
             break;
         case BigInt:
-            stack.push_numeric(c);
+            stack.push_int(c);
             break;
         case String:
             // 从运行时常量池中加载字符串常量，先通过常量拿到python字符串，然后把它转成Java字符串实例
@@ -65,7 +65,7 @@ class LDC2_W extends Index16Instruction {
             if (c % 1 !== 0) {
                 stack.push_double(c);
             } else {
-                stack.push_numeric(c);
+                stack.push_long(c);
             }
         } else {
             throw new Error("java.lang.ClassFormatError")
