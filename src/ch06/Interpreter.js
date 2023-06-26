@@ -21,6 +21,7 @@ class Interpreter {
         try {
             Interpreter.loop(thread, method.code);
         } catch (e) {
+            // 用于调试，可以注释掉
             // console.log("LocalVars: {0}".format(frame.local_vars.toString()));
             // console.log("OperandStack: {0}".format(frame.operand_stack.toString()));
             // console.log(e);

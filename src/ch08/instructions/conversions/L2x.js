@@ -12,8 +12,8 @@ class L2D extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
         let l = stack.pop_numeric();
-        let f = parseFloat(l);
-        stack.push_numeric(f)
+        let d = parseFloat(l);
+        stack.push_numeric(d)
     }
 }
 
