@@ -51,17 +51,34 @@ class INVOKE_VIRTURL extends Index16Instruction {
     }
 
     static _println(stack, descriptor) {
-        if (descriptor === "(Z)V") {
-            console.log("{0}".format(stack.pop_numeric() !== 0));
-        } else if (["(C)V", "(B)V", "(S)V", "(I)V", "(J)V", "(F)V", "(D)V"].includes(descriptor)) {
-            console.log("{0}".format(stack.pop_numeric()));
-        } else if (descriptor === "(Ljava/lang/String;)V") {
-            let j_str = stack.pop_ref();
-            let nodejs_str = nodejs_string(j_str);
-            console.log("{0}".format(nodejs_str));
-        } else {
-            throw new Error("println: " + descriptor);
+        switch (descriptor) {
+            case "(Z)V":
+                console.log("{0}".format(stack.pop_int() !== 0));
+                break;
+            case "(C)V":
+            case "(B)V":
+            case "(S)V":
+            case "(I)V":
+                console.log("{0}".format(stack.pop_int()));
+                break;
+            case "(F)V":
+                console.log("{0}".format(stack.pop_float()));
+                break;
+            case "(J)V":
+                console.log("{0}".format(stack.pop_long()));
+                break;
+            case "(D)V":
+                console.log("{0}".format(stack.pop_double()));
+                break;
+            case "(Ljava/lang/String;)V":
+                let j_str = stack.pop_ref();
+                let nodejs_str = nodejs_string(j_str);
+                console.log("{0}".format(nodejs_str));
+                break;
+            default:
+                throw new Error("println: " + descriptor);
         }
+
         stack.pop_ref();
     }
 }

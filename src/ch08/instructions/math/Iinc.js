@@ -23,11 +23,10 @@ class IINC extends NoOperandsInstruction {
     // 从局部变量表中读取变量，给它加上常量值，再把结果写回局部变量表
     execute(frame) {
         let local_vars = frame.local_vars;
-        let val = local_vars.get_numeric(this.index);
+        let val = local_vars.get_int(this.index);
         val += this.const;
-        local_vars.set_numeric(this.index, val);
+        local_vars.set_int(this.index, val);
     }
-
 }
 
 exports.IINC = IINC;

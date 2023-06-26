@@ -47,7 +47,9 @@ class ClassLoader {
         // 数组类的超类是java.lang.Object
         clazz.super_class = this.load_class("java/lang/Object");
         // 并实现了java.lang.Cloneable和java.io.Serializable接口
-        clazz.interfaces = [this.load_class("java/lang/Cloneable"), this.load_class("java/io/Serializable")];
+        clazz.interfaces = [
+            this.load_class("java/lang/Cloneable"),
+            this.load_class("java/io/Serializable")];
         this.class_map.set(name, clazz);
         return clazz;
     }
@@ -181,17 +183,39 @@ class ClassLoader {
         let slot_id = field.slot_id;
 
         if (cp_index > 0) {
-            if (["Z", "B", "C", "S", "I", "J", "F", "D"].includes(field.descriptor)) {
-                let val = constant_pool.get_constant(cp_index);
-                static_vars.set_numeric(slot_id, val);
-            } else if (field.descriptor === "Ljava/lang/String") {
-                let nodejs_str = constant_pool.get_constant(cp_index);
-                let j_str = j_string(clazz.loader, nodejs_str);
-                static_vars.set_ref(slot_id, j_str);
+            switch (field.descriptor) {
+                case "Z":
+                case "B":
+                case "C":
+                case "S":
+                case "I": {
+                    let val = constant_pool.get_constant(cp_index);
+                    static_vars.set_int(slot_id, val);
+                    break;
+                }
+                case "J": {
+                    let val = constant_pool.get_constant(cp_index);
+                    static_vars.set_long(slot_id, val);
+                    break;
+                }
+                case "F": {
+                    let val = constant_pool.get_constant(cp_index);
+                    static_vars.set_float(slot_id, val);
+                    break;
+                }
+                case "D": {
+                    let val = constant_pool.get_constant(cp_index);
+                    static_vars.set_double(slot_id, val);
+                    break;
+                }
+                case "Ljava/lang/String": {
+                    let nodejs_str = constant_pool.get_constant(cp_index);
+                    let j_str = j_string(clazz.loader, nodejs_str);
+                    static_vars.set_ref(slot_id, j_str);
+                }
             }
         }
     }
-
 }
 
 exports.ClassLoader = ClassLoader;

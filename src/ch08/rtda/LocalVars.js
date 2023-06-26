@@ -8,6 +8,10 @@
 const format = require('string-format');
 format.extend(String.prototype);
 const Slot = require("./Slot").Slot;
+const Int = require('./Numeric').Int;
+const Long = require('./Numeric').Long;
+const Float = require('./Numeric').Float;
+const Double = require('./Numeric').Double;
 
 class LocalVars extends Array {
     constructor(max_locals) {
@@ -18,12 +22,36 @@ class LocalVars extends Array {
 
     }
 
-    set_numeric(index, val) {
-        this[index].num = val;
+    set_int(index, val) {
+        this[index].num = new Int(val);
     }
 
-    get_numeric(index) {
-        return this[index].num;
+    get_int(index, val) {
+        return this[index].num.value()
+    }
+
+    set_long(index, val) {
+        this[index].num = new Long(val);
+    }
+
+    get_long(index, val) {
+        return this[index].num.value()
+    }
+
+    set_float(index, val) {
+        this[index].num = new Float(val);
+    }
+
+    get_float(index, val) {
+        return this[index].num.value()
+    }
+
+    set_double(index, val) {
+        this[index].num = new Double(val);
+    }
+
+    get_double(index, val) {
+        return this[index].num.value()
     }
 
     set_ref(index, ref) {

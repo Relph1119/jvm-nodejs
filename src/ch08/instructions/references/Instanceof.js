@@ -17,7 +17,7 @@ class INSTANCE_OF extends Index16Instruction {
 
         // 如果是null，则把0推入操作数栈。
         if (ref === null) {
-            stack.push_numeric(0);
+            stack.push_int(0);
             return
         }
 
@@ -25,9 +25,9 @@ class INSTANCE_OF extends Index16Instruction {
         let class_ref = cp.get_constant(this.index);
         let clazz = class_ref.resolved_class();
         if (ref.is_instance_of(clazz)) {
-            stack.push_numeric(1);
+            stack.push_int(1);
         } else {
-            stack.push_numeric(0);
+            stack.push_int(0);
         }
     }
 }

@@ -19,7 +19,7 @@ const Instruction = require("../base/Instruction").Instruction;
 function pop_and_check_counts(stack, dimensions) {
     let counts = Array(dimensions).fill(0);
     for (let i = dimensions - 1; i >= 0; i--) {
-        counts[i] = stack.pop_numeric();
+        counts[i] = stack.pop_int();
         if (counts[i] < 0) {
             throw new Error("java.lang.NegativeArraySizeException");
         }
@@ -35,6 +35,7 @@ function new_multi_dimensional_array(counts, arr_class) {
     if (counts.length > 1) {
         let refs = arr.refs();
         for (let i = 0; i < refs.length; i++) {
+            // 进行对象深拷贝
             refs[i] = new_multi_dimensional_array(objectUtil.deepcopy(counts.slice(1)), arr_class.component_class());
         }
     }

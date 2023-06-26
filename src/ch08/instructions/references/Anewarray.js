@@ -16,7 +16,7 @@ class ANEW_ARRAY extends Index16Instruction {
         let component_class = class_ref.resolved_class();
 
         let stack = frame.operand_stack;
-        let count = stack.pop_numeric();
+        let count = stack.pop_int();
         if (count < 0) {
             throw new Error("java.lang.NegativeArraySizeException");
         }

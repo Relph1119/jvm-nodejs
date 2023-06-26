@@ -7,25 +7,25 @@
 
 const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstruction;
 
-function _xor(frame) {
-    let stack = frame.operand_stack;
-    let v2 = stack.pop_numeric();
-    let v1 = stack.pop_numeric();
-    let result = v1 ^ v2;
-    stack.push_numeric(result);
-}
-
 // int xor
 class IXOR extends NoOperandsInstruction {
     execute(frame) {
-        _xor(frame)
+        let stack = frame.operand_stack;
+        let v2 = stack.pop_int();
+        let v1 = stack.pop_int();
+        let result = v1 ^ v2;
+        stack.push_int(result);
     }
 }
 
 // long xor
 class LXOR extends NoOperandsInstruction {
     execute(frame) {
-        _xor(frame)
+        let stack = frame.operand_stack;
+        let v2 = stack.pop_long();
+        let v1 = stack.pop_long();
+        let result = v1 ^ v2;
+        stack.push_long(result);
     }
 }
 

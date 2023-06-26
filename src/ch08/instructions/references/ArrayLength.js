@@ -19,7 +19,7 @@ class ARRAY_LENGTH extends NoOperandsInstruction {
 
         // 否则获得数组长度，推入操作数栈
         let arr_len = arr_ref.array_length();
-        stack.push_numeric(arr_len);
+        stack.push_int(arr_len);
     }
 }
 

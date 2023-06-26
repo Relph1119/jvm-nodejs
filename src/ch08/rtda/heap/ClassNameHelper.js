@@ -54,7 +54,7 @@ function to_class_name(descriptor) {
 
     // 如果类型描述符以L开头，则肯定是类描述符，去掉开头的L好末尾的;即是类名。
     if (descriptor[0] === 'L') {
-        return descriptor.substr(1, descriptor.length - 1);
+        return descriptor.substring(1, descriptor.length - 1);
     }
 
     // 判断是否是基本类型描述符，如果是，返回基本类型名称

@@ -10,6 +10,10 @@
 const j_string = require("../../rtda/heap/StringPool").j_string;
 const Index16Instruction = require("../base/Instruction").Index16Instruction;
 const Index8Instruction = require("../base/Instruction").Index8Instruction;
+const Int = require('../../rtda/Numeric').Int;
+const Long = require('../../rtda/Numeric').Long;
+const Float = require('../../rtda/Numeric').Float;
+const Double = require('../../rtda/Numeric').Double;
 
 function _ldc(frame, index) {
     let stack = frame.operand_stack;
@@ -17,13 +21,11 @@ function _ldc(frame, index) {
     let c = clazz.constant_pool.get_constant(index);
 
     switch (c.constructor) {
-        case Number:
-            stack.push_numeric(c);
+        case Int:
+            stack.push_int(c.value());
             break;
-        case BigInt:
-            if (c <= Number.MAX_SAFE_INTEGER) {
-                stack.push_numeric(Number(c));
-            }
+        case Float:
+            stack.push_float(c.value());
             break;
         case String:
             // 从运行时常量池中加载字符串常量，先通过常量拿到python字符串，然后把它转成Java字符串实例
@@ -50,7 +52,20 @@ class LDC_W extends Index16Instruction {
 
 class LDC2_W extends Index16Instruction {
     execute(frame) {
-        _ldc(frame, this.index);
+        let stack = frame.operand_stack;
+        let cp = frame.methods.get_class().constant_pool;
+        let c = cp.get_constant(this.index);
+
+        switch (c.constructor) {
+            case Long:
+                stack.push_long(c.value());
+                break;
+            case Double:
+                stack.push_double(c.value());
+                break;
+            default:
+                throw new Error("java.lang.ClassFormatError");
+        }
     }
 }
 

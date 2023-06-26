@@ -23,7 +23,7 @@ function check_index(arr_len, index) {
 class AALOAD extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let index = stack.pop_numeric();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         // 检查第二个操作数：数组引用
@@ -38,91 +38,91 @@ class AALOAD extends NoOperandsInstruction {
 class BALOAD extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let index = stack.pop_numeric();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
         let bytes_array = arr_ref.bytes();
         check_index(bytes_array.length, index);
-        stack.push_numeric(bytes_array[index])
+        stack.push_int(bytes_array[index])
     }
 }
 
 class CALOAD extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let index = stack.pop_numeric();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
         let char_array = arr_ref.chars();
         check_index(char_array.length, index);
-        stack.push_numeric(char_array[index])
+        stack.push_int(char_array[index])
     }
 }
 
 class DALOAD extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let index = stack.pop_numeric();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
         let double_array = arr_ref.doubles();
         check_index(double_array.length, index);
-        stack.push_numeric(double_array[index])
+        stack.push_double(double_array[index])
     }
 }
 
 class FALOAD extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let index = stack.pop_numeric();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
         let float_array = arr_ref.floats();
         check_index(float_array.length, index);
-        stack.push_numeric(float_array[index])
+        stack.push_float(float_array[index])
     }
 }
 
 class IALOAD extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let index = stack.pop_numeric();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
         let int_array = arr_ref.ints();
         check_index(int_array.length, index);
-        stack.push_numeric(int_array[index])
+        stack.push_int(int_array[index])
     }
 }
 
 class LALOAD extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let index = stack.pop_numeric();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
         let long_array = arr_ref.longs();
         check_index(long_array.length, index);
-        stack.push_numeric(long_array[index])
+        stack.push_long(long_array[index])
     }
 }
 
 class SALOAD extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let index = stack.pop_numeric();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
         let short_array = arr_ref.shorts();
         check_index(short_array.length, index);
-        stack.push_numeric(short_array[index])
+        stack.push_int(short_array[index])
     }
 }
 

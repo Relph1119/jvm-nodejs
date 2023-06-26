@@ -3,7 +3,7 @@
  * @file: Numeric.js
  * @time: 2023/6/25 10:58
  * @project: jvm-nodejs
- * @desc:
+ * @desc: 该类的主要作用是用String类型保留原始的数据类型，当需要获取时，再进行数据类型转换
  */
 
 class Int {

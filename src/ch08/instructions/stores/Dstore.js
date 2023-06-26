@@ -9,8 +9,8 @@ const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstructi
 const Index8Instruction = require("../base/Instruction").Index8Instruction;
 
 function _dstore(frame, index) {
-    let val = frame.operand_stack.pop_numeric();
-    frame.local_vars.set_numeric(index, val);
+    let val = frame.operand_stack.pop_double();
+    frame.local_vars.set_double(index, val);
 }
 
 class DSTORE extends Index8Instruction {

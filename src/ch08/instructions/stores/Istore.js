@@ -9,8 +9,8 @@ const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstructi
 const Index8Instruction = require("../base/Instruction").Index8Instruction;
 
 function _istore(frame, index) {
-    let val = frame.operand_stack.pop_numeric();
-    frame.local_vars.set_numeric(index, val);
+    let val = frame.operand_stack.pop_int();
+    frame.local_vars.set_int(index, val);
 }
 
 class ISTORE extends Index8Instruction {

@@ -63,7 +63,7 @@ class Interpreter {
             let frame = thread.pop_frame();
             let method = frame.method;
             let class_name = method.get_class().class_name;
-            console.log(">> pc: {0:4} {1}.{2}{3}".format(frame.next_pc, class_name, method.name, method.descriptor))
+            console.log(">> pc: {0} {1}.{2}{3}".format(frame.next_pc, class_name, method.name, method.descriptor))
         }
     }
 

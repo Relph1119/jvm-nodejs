@@ -24,7 +24,7 @@ class AASTORE extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
         let ref = stack.pop_ref();
-        let index = stack.pop_numeric();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
@@ -37,8 +37,8 @@ class AASTORE extends NoOperandsInstruction {
 class BASTORE extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let val = stack.pop_numeric();
-        let index = stack.pop_numeric();
+        let val = stack.pop_int();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
@@ -51,8 +51,8 @@ class BASTORE extends NoOperandsInstruction {
 class CASTORE extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let val = stack.pop_numeric();
-        let index = stack.pop_numeric();
+        let val = stack.pop_int();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
@@ -65,8 +65,8 @@ class CASTORE extends NoOperandsInstruction {
 class DASTORE extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let val = stack.pop_numeric();
-        let index = stack.pop_numeric();
+        let val = stack.pop_double();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
@@ -79,8 +79,8 @@ class DASTORE extends NoOperandsInstruction {
 class FASTORE extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let val = stack.pop_numeric();
-        let index = stack.pop_numeric();
+        let val = stack.pop_float();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
@@ -93,8 +93,8 @@ class FASTORE extends NoOperandsInstruction {
 class IASTORE extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let val = stack.pop_numeric();
-        let index = stack.pop_numeric();
+        let val = stack.pop_int();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
@@ -107,8 +107,8 @@ class IASTORE extends NoOperandsInstruction {
 class LASTORE extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let val = stack.pop_numeric();
-        let index = stack.pop_numeric();
+        let val = stack.pop_long();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);
@@ -121,8 +121,8 @@ class LASTORE extends NoOperandsInstruction {
 class SASTORE extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let val = stack.pop_numeric();
-        let index = stack.pop_numeric();
+        let val = stack.pop_int();
+        let index = stack.pop_int();
         let arr_ref = stack.pop_ref();
 
         check_not_none(arr_ref);

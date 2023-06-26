@@ -23,6 +23,7 @@ function invoke_method(invoker_frame, method) {
         }
     }
 
+    // hack!
     if (method.is_native()) {
         if (method.name === "registerNatives") {
             thread.pop_frame()

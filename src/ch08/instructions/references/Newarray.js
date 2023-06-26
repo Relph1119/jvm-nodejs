@@ -30,7 +30,7 @@ class NEW_ARRAY extends Instruction {
 
     execute(frame) {
         let stack = frame.operand_stack;
-        let count = stack.pop_numeric();
+        let count = stack.pop_int();
         // 如果count小于0，则抛出NegativeArraySizeException异常
         if (count < 0) {
             throw new Error("java.lang.NegativeArraySizeException");
