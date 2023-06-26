@@ -14,6 +14,10 @@ class Int {
     value() {
         return parseInt(this.__str);
     }
+
+    toString() {
+        return this.__str;
+    }
 }
 
 class Long {
@@ -23,6 +27,10 @@ class Long {
 
     value() {
         return parseInt(this.__str)
+    }
+
+    toString() {
+        return this.__str;
     }
 }
 
@@ -34,6 +42,10 @@ class Float {
     value() {
         return parseFloat(this.__str)
     }
+
+    toString() {
+        return this.__str;
+    }
 }
 
 class Double {
@@ -43,6 +55,10 @@ class Double {
 
     value() {
         return parseFloat(this.__str);
+    }
+
+    toString() {
+        return this.__str;
     }
 }
 

@@ -1,6 +1,6 @@
 /**
  * @author: HuRuiFeng
- * @file: cmd.js
+ * @file: Cmd.js
  * @time: 2019/10/12
  * @desc: 命令行类
  */
@@ -22,9 +22,9 @@ class Cmd {
         this.verbose_class_flag = false;
         // 控制是否把指令执行信息输出到控制台
         this.verbose_inst_flag = false;
-        if (program.verbose === "class") {
+        if (program.getOptionValue('verbose') === "class") {
             this.verbose_class_flag = true;
-        } else if (program.verbose === "inst") {
+        } else if (program.getOptionValue('verbose') === "inst") {
             this.verbose_inst_flag = true;
         }
     }
