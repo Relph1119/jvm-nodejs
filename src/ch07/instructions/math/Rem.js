@@ -11,10 +11,10 @@ const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstructi
 class DREM extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_double();
+        let v1 = stack.pop_double();
         let result = v1 % v2;
-        stack.push_numeric(result);
+        stack.push_double(result);
     }
 }
 
@@ -22,10 +22,10 @@ class DREM extends NoOperandsInstruction {
 class FREM extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_float();
+        let v1 = stack.pop_float();
         let result = v1 % v2;
-        stack.push_numeric(result);
+        stack.push_float(result);
     }
 }
 
@@ -33,13 +33,13 @@ class FREM extends NoOperandsInstruction {
 class IREM extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_int();
+        let v1 = stack.pop_int();
         if (v2 === 0) {
             throw new Error("java.lang.ArithmeticException: / by zero");
         }
         let result = v1 % v2;
-        stack.push_numeric(result);
+        stack.push_int(result);
     }
 }
 
@@ -47,13 +47,13 @@ class IREM extends NoOperandsInstruction {
 class LREM extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_long();
+        let v1 = stack.pop_long();
         if (v2 === 0) {
             throw new Error("java.lang.ArithmeticException: / by zero");
         }
         let result = v1 % v2;
-        stack.push_numeric(result);
+        stack.push_long(result);
     }
 }
 

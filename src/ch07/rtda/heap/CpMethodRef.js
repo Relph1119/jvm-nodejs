@@ -48,13 +48,7 @@ class MethodRef extends MemberRef {
         this.method = method
     }
 
-    // 根据方法名和描述符查找方法
-    /**
-     * 先从C的继承层次中找，如果找不到，就去C的接口中找。
-     * @param clazz
-     * @param name
-     * @param descriptor
-     */
+    // 根据方法名和描述符查找方法，先从C的继承层次中找，如果找不到，就去C的接口中找。
     lookup_method(clazz, name, descriptor) {
         let method = MethodLookup.lookup_method_in_class(clazz, name, descriptor);
         if (method === null) {

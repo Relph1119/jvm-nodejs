@@ -24,9 +24,8 @@ function init_class(thread, clazz) {
  */
 function schedule_clinit(thread, clazz) {
     let clinit = clazz.get_clinit_method();
-    let new_frame;
     if (clinit) {
-        new_frame = thread.new_frame(clinit);
+        let new_frame = thread.new_frame(clinit);
         thread.push_frame(new_frame);
     }
 }

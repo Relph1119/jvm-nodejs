@@ -31,11 +31,11 @@ class INVOKE_VIRTURL extends Index16Instruction {
             throw new Error("java.lang.NullPointerException");
         }
 
-        if (resolved_method.is_protected()
-            && resolved_method.get_class().is_super_class_of(current_class)
-            && resolved_method.get_class().get_package_name() !== current_class.get_package_name()
-            && ref.get_class() !== current_class
-            && !ref.get_class().is_sub_class_of(current_class)) {
+        if (resolved_method.is_protected() &&
+            resolved_method.get_class().is_super_class_of(current_class) &&
+            resolved_method.get_class().get_package_name() !== current_class.get_package_name() &&
+            ref.get_class() !== current_class &&
+            !ref.get_class().is_sub_class_of(current_class)) {
             throw new Error("java.lang.IllegalAccessError");
         }
 
@@ -49,14 +49,31 @@ class INVOKE_VIRTURL extends Index16Instruction {
         MethodInvokeLogic.invoke_method(frame, method_to_be_invoked);
     }
 
+    // hack!
     static _println(stack, descriptor) {
-        if (descriptor === "(Z)V") {
-            console.log("{0}".format(stack.pop_numeric() !== 0));
-        } else if (["(C)V", "(B)V", "(S)V", "(I)V", "(J)V", "(F)V", "(D)V"].includes(descriptor)) {
-            console.log("{0}".format(stack.pop_numeric()));
-        } else {
-            throw new Error("println: " + descriptor);
+        switch (descriptor) {
+            case "(Z)V":
+                console.log("{0}".format(stack.pop_int() !== 0));
+                break;
+            case "(C)V":
+            case "(B)V":
+            case "(S)V":
+            case "(I)V":
+                console.log("{0}".format(stack.pop_int()));
+                break;
+            case "(F)V":
+                console.log("{0}".format(stack.pop_float()));
+                break;
+            case "(J)V":
+                console.log("{0}".format(stack.pop_long()));
+                break;
+            case "(D)V":
+                console.log("{0}".format(stack.pop_double()));
+                break;
+            default:
+                throw new Error("println: " + descriptor);
         }
+
         stack.pop_ref();
     }
 }

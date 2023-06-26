@@ -10,14 +10,14 @@ const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstructi
 class LCMP extends NoOperandsInstruction {
     execute(frame) {
         let stack = frame.operand_stack;
-        let v2 = stack.pop_numeric();
-        let v1 = stack.pop_numeric();
+        let v2 = stack.pop_long();
+        let v1 = stack.pop_long();
         if (v1 > v2) {
-            stack.push_numeric(1);
+            stack.push_int(1);
         } else if (v1 === v2) {
-            stack.push_numeric(0);
+            stack.push_int(0);
         } else {
-            stack.push_numeric(-1)
+            stack.push_int(-1)
         }
     }
 }

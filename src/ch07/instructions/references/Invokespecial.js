@@ -38,10 +38,11 @@ class INVOKE_SPECIAL extends Index16Instruction {
         }
 
         // 确保protected方法只能被声明该方法的类或子类调用，如果违反这一规定，则抛出IllegalAccessError异常。
-        if (resolved_method.is_protected() && resolved_method.get_class().is_super_class_of(current_class)
-            && resolved_method.get_class().get_package_name() !== current_class.get_package_name()
-            && ref.get_class() !== current_class
-            && !ref.get_class().is_sub_class_of(current_class)) {
+        if (resolved_method.is_protected() &&
+            resolved_method.get_class().is_super_class_of(current_class) &&
+            resolved_method.get_class().get_package_name() !== current_class.get_package_name() &&
+            ref.get_class() !== current_class &&
+            !ref.get_class().is_sub_class_of(current_class)) {
             throw new Error("java.lang.IllegalAccessError")
         }
 
@@ -50,8 +51,9 @@ class INVOKE_SPECIAL extends Index16Instruction {
         * 否则签名从方法符号引用中解析出来的方法就是要调用的方法。
         */
         let method_to_be_invoked = resolved_method;
-        if (current_class.is_super() && resolved_class.is_super_class_of(current_class)
-            && resolved_method.name !== "<init>") {
+        if (current_class.is_super() &&
+            resolved_class.is_super_class_of(current_class) &&
+            resolved_method.name !== "<init>") {
             method_to_be_invoked = MethodLookup.lookup_method_in_class(
                 current_class.super_class, method_ref.name, method_ref.descriptor)
         }

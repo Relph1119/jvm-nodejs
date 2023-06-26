@@ -10,8 +10,8 @@ const BranchInstruction = require("../base/Instruction").BranchInstruction;
 
 function _icmpPop(frame) {
     let stack = frame.operand_stack;
-    let val2 = stack.pop_numeric();
-    let val1 = stack.pop_numeric();
+    let val2 = stack.pop_int();
+    let val1 = stack.pop_int();
     return {val1: val1, val2: val2};
 }
 

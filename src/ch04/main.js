@@ -17,7 +17,7 @@ function main(input_args) {
         program
             .version('0.0.1')
             .usage('[options] class [args...]')
-            .option('-c, --classpath [value]', 'Class Path')
+            .option('-cp, --classpath [value]', 'Class Path')
             .option('-j, --Xjre [value]', 'path to jre')
             .parse(process.argv);
 

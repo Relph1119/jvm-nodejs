@@ -9,21 +9,31 @@
 
 const Index16Instruction = require("../base/Instruction").Index16Instruction;
 const Index8Instruction = require("../base/Instruction").Index8Instruction;
+const Int = require('../../rtda/Numeric').Int;
+const Long = require('../../rtda/Numeric').Long;
+const Float = require('../../rtda/Numeric').Float;
+const Double = require('../../rtda/Numeric').Double;
 
 function _ldc(frame, index) {
     let stack = frame.operand_stack;
     let cp = frame.method.get_class().constant_pool;
     let c = cp.get_constant(index);
 
-
-    if (c.constructor === Number) {
-        stack.push_numeric(c);
-    } else if (c.constructor === BigInt) {
-        if (c <= Number.MAX_SAFE_INTEGER) {
-            stack.push_numeric(Number(c));
-        }
-    } else {
-        throw new Error("todo: ldc!")
+    switch (c.constructor) {
+        case Int:
+            stack.push_int(c.value());
+            break;
+        case Float:
+            stack.push_float(c.value());
+            break;
+        case Long:
+            stack.push_long(c.value());
+            break;
+        case Double:
+            stack.push_double(c.value());
+            break;
+        default:
+            throw new Error("todo: ldc!")
     }
 }
 

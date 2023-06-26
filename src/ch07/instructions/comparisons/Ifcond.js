@@ -11,7 +11,7 @@ const BranchInstruction = require("../base/Instruction").BranchInstruction;
 // ifeq: x == 0
 class IFEQ extends BranchInstruction {
     execute(frame) {
-        let val = frame.operand_stack.pop_numeric();
+        let val = frame.operand_stack.pop_int();
         if (val === 0) {
             branch(frame, this.offset);
         }
@@ -21,7 +21,7 @@ class IFEQ extends BranchInstruction {
 // ifne: x != 0
 class IFNE extends BranchInstruction {
     execute(frame) {
-        let val = frame.operand_stack.pop_numeric();
+        let val = frame.operand_stack.pop_int();
         if (val !== 0) {
             branch(frame, this.offset);
         }
@@ -31,7 +31,7 @@ class IFNE extends BranchInstruction {
 // iflt: x < 0
 class IFLT extends BranchInstruction {
     execute(frame) {
-        let val = frame.operand_stack.pop_numeric();
+        let val = frame.operand_stack.pop_int();
         if (val < 0) {
             branch(frame, this.offset);
         }
@@ -41,7 +41,7 @@ class IFLT extends BranchInstruction {
 // ifle: x <= 0
 class IFLE extends BranchInstruction {
     execute(frame) {
-        let val = frame.operand_stack.pop_numeric();
+        let val = frame.operand_stack.pop_int();
         if (val <= 0) {
             branch(frame, this.offset);
         }
@@ -51,7 +51,7 @@ class IFLE extends BranchInstruction {
 // ifgt: x > 0
 class IFGT extends BranchInstruction {
     execute(frame) {
-        let val = frame.operand_stack.pop_numeric();
+        let val = frame.operand_stack.pop_int();
         if (val > 0) {
             branch(frame, this.offset);
         }
@@ -61,7 +61,7 @@ class IFGT extends BranchInstruction {
 // ifge: x >= 0
 class IFGE extends BranchInstruction {
     execute(frame) {
-        let val = frame.operand_stack.pop_numeric();
+        let val = frame.operand_stack.pop_int();
         if (val >= 0) {
             branch(frame, this.offset);
         }

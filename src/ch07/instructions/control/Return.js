@@ -7,14 +7,6 @@
 
 const NoOperandsInstruction = require("../base/Instruction").NoOperandsInstruction;
 
-function _numeric_return(frame) {
-    let thread = frame.thread;
-    let current_frame = thread.pop_frame();
-    let invoker_frame = thread.top_frame();
-    let val = current_frame.operand_stack.pop_numeric();
-    invoker_frame.operand_stack.push_numeric(val);
-}
-
 class RETURN extends NoOperandsInstruction {
     execute(frame) {
         frame.thread.pop_frame();
@@ -33,25 +25,41 @@ class ARETURN extends NoOperandsInstruction {
 
 class DRETURN extends NoOperandsInstruction {
     execute(frame) {
-        _numeric_return(frame);
+        let thread = frame.thread;
+        let current_frame = thread.pop_frame();
+        let invoker_frame = thread.top_frame();
+        let val = current_frame.operand_stack.pop_double();
+        invoker_frame.operand_stack.push_double(val);
     }
 }
 
 class FRETURN extends NoOperandsInstruction {
     execute(frame) {
-        _numeric_return(frame);
+        let thread = frame.thread;
+        let current_frame = thread.pop_frame();
+        let invoker_frame = thread.top_frame();
+        let val = current_frame.operand_stack.pop_float();
+        invoker_frame.operand_stack.push_float(val);
     }
 }
 
 class IRETURN extends NoOperandsInstruction {
     execute(frame) {
-        _numeric_return(frame);
+        let thread = frame.thread;
+        let current_frame = thread.pop_frame();
+        let invoker_frame = thread.top_frame();
+        let val = current_frame.operand_stack.pop_int();
+        invoker_frame.operand_stack.push_int(val);
     }
 }
 
 class LRETURN extends NoOperandsInstruction {
     execute(frame) {
-        _numeric_return(frame);
+        let thread = frame.thread;
+        let current_frame = thread.pop_frame();
+        let invoker_frame = thread.top_frame();
+        let val = current_frame.operand_stack.pop_long();
+        invoker_frame.operand_stack.push_long(val);
     }
 }
 

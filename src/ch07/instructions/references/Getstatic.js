@@ -31,10 +31,29 @@ class GET_STATIC extends Index16Instruction {
         let slots = clazz.static_vars;
         let stack = frame.operand_stack;
 
-        if (["Z", "B", "C", "S", "I", "F", "J", "D"].includes(descriptor[0])) {
-            stack.push_numeric(slots.get_numeric(slot_id));
-        } else if (["L", "["].includes(descriptor[0])) {
-            stack.push_ref(slots.get_ref(slot_id))
+        switch (descriptor[0]) {
+            case "Z":
+            case "B":
+            case "C":
+            case "S":
+            case "I":
+                stack.push_int(slots.get_int(slot_id));
+                break;
+            case "F":
+                stack.push_float(slots.get_float(slot_id));
+                break;
+            case "J":
+                stack.push_long(slots.get_long(slot_id));
+                break;
+            case "D":
+                stack.push_double(slots.get_int(slot_id));
+                break;
+            case "L":
+            case "[":
+                stack.push_ref(slots.get_ref(slot_id));
+                break;
+            default:
+            // todo
         }
     }
 }
