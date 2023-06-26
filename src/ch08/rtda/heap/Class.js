@@ -233,7 +233,19 @@ class Class {
         if (!this.is_array()) {
             throw new Error("Not array class: " + this.class_name)
         }
-        return new ObjectClass(this, Array(count).fill(0));
+        switch (this.class_name) {
+            case "[Z":
+            case "[B":
+            case "[C":
+            case "[S":
+            case "[I":
+            case "[J":
+            case "[F":
+            case "[D":
+                return new ObjectClass(this, Array(count).fill(0));
+            default:
+                return new ObjectClass(this, Array(count).fill(null));
+        }
     }
 
     is_array() {
@@ -265,21 +277,8 @@ class Class {
      * 先根据数组类名推测出数组元素类名，然后用类加载器加载元素类
      */
     component_class() {
-        let component_class_name = this.get_component_class_name(this.class_name);
+        let component_class_name = ClassNameHelper.get_component_class_name(this.class_name);
         return this.loader.load_class(component_class_name)
-    }
-
-    /**
-     * 数组类名以[开头，把它去掉就是数组元素的类型描述符
-     * @param class_name
-     * @return {*}
-     */
-    get_component_class_name(class_name) {
-        if (class_name[0] === '[') {
-            let component_type_descriptor = class_name.substr(1);
-            return ClassNameHelper.to_class_name(component_type_descriptor);
-        }
-
     }
 
     /**

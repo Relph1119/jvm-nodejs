@@ -67,7 +67,20 @@ function to_class_name(descriptor) {
     throw new Error("Invalid descriptor: " + descriptor);
 }
 
+/**
+ * 数组类名以[开头，把它去掉就是数组元素的类型描述符
+ * @param class_name
+ * @return {*}
+ */
+function get_component_class_name(class_name) {
+    if (class_name[0] === '[') {
+        let component_type_descriptor = class_name.substr(1);
+        return to_class_name(component_type_descriptor);
+    }
+}
+
 module.exports = {
+    get_component_class_name: get_component_class_name,
     get_array_class_name: get_array_class_name,
     to_descriptor: to_descriptor,
     to_class_name: to_class_name

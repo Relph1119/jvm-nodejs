@@ -80,9 +80,6 @@ class Object {
 
     /**
      * 直接给对象的引用类型实例变量赋值
-     * @param name
-     * @param descriptor
-     * @param ref
      */
     set_ref_var(name, descriptor, ref) {
         let field = this._class.get_field(name, descriptor, false);

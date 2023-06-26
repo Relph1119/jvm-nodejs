@@ -15,7 +15,7 @@ function main(input_args) {
     if (input_args) {
         process.argv = input_args;
         program
-            .version('0.0.1')
+            .version('0.0.1', '-V, --version', 'display current version')
             .usage('[options] class [args...]')
             .option('-cp, --classpath [value]', 'Class Path')
             .option('-j, --Xjre [value]', 'path to jre')

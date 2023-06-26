@@ -20,7 +20,7 @@ function main(input_args) {
     if (input_args) {
         process.argv = input_args;
         program
-            .version('0.0.1')
+            .version('0.0.1', '-V, --version', 'display current version')
             .usage('[options] class [args...]')
             .option('-cp, --classpath [value]', 'Class Path')
             .option('-j, --Xjre [value]', 'path to jre')
@@ -60,6 +60,6 @@ let root_path = path.join(__dirname, '../../');
 // 得到java的用户类路径
 let resources_path = path.join(root_path, 'java/class');
 
-// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'inst', '--classpath', resources_path, 'jvmgo.book.ch07.FibonacciTest'];
-let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch07.FibonacciTest'];
+let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'class', '--classpath', resources_path, 'jvmgo.book.ch07.FibonacciTest'];
+// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch07.FibonacciTest'];
 main(fake_args);
