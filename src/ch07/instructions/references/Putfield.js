@@ -43,7 +43,7 @@ class PUT_FIELD extends Index16Instruction {
                 if (ref === null) {
                     throw new Error("java.lang.NollPointerException")
                 }
-                ref.fields.set_int(slot_id, val);
+                ref.fields().set_int(slot_id, val);
                 break;
             case "F":
                 val = stack.pop_float();
@@ -51,7 +51,7 @@ class PUT_FIELD extends Index16Instruction {
                 if (ref === null) {
                     throw new Error("java.lang.NollPointerException")
                 }
-                ref.fields.set_float(slot_id, val);
+                ref.fields().set_float(slot_id, val);
                 break;
             case "J":
                 val = stack.pop_long();
@@ -59,7 +59,7 @@ class PUT_FIELD extends Index16Instruction {
                 if (ref === null) {
                     throw new Error("java.lang.NollPointerException")
                 }
-                ref.fields.set_long(slot_id, val);
+                ref.fields().set_long(slot_id, val);
                 break;
             case "D":
                 val = stack.pop_double();
@@ -67,7 +67,7 @@ class PUT_FIELD extends Index16Instruction {
                 if (ref === null) {
                     throw new Error("java.lang.NollPointerException")
                 }
-                ref.fields.set_double(slot_id, val);
+                ref.fields().set_double(slot_id, val);
                 break;
             case "L":
             case "[":
@@ -76,7 +76,7 @@ class PUT_FIELD extends Index16Instruction {
                 if (ref === null) {
                     throw new Error("java.lang.NollPointerException")
                 }
-                ref.fields.set_ref(slot_id, val);
+                ref.fields().set_ref(slot_id, val);
                 break;
             default:
             // todo

@@ -60,6 +60,6 @@ let root_path = path.join(__dirname, '../../');
 // 得到java的用户类路径
 let resources_path = path.join(root_path, 'java/class');
 
-let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'inst', '--classpath', resources_path, 'jvmgo.book.ch07.FibonacciTest'];
-// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch07.FibonacciTest'];
+// let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--verbose', 'inst', '--classpath', resources_path, 'jvmgo.book.ch07.FibonacciTest'];
+let fake_args = ['node', 'main.js', '--Xjre', Xjre_path, '--classpath', resources_path, 'jvmgo.book.ch07.FibonacciTest'];
 main(fake_args);

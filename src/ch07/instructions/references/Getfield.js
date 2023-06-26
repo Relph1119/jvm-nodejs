@@ -26,7 +26,7 @@ class GET_FIELD extends Index16Instruction {
 
         let descriptor = field.descriptor;
         let slot_id = field.slot_id;
-        let slots = ref.fields;
+        let slots = ref.fields();
 
         switch (descriptor[0]) {
             case "Z":

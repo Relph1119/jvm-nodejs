@@ -12,7 +12,7 @@ class Object {
         // 存放对象的class
         this._class = clazz;
         // 存放实例变量
-        this._fields = new Slots(clazz.instance_slot_count);
+        this.__fields = new Slots(clazz.instance_slot_count);
     }
 
     get_class() {
@@ -24,7 +24,7 @@ class Object {
     }
 
     fields() {
-        return this._fields;
+        return this.__fields;
     }
 
     is_instance_of(clazz) {
