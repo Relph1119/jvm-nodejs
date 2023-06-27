@@ -26,6 +26,7 @@ src------------------------------------jvm代码
 +-----ch07---------------------------------第7章方法调用和返回的实现代码
 +-----ch08---------------------------------第8章数组和字符串的实现代码
 +-----ch09---------------------------------第9章本地方法调用的实现代码
++-----ch10---------------------------------第10章异常处理的实现代码
 +-----develop_code---------------------持续开发的实现代码
       +-----classfile----------------------class文件解析的对象类
       +-----classpath----------------------类路径目录
@@ -245,9 +246,34 @@ src------------------------------------jvm代码
     ```
    value的值是2147483648，原本该值应该通过local_vars.get_float()转化为float的类型，值为2147483648.0，由于解析Class文件的时候，在ConstantFloatInfo类调用read_info()函数，初始化val的时候，丢失了原始数据类型。通过在第4章添加了`Numeric.js`文件中的4个数据类型，用`String`类型保留原始的数据类型，问题得以解决，特此记录一下。
 
+### 第10章-异常处理
+
+&emsp;&emsp;实现了异常抛出和处理、异常处理表、athrow指令。在Java语言中，异常可以分为两类：Checked异常和Unchecked异常。Unchecked异常包括java.lang.RuntimeException、java.lang.Error以及它们的子类，其他异常都是Checked异常。所有异常都最终继承自java.lang.Throwable。如果一个方法有可能导致Checked异常抛出，则该方法要么需要捕获该异常并妥善处理，要么必须把该异常列在自己的throws子句中，否则无法通过编译。Unchecked异常没有这个限制。
+
+1. 执行ParseIntTest程序，输出参数123
+
+![ParseIntTest-123](./images/ch10/test-ParseIntTest-123.png)
+
+2. 执行ParseIntTest程序，输出参数abc
+
+![ParseIntTest-abc](./images/ch10/test-ParseIntTest-abc.png)
+
+3. 执行ParseIntTest程序，会抛出异常信息
+
+![ParseIntTest-no-args](./images/ch10/test-ParseIntTest-no-args.png)
+
+**本章总结**
+
+1. 打印异常信息，不用像go语言那样采用反射，由于定义了toString方法，Node.js可以直接用如下代码执行：
+   ```javascript
+      for (let ste of ex.extra) {
+        console.log("\tat ", ste.toString());
+    }
+   ```
+
 ## 总结
 
-&emsp;&emsp;历时8天完成1-9章的代码，基本实现了一个JVM的功能，能提供如下命令：
+&emsp;&emsp;第一次代码编写历时8天完成1\~9章的代码，基本实现了一个JVM的功能，能提供如下命令：
 > -v, --version : 版本号  
 --verbose class : 打印类加载信息    
 --verbose inst : 打印指令  
@@ -256,3 +282,5 @@ src------------------------------------jvm代码
 
 &emsp;&emsp;其中遇到的问题都写在前面了，目前完成的功能有基本的命令行、class文件搜索和解析、运行时数据区、指令集和解释器、类和对象、方法调用和返回（支持迭代和递归）、数组和字符串类的加载、调用本地方法。    
 &emsp;&emsp;由于运行第9章的BoxTest程序（打印数组元素）报错，导致不能再继续用Node.js实现JVM，后期可能会自定义Float类型，以区别Number类型中的int类型。
+
+&emsp;&emsp;第二次代码编写历时5天（相隔3年多的时间），重构了第1\~9章的代码，添加`Numeric.js`文件将Node.js中的`int`、`long`、`float`、`double`数据类型分开，用`String`类型保留原始的数据类型，当需要获取时，再进行数据类型转换，成功解决之前Number类型转换的问题。完成第10章的异常处理代码，由于第11章运用了大量的本地方法，于是放弃编写了。

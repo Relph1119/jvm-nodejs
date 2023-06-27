@@ -57,7 +57,7 @@ class AttributeInfo {
             case "LocalVariableTable":
                 return new LocalVariableTableAttribute();
             case "SourceFile":
-                return new SourceFileAttribute();
+                return new SourceFileAttribute(constant_pool);
             case "Synthetic":
                 return new SyntheticAttribute();
             default:

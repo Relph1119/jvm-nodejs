@@ -1,7 +1,7 @@
 {
   "name": "jvm-nodejs",
   "version": "1.0.0",
-  "description": "JVM的Node.js实现",
+  "description": "用Node.js实现Java虚拟机",
   "main": "index.js",
   "dependencies": {
     "adm-zip": "^0.5.10",
@@ -14,13 +14,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Relph1119/JVMByNodeJS.git"
+    "url": "git+https://github.com/Relph1119/jvm-nodejs.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Relph1119/JVMByNodeJS/issues"
+    "url": "https://github.com/Relph1119/jvm-nodejs/issues"
   },
-  "homepage": "https://github.com/Relph1119/JVMByNodeJS#readme"
+  "homepage": "https://github.com/Relph1119/jvm-nodejs#readme"
 }
