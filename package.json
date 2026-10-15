@@ -4,7 +4,7 @@
   "description": "用Node.js实现Java虚拟机",
   "main": "index.js",
   "dependencies": {
-    "adm-zip": "^0.5.10",
+    "adm-zip": "^0.6.1",
     "commander": "^11.0.0",
     "fnv-plus": "^1.3.1",
     "string-format": "^2.0.0"
